@@ -1,0 +1,2034 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Baobab Horizon</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold: #9C6F1C;--gold-light: #D6AF5C;--night: #F8F4EC;--night-mid: #EDE3D2;--night-soft: #e2d6c3;--cream: #0F1A17;--sand: #0F1A17;--muted: #6b7c78;--danger:#c45c5c;--ok:#5a9e6f}
+body{font-family:'Poppins',sans-serif;background:var(--night);color:var(--sand);min-height:100vh}
+a{color:var(--gold-light)}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 20px 80px}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+.logo{font-family:'Lora',serif;font-size:1.4rem;color:var(--cream);letter-spacing:.15em;text-transform:uppercase}
+.logo span{color:var(--gold)}
+.card{background:var(--night-mid);border:1px solid rgba(184,147,90,.2);padding:28px;margin-bottom:20px}
+.eyebrow{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.title{font-family:'Lora',serif;font-size:2rem;font-weight:300;color:var(--cream);margin-bottom:8px}
+.sub{color:var(--muted);line-height:1.6;margin-bottom:22px;font-size:.88rem}
+label{display:block;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+input[type=password],input[type=text],input[type=number],select,textarea{width:100%;padding:11px 13px;background:var(--night-soft);border:1px solid rgba(184,147,90,.25);color:var(--cream);font:inherit;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:90px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 18px;border:1px solid var(--gold);background:var(--gold);color:var(--night);font:inherit;font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.btn-ghost{background:transparent;color:var(--sand);border-color:rgba(184,147,90,.4)}
+.btn-ghost:hover{background:rgba(184,147,90,.1);color:var(--cream);border-color:var(--gold)}
+.btn-danger{background:transparent;border-color:var(--danger);color:var(--danger)}
+.btn-danger:hover{background:rgba(196,92,92,.12)}
+.btn-sm{padding:7px 12px;font-size:.66rem}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.msg{margin-top:14px;padding:10px 12px;font-size:.84rem}
+.msg.err{background:rgba(196,92,92,.12);border:1px solid rgba(196,92,92,.35);color: #8a1f1f}
+.msg.ok{background:rgba(90,158,111,.12);border:1px solid rgba(90,158,111,.35);color: #1e4620}
+.hidden{display:none!important}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:6px}
+/* form grid */
+.fgrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.fgrid .full{grid-column:1/-1}
+.fgroup{display:flex;flex-direction:column;gap:7px}
+/* bien list */
+.bien-list{display:flex;flex-direction:column;gap:3px;margin-bottom:20px}
+.bien-item{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--night-soft);border:1px solid rgba(184,147,90,.15);cursor:pointer;transition:border-color .2s}
+.bien-item:hover{border-color:rgba(184,147,90,.4)}
+.bien-item.active{border-color:var(--gold);background:rgba(184,147,90,.07)}
+.bien-item-name{font-size:.9rem;color:var(--cream)}
+.bien-item-type{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:3px}
+.bien-item-btns{display:flex;gap:6px;flex-shrink:0}
+/* badge type */
+.badge{display:inline-block;font-size:.54rem;letter-spacing:.16em;text-transform:uppercase;padding:3px 9px;border-radius:2px}
+.badge-vacances{background:rgba(90,158,111,.18);color: #1e4620;border:1px solid rgba(90,158,111,.3)}
+.badge-vente{background:rgba(184,147,90,.18);color:var(--gold-light);border:1px solid rgba(184,147,90,.3)}
+.badge-terrain{background:rgba(138,125,106,.18);color:var(--sand);border:1px solid rgba(138,125,106,.3)}
+/* photos */
+.drop{border:2px dashed rgba(184,147,90,.35);padding:24px;text-align:center;color:var(--muted);cursor:pointer;transition:border-color .2s,background .2s;margin-bottom:18px;position:relative}
+.drop:hover,.drop.drag{border-color:var(--gold);background:rgba(184,147,90,.05)}
+.drop input{position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:1}
+.url-row{display:flex;gap:10px;margin-bottom:18px}
+.url-row input{flex:1}
+.photo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.photo{position:relative;background:var(--night-soft);border:1px solid rgba(184,147,90,.15);aspect-ratio:4/3;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo-actions{position:absolute;inset:auto 0 0 0;display:flex;gap:5px;padding:7px;background:linear-gradient(transparent,rgba(0,0,0,.8))}
+.photo-idx{position:absolute;top:7px;left:7px;background:rgba(0,0,0,.55);color:var(--cream);font-size:.58rem;padding:3px 7px}
+/* tabs */
+.tabs{display:flex;gap:2px;margin-bottom:24px;border-bottom:1px solid rgba(184,147,90,.2)}
+.tab{background:none;border:none;font:inherit;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);padding:10px 20px;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:color .2s}
+.tab:hover{color:var(--sand)}
+.tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+/* Calendar styles */
+.calendar {
+  background: var(--night-soft);
+  border: 1px solid rgba(184,147,90,.2);
+  padding: 16px;
+  border-radius: 2px;
+}
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+.calendar-month {
+  font-size: .85rem;
+  font-weight: 500;
+  color: var(--sand);
+  text-transform: uppercase;
+  letter-spacing: .12em;
+}
+.calendar-nav button {
+  background: transparent;
+  border: 1px solid rgba(184,147,90,.4);
+  color: var(--sand);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+.calendar-nav button:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+}
+.calendar-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: .1em;
+}
+.calendar-date {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: .8rem;
+  background: var(--night);
+  border: 1px solid rgba(184,147,90,.15);
+  color: var(--sand);
+  cursor: pointer;
+  transition: .2s;
+}
+.calendar-date:hover {
+  border-color: var(--gold);
+}
+.calendar-date.blocked {
+  background: rgba(196,92,92,.3);
+  border-color: #c45c5c;
+  color: #8a1f1f;
+}
+.calendar-date.reserved {
+  background: rgba(184,147,90,.3);
+  border-color: #b8935a;
+}
+.calendar-date.today {
+  border: 2px solid var(--gold);
+}
+.calendar-date.disabled {
+  opacity: .3;
+  cursor: not-allowed;
+}
+/* Request list */
+.request-item {
+  padding: 14px;
+  background: var(--night);
+  border: 1px solid rgba(184,147,90,.12);
+  margin-bottom: 8px;
+}
+.request-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.request-name {
+  font-size: .95rem;
+  color: var(--cream);
+  font-weight: 500;
+}
+.request-status {
+  font-size: .6rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 1px;
+  background: rgba(138,125,106,.18);
+  color: var(--sand);
+  border: 1px solid rgba(138,125,106,.28);
+}
+.request-details {
+  font-size: .75rem;
+  color: var(--muted);
+  line-height: 1.6;
+}
+.request-status.ok {
+  background: rgba(90, 158, 111, 0.18);
+  color: #1e4620;
+  border-color: rgba(90, 158, 111, 0.28);
+}
+.request-status.invoice {
+  background: rgba(184, 147, 90, 0.22);
+  color: var(--gold-light);
+  border-color: rgba(184, 147, 90, 0.38);
+}
+.request-link {
+  display: block;
+  margin-top: 10px;
+  padding: 10px 12px;
+  background: rgba(184, 147, 90, 0.08);
+  border: 1px solid rgba(184, 147, 90, 0.3);
+  font-size: .72rem;
+  color: var(--gold-light);
+  word-break: break-all;
+  text-decoration: none;
+  border-radius: 2px;
+}
+.request-link:hover {
+  border-color: var(--gold);
+  color: var(--cream);
+}
+.request-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+
+/* Modal styles */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal-overlay.open {
+  display: flex;
+}
+.modal-dialog {
+  background: var(--night-mid);
+  border: 1px solid var(--gold);
+  width: min(600px, 100%);
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+  position: relative;
+}
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(184, 147, 90, 0.15);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+}
+.modal-title {
+  font-family: 'Lora', serif;
+  font-size: 1.5rem;
+  color: var(--cream);
+}
+.modal-close {
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+}
+.modal-close:hover {
+  color: var(--gold);
+}
+.modal-body {
+  color: var(--sand);
+}
+.modal-row {
+  margin-bottom: 14px;
+}
+.modal-row label {
+  display: block;
+  font-size: .65rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 6px;
+}
+.modal-row input, .modal-row textarea {
+  width: 100%;
+  border: 1px solid rgba(184, 147, 90, 0.25);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--cream);
+  padding: 11px 13px;
+  font: inherit;
+  font-size: .85rem;
+  outline: none;
+  resize: vertical;
+}
+.modal-row input:focus, .modal-row textarea:focus {
+  border-color: var(--gold);
+}
+
+@media(max-width:640px){.fgrid{grid-template-columns:1fr}.url-row{flex-direction:column}}
+@keyframes bhaSpin { to { transform: rotate(360deg); } }
+.spinner { border: 3px solid rgba(184, 147, 90, 0.15); border-top-color: var(--gold); border-radius: 50%; width: 28px; height: 28px; margin: 0 auto 15px; animation: bhaSpin 1s linear infinite; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr hidden" id="mainHeader">
+    <div class="logo">Baobab <span>Admin</span><span id="adminSpaceIndicator" style="font-size:0.75rem; font-weight:normal; opacity:0.85; margin-left:12px; padding:3px 8px; background:rgba(184,147,90,0.18); border:1px solid rgba(184,147,90,0.3); border-radius:2px; color:var(--gold-light); display:none;"></span></div>
+    <div class="row">
+      <a href="../" class="btn btn-ghost btn-sm">Voir le site</a>
+      <a href="compta.html" class="btn btn-ghost btn-sm" id="comptaBtn" style="color:var(--gold-light);border-color:rgba(184,147,90,.6)">📊 Comptabilité & Factures</a>
+      <button type="button" class="btn btn-ghost btn-sm hidden" id="logoutBtn">Déconnexion</button>
+    </div>
+  </div>
+
+  <!-- LOADING -->
+  <div id="loadingView" class="card" style="text-align: center; padding: 40px; color: var(--muted);">
+    <div class="spinner"></div>
+    <span>Chargement de la session...</span>
+  </div>
+
+  <!-- LOGIN -->
+  <div id="loginView" class="card hidden">
+    <p class="eyebrow">Espace administration</p>
+    <h1 class="title">Gérer les biens</h1>
+    <p class="sub">Connectez-vous pour ajouter, modifier ou supprimer des biens immobiliers.</p>
+    <form id="loginForm">
+      <div class="fgroup" style="margin-bottom:16px; position:relative;">
+        <label for="password">Mot de passe</label>
+        <div style="position:relative;">
+          <input type="password" id="password" required autocomplete="current-password" placeholder="Mot de passe admin" style="padding-right: 40px; width: 100%;">
+          <button type="button" id="togglePassword" style="position:absolute; right:10px; top:50%; transform:translateY(-50%); background:none; border:none; color:var(--muted); cursor:pointer; font-size:1.1rem; padding:0;" aria-label="Afficher le mot de passe">👁️</button>
+        </div>
+      </div>
+      <div class="row">
+        <button type="submit" class="btn" id="loginSubmitBtn">Se connecter</button>
+      </div>
+      <div id="loginMsg" class="msg err hidden"></div>
+      <div id="forgotPwdContainer" class="hidden" style="margin-top:15px; text-align:center;">
+        <a href="#" id="forgotPwdLink" style="color:var(--gold); text-decoration:underline; font-size:0.85rem;">Mot de passe oublié ?</a>
+      </div>
+    </form>
+  </div>
+
+  <!-- ADMIN -->
+  <div id="adminView" class="hidden">
+    <div class="card">
+      <p class="eyebrow"><span class="status-dot"></span>Connecté · Baobab Horizon</p>
+      <h1 class="title">Gestion des biens</h1>
+      <div class="tabs">
+        <button type="button" class="tab active" data-tab="list">Liste des biens</button>
+        <button type="button" class="tab" data-tab="clients" style="color:var(--gold-light);font-weight:600">👥 Clients & Prospects (CRM)</button>
+        <button type="button" class="tab" data-tab="edit">Modifier</button>
+        <button type="button" class="tab" data-tab="photos">Photos</button>
+        <button type="button" class="tab" data-tab="reservations">📅 Calendrier (Ce bien)</button>
+        <button type="button" class="tab" data-tab="allreservations" style="color:var(--gold-light)">🌐 Toutes les Réservations</button>
+        <button type="button" class="tab" data-tab="new" style="color:var(--ok);font-weight:500">+ Nouveau</button>
+      </div>
+
+      <!-- TAB: LISTE -->
+      <div id="tabList">
+        <p class="sub">Cliquez sur un bien pour le modifier.</p>
+        <div class="bien-list" id="bienList"></div>
+      </div>
+
+      <!-- TAB: CLIENTS & PROSPECTS (CRM) -->
+      <div id="tabClients" class="hidden">
+        <div id="tabClientsContent"></div>
+      </div>
+
+      <!-- TAB: EDITER -->
+      <div id="tabEdit" class="hidden">
+        <p class="sub" id="editSub">Modifiez les informations du bien sélectionné.</p>
+        <div id="editMsg" class="msg hidden"></div>
+        <div class="fgrid">
+          <div class="fgroup full">
+            <label>Type de bien</label>
+            <select id="fType">
+              <option value="vacances">🏖 Location vacances</option>
+              <option value="vente">🏠 Vente immobilière</option>
+              <option value="terrain">🌿 Terrain</option>
+            </select>
+          </div>
+          <div class="fgroup full">
+            <label>Affichage sur les pages</label>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 5px;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; font-size: 0.85rem; color: var(--cream);">
+                <input type="checkbox" id="fInAccueil" style="width: auto;"> 🏡 Page d'accueil
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; font-size: 0.85rem; color: var(--cream);">
+                <input type="checkbox" id="fInVacances" style="width: auto;"> 🏖 Page Vacances (Louer)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; font-size: 0.85rem; color: var(--cream);">
+                <input type="checkbox" id="fInVentes" style="width: auto;"> 🏠 Page Ventes (Acheter)
+              </label>
+            </div>
+          </div>
+          <div class="fgroup" style="flex-direction:row;align-items:center;gap:12px">
+            <label style="margin:0">Disponible à la réservation</label>
+            <label style="position:relative;display:inline-block;width:48px;height:26px;margin:0">
+              <input type="checkbox" id="fAvailable" style="opacity:0;width:0;height:0">
+              <span style="position:absolute;inset:0;background:rgba(184,147,90,.2);border-radius:13px;transition:.3s;cursor:pointer"></span>
+              <span id="fAvailableKnob" style="position:absolute;top:3px;left:3px;width:20px;height:20px;background:var(--muted);border-radius:50%;transition:.3s"></span>
+            </label>
+          </div>
+          <div class="fgroup full">
+            <label>Nom du bien</label>
+            <input type="text" id="fName" placeholder="Ex: Villa Guédé Home">
+          </div>
+          <div class="fgroup full">
+            <label>Zone / Localisation</label>
+            <input type="text" id="fZone" placeholder="Ex: Nguerigne · Petite Côte">
+          </div>
+          <div class="fgroup">
+            <label>Prix (nombre seul, 0 = Sur demande)</label>
+            <input type="number" id="fPrice" min="0" placeholder="Ex: 440000">
+          </div>
+          <div class="fgroup">
+            <label>Unité de prix</label>
+            <input type="text" id="fPriceUnit" placeholder="Ex: FCFA · nuit">
+          </div>
+          <div class="fgroup">
+            <label>Note de prix (optionnel)</label>
+            <input type="text" id="fPriceNote" placeholder="Ex: Prix et dossier complet">
+          </div>
+          <div class="fgroup">
+            <label>🏠 Chambres (0 = non affiché)</label>
+            <input type="number" id="fBedrooms" min="0" placeholder="Ex: 5">
+          </div>
+          <div class="fgroup">
+            <label>Personnes (0 = non affiché)</label>
+            <input type="number" id="fPersons" min="0" placeholder="Ex: 10">
+          </div>
+          <div class="fgroup">
+            <label>Salles de bain (0 = non affiché)</label>
+            <input type="number" id="fBathrooms" min="0" placeholder="Ex: 3">
+          </div>
+          <div class="fgroup">
+            <label>Surface / Valeur spec 3</label>
+            <input type="text" id="fArea" placeholder="Ex: 1 200 ou 300m">
+          </div>
+          <div class="fgroup">
+            <label>Label spec 3</label>
+            <input type="text" id="fAreaLabel" placeholder="Ex: m² hab. ou Plage">
+          </div>
+          <div class="fgroup full">
+            <label>Tags / Équipements (séparés par des virgules)</label>
+            <input type="text" id="fTags" placeholder="Ex: Piscine, Pool house, Climatisation">
+          </div>
+          <div class="fgroup full">
+            <label>Couleur visuelle distinctive (Code hexadécimal)</label>
+            <input type="color" id="fColor" value="#9C6F1C" style="height:44px;padding:4px;width:100%;background:var(--night-soft);border:1px solid rgba(184,147,90,.25);">
+          </div>
+          <div class="fgroup full">
+            <label>Description</label>
+            <textarea id="fDesc" placeholder="Décrivez le bien en quelques phrases..."></textarea>
+          </div>
+          <div class="fgroup full">
+            <label>Clé technique (identifiant unique, lettres minuscules et tirets)</label>
+            <input type="text" id="fKey" placeholder="Ex: villa-guede" pattern="[a-z0-9_-]+" title="Lettres minuscules, chiffres et tirets uniquement">
+            <small style="color:var(--muted);font-size:.7rem;margin-top:4px">⚠️ Ne modifiez pas la clé d'un bien existant, cela créerait un doublon.</small>
+          </div>
+        </div>
+        <div class="row">
+          <button type="button" class="btn" id="saveEditBtn">Enregistrer les modifications</button>
+          <button type="button" class="btn btn-danger btn-sm" id="deleteBtn">Supprimer ce bien</button>
+        </div>
+      </div>
+
+      <!-- TAB: PHOTOS -->
+      <div id="tabPhotos" class="hidden">
+        <p class="sub" id="photoSub">Gérez les photos du bien sélectionné.</p>
+        <div id="photoMsg" class="msg hidden"></div>
+        
+        <div style="margin-bottom:12px; display:flex; gap:10px; align-items:center;">
+          <label style="margin:0; font-size:.72rem">Catégorie cible pour l'upload ou l'ajout d'URL :</label>
+          <select id="uploadCategorySelect" style="width:auto; padding:6px 12px; background:var(--night-soft); border:1px solid rgba(184,147,90,.25); color:var(--cream)">
+            <option value="exterieur">Extérieur</option>
+            <option value="interieur">Intérieur</option>
+            <option value="chambres">Chambres</option>
+          </select>
+        </div>
+
+        <div class="drop" id="dropZone">
+          <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" multiple>
+          <p><strong>Glissez vos photos ici</strong> ou cliquez pour choisir</p>
+          <p style="font-size:.78rem;margin-top:8px;color:var(--muted)">JPG, PNG, WEBP — max 8 Mo par fichier</p>
+        </div>
+        <div class="url-row">
+          <input type="text" id="urlInput" placeholder="Ou coller une URL d'image (https://...)">
+          <button type="button" class="btn btn-ghost" id="addUrlBtn">Ajouter URL</button>
+        </div>
+        <div class="photo-grid" id="photoGrid"></div>
+        <div class="row" style="margin-top:18px">
+          <button type="button" class="btn" id="savePhotosBtn">Enregistrer l'ordre des photos</button>
+        </div>
+      </div>
+
+      <!-- TAB: RÉSERVATIONS -->
+      <div id="tabReservations" class="hidden">
+        <p class="sub" id="reservationSub">Sélectionnez un bien pour gérer ses réservations et dates bloquées.</p>
+        <div id="reservationMsg" class="msg hidden"></div>
+        
+        <div class="card" style="margin-bottom:20px; padding:20px;">
+          <p class="eyebrow">Gérer les dates</p>
+          <div class="fgrid" style="margin-bottom:12px;">
+            <div class="fgroup">
+              <label>Début de la période</label>
+              <input type="date" id="blockStart">
+            </div>
+            <div class="fgroup">
+              <label>Fin de la période</label>
+              <input type="date" id="blockEnd">
+            </div>
+          </div>
+          <div class="row">
+            <button type="button" class="btn" id="blockDatesBtn">🔒 Bloquer la période</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="refreshAvailabilityBtn">🔄 Rafraîchir</button>
+          </div>
+          <div id="calendarContainer" style="margin-top:16px;"></div>
+          <div style="font-size:.7rem;color:var(--muted);margin-top:8px;display:flex;gap:16px;">
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;background:rgba(196,92,92,.3);border:1px solid #c45c5c"></span>Bloqué</span>
+            <span style="display:flex;align-items:center;gap:6px"><span style="width:12px;height:12px;background:rgba(184,147,90,.3);border:1px solid #b8935a"></span>Réservé</span>
+          </div>
+        </div>
+        
+        <div class="card" style="padding:20px; margin-bottom:20px;">
+          <p class="eyebrow">Demandes de réservation (En attente)</p>
+          <div id="requestsList"></div>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <p class="eyebrow">Réservations Validées</p>
+          <div id="validatedList"></div>
+        </div>
+      </div>
+
+      <!-- TAB: TOUTES LES RÉSERVATIONS -->
+      <div id="tabAllreservations" class="hidden">
+        <p class="sub">Vue globale de toutes les réservations (en attente et validées) pour tous les biens.</p>
+        
+        <div class="card" style="padding:20px; margin-bottom:20px;">
+          <p class="eyebrow">Demandes en attente (Toutes les villas)</p>
+          <div id="allRequestsList"></div>
+        </div>
+
+        <div class="card" style="padding:20px;">
+          <p class="eyebrow">Réservations Validées (Historique Global)</p>
+          <div id="allValidatedList"></div>
+        </div>
+      </div>
+
+      <!-- TAB: NOUVEAU BIEN -->
+      <div id="tabNew" class="hidden">
+        <p class="sub">Créez un nouveau bien immobilier.</p>
+        <div id="newMsg" class="msg hidden"></div>
+        <div class="fgrid">
+          <div class="fgroup full">
+            <label>Clé technique unique (minuscules et tirets)</label>
+            <input type="text" id="nKey" placeholder="Ex: ma-villa" pattern="[a-z0-9_-]+">
+          </div>
+          <div class="fgroup full">
+            <label>Type de bien</label>
+            <select id="nType">
+              <option value="vacances">🏖 Location vacances</option>
+              <option value="vente">🏠 Vente immobilière</option>
+              <option value="terrain">🌿 Terrain</option>
+            </select>
+          </div>
+          <div class="fgroup full">
+            <label>Affichage sur les pages</label>
+            <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 5px;">
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; font-size: 0.85rem; color: var(--cream);">
+                <input type="checkbox" id="nInAccueil" style="width: auto;"> 🏡 Page d'accueil
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; font-size: 0.85rem; color: var(--cream);">
+                <input type="checkbox" id="nInVacances" style="width: auto;"> 🏖 Page Vacances (Louer)
+              </label>
+              <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; text-transform: none; font-size: 0.85rem; color: var(--cream);">
+                <input type="checkbox" id="nInVentes" style="width: auto;"> 🏠 Page Ventes (Acheter)
+              </label>
+            </div>
+          </div>
+          <div class="fgroup full">
+            <label>Nom du bien</label>
+            <input type="text" id="nName" placeholder="Ex: Villa Océan">
+          </div>
+          <div class="fgroup full">
+            <label>Zone / Localisation</label>
+            <input type="text" id="nZone" placeholder="Ex: Saly · Bord de mer">
+          </div>
+          <div class="fgroup">
+            <label>Prix (0 = Sur demande)</label>
+            <input type="number" id="nPrice" min="0" placeholder="440000">
+          </div>
+          <div class="fgroup">
+            <label>Unité de prix</label>
+            <input type="text" id="nPriceUnit" placeholder="FCFA · nuit">
+          </div>
+          <div class="fgroup">
+            <label>Note de prix (optionnel)</label>
+            <input type="text" id="nPriceNote" placeholder="Ex: Visite sur RDV">
+          </div>
+          <div class="fgroup">
+            <label>🏠 Chambres</label>
+            <input type="number" id="nBedrooms" min="0" value="0">
+          </div>
+          <div class="fgroup">
+            <label>👤 Personnes max</label>
+            <input type="number" id="nPersons" min="0" value="0">
+          </div>
+          <div class="fgroup">
+            <label>🛁 Salles de bain</label>
+            <input type="number" id="nBathrooms" min="0" value="0">
+          </div>
+          <div class="fgroup">
+            <label>Surface</label>
+            <input type="text" id="nArea" placeholder="1 200">
+          </div>
+          <div class="fgroup">
+            <label>Label surface</label>
+            <input type="text" id="nAreaLabel" placeholder="m² hab.">
+          </div>
+          <div class="fgroup full">
+            <label>Tags / Équipements (séparés par des virgules)</label>
+            <input type="text" id="nTags" placeholder="Ex: Piscine, Climatisation, Chef">
+          </div>
+          <div class="fgroup full">
+            <label>Description</label>
+            <textarea id="nDesc" placeholder="Décrivez le bien en détail..."></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <button type="button" class="btn" id="createBtn" style="background:var(--ok);border-color:var(--ok)">✅ Créer ce bien</button>
+        </div>
+      </div>
+
+    </div><!-- .card -->
+  </div><!-- #adminView -->
+</div><!-- .wrap -->
+
+<script>
+const API = '../api';
+let data = {};
+let currentKey = '';
+let dirty = false;
+let adminSpace = 'root';
+let availability = {};
+let reservations = {};
+let currentMonth = new Date();
+
+// ── API helper ──────────────────────────────────────────────
+async function api(path, options = {}) {
+  const ts = '_t=' + Date.now();
+  const sep = path.includes('?') ? '&' : '?';
+  const finalPath = path + sep + ts;
+  const res = await fetch(API + finalPath, { credentials: 'same-origin', ...options });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(json.error || 'Erreur serveur');
+  return json;
+}
+
+function showMsg(id, text, ok) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.textContent = text;
+  el.className = 'msg ' + (ok ? 'ok' : 'err');
+  el.classList.remove('hidden');
+  setTimeout(() => el.classList.add('hidden'), 5000);
+}
+
+// ── LOGIN ────────────────────────────────────────────────────
+async function checkSession() {
+  try {
+    const res = await api('/login.php');
+    const loadingView = document.getElementById('loadingView');
+    const mainHeader = document.getElementById('mainHeader');
+    if (loadingView) loadingView.classList.add('hidden');
+    if (res.logged_in) {
+      await showAdmin(res);
+    } else {
+      document.getElementById('loginView').classList.remove('hidden');
+    }
+    if (mainHeader) mainHeader.classList.remove('hidden');
+  } catch (_) {
+    const loadingView = document.getElementById('loadingView');
+    const mainHeader = document.getElementById('mainHeader');
+    if (loadingView) loadingView.classList.add('hidden');
+    if (mainHeader) mainHeader.classList.remove('hidden');
+    document.getElementById('loginView').classList.remove('hidden');
+  }
+}
+
+document.getElementById('togglePassword')?.addEventListener('click', function() {
+  const pwdInput = document.getElementById('password');
+  if (pwdInput.type === 'password') {
+    pwdInput.type = 'text';
+    this.textContent = '🔒';
+  } else {
+    pwdInput.type = 'password';
+    this.textContent = '👁️';
+  }
+});
+
+document.getElementById('forgotPwdLink')?.addEventListener('click', (e) => {
+  e.preventDefault();
+  alert("Veuillez contacter l'administrateur principal (Dani) au +221 78 014 09 42 pour réinitialiser le mot de passe.");
+});
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('loginMsg');
+  const forgotContainer = document.getElementById('forgotPwdContainer');
+  if (msg) msg.classList.add('hidden');
+  if (forgotContainer) forgotContainer.classList.add('hidden');
+  try {
+    const res = await fetch(API + '/login.php', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: document.getElementById('password').value })
+    });
+    const json = await res.json().catch(() => ({}));
+    if (!res.ok) throw new Error(json.error || 'Erreur serveur');
+    
+    await showAdmin({ logged_in: true, user: json.user, space: json.space });
+  } catch (err) {
+    if (msg) {
+      msg.textContent = err.message;
+      msg.className = 'msg err';
+      msg.classList.remove('hidden');
+    }
+    if (err.message.includes('bloqué')) {
+      document.getElementById('password').disabled = true;
+      document.getElementById('loginSubmitBtn').disabled = true;
+      if (forgotContainer) forgotContainer.classList.remove('hidden');
+    }
+  }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await api('/logout.php', { method: 'POST' });
+  location.reload();
+});
+
+// ── TABS ─────────────────────────────────────────────────────
+function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+var adminClientsList = [];
+
+function loadAdminClients() {
+  return fetch('../api/clients.php')
+    .then(r => r.json())
+    .then(data => {
+      adminClientsList = data || [];
+      renderAdminClientsTable();
+    })
+    .catch(() => {});
+}
+
+function renderAdminClientsTable() {
+  const container = document.getElementById('tabClientsContent');
+  if (!container) return;
+  
+  const total = adminClientsList.length;
+  let countPrivilege = 0;
+  adminClientsList.forEach(c => {
+    if (c.marketing || (c.discount || 1) >= 2) countPrivilege++;
+  });
+  const countImmediate = total - countPrivilege;
+
+  let html = `
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-bottom:24px">
+      <div style="background:var(--night-soft);border:1px solid rgba(184,147,90,.3);padding:16px;text-align:center">
+        <div style="font-size:1.8rem;font-weight:700;color:var(--gold)">${total}</div>
+        <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px">Prospects & Clients Enregistrés</div>
+      </div>
+      <div style="background:var(--night-soft);border:1px solid rgba(184,147,90,.3);padding:16px;text-align:center">
+        <div style="font-size:1.8rem;font-weight:700;color:var(--ok)">${countPrivilege}</div>
+        <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px">Membres Privilège (-2%)</div>
+      </div>
+      <div style="background:var(--night-soft);border:1px solid rgba(184,147,90,.3);padding:16px;text-align:center">
+        <div style="font-size:1.8rem;font-weight:700;color:var(--gold-light)">${countImmediate}</div>
+        <div style="font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-top:4px">Remise Immédiate (-1%)</div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:10px">
+      <p class="sub" style="margin-bottom:0">Base de données CRM et historique des prises de contact.</p>
+      <input type="text" id="adminClientSearch" onkeyup="filterAdminClientRows()" placeholder="🔍 Rechercher nom, tel, email..." style="max-width:280px;padding:7px 12px;font-size:.8rem">
+    </div>
+  `;
+
+  if (!adminClientsList.length) {
+    html += '<p style="color:var(--muted);padding:14px 0">Aucun client ni prospect enregistré pour le moment.</p>';
+    container.innerHTML = html;
+    return;
+  }
+
+  html += `
+    <div style="overflow-x:auto">
+      <table style="width:100%;border-collapse:collapse;font-size:.82rem;text-align:left">
+        <thead>
+          <tr style="border-bottom:2px solid rgba(184,147,90,.3);color:var(--gold);text-transform:uppercase;font-size:.65rem;letter-spacing:.12em">
+            <th style="padding:10px 12px">Identité Client</th>
+            <th style="padding:10px 12px">Téléphone 📞</th>
+            <th style="padding:10px 12px">Email ✉️</th>
+            <th style="padding:10px 12px">Origine du contact</th>
+            <th style="padding:10px 12px">Statut Remise</th>
+            <th style="padding:10px 12px">Date</th>
+            <th style="padding:10px 12px;text-align:right">Relance en 1 Clic 🚀</th>
+          </tr>
+        </thead>
+        <tbody id="adminClientTableBody">
+  `;
+
+  adminClientsList.slice().reverse().forEach(c => {
+    const rawPhone = c.phone || '';
+    let cleanPhone = rawPhone.replace(/[^0-9]/g, '');
+    if (cleanPhone && !cleanPhone.startsWith('221') && cleanPhone.length === 9) {
+      cleanPhone = '221' + cleanPhone;
+    }
+    const discount = c.discount || (c.marketing ? 2 : 1);
+    const source = c.source || 'Demande Site Web';
+
+    const waMsg = encodeURIComponent(`Bonjour ${c.name || 'Cher client'},\n\nL'équipe Baobab Horizon revient vers vous suite à votre demande (${source}).\nNous avons de nouvelles opportunités et séjours disponibles avec votre remise privilège de -${discount}% !\n\nSouhaitez-vous échanger sur votre projet ?`);
+    const waUrl = cleanPhone ? `https://wa.me/${cleanPhone}?text=${waMsg}` : '#';
+
+    const emailSub = encodeURIComponent(`Nouvelles opportunités Baobab Horizon - Remise Privilège (-${discount}%)`);
+    const emailBody = encodeURIComponent(`Bonjour ${c.name || ''},\n\nNous faisons suite à votre intérêt pour nos biens et séjours sur Baobab Horizon.\nEn tant que membre bénéficiant de -${discount}% de remise, nous serions ravis de vous accompagner dans votre projet.\n\nRestant à votre entière disposition par retour d'email ou au +221 78 014 09 42.\n\nCordialement,\nL'équipe Baobab Horizon`);
+    const emailUrl = c.email ? `mailto:${c.email}?subject=${emailSub}&body=${emailBody}` : '#';
+
+    const badgeClass = discount >= 2 ? 'badge-vacances' : 'badge-vente';
+    const badgeTxt = discount >= 2 ? '🎁 Privilège (-2%)' : '🌟 Immédiate (-1%)';
+
+    html += `
+      <tr class="admin-client-tr" style="border-bottom:1px solid rgba(184,147,90,.12)">
+        <td style="padding:12px;font-weight:600;color:var(--cream)">
+          ${esc(c.name || 'Anonyme')}
+          <div style="font-size:.65rem;color:var(--muted);font-weight:400">ID: ${esc(c.id || '')}</div>
+        </td>
+        <td style="padding:12px">
+          ${c.phone ? `<a href="tel:${esc(c.phone)}" style="color:var(--sand);text-decoration:none">📞 ${esc(c.phone)}</a>` : '<span style="color:var(--muted)">—</span>'}
+        </td>
+        <td style="padding:12px">
+          ${c.email ? `<a href="mailto:${esc(c.email)}" style="color:var(--sand);text-decoration:none">✉️ ${esc(c.email)}</a>` : '<span style="color:var(--muted)">—</span>'}
+        </td>
+        <td style="padding:12px">
+          <span class="badge badge-vente" style="padding:4px 8px">${esc(source)}</span>
+        </td>
+        <td style="padding:12px">
+          <span class="badge ${badgeClass}" style="padding:4px 8px;font-weight:700">${badgeTxt}</span>
+        </td>
+        <td style="padding:12px;font-size:.7rem;color:var(--muted)">
+          ${esc((c.created_at || c.last_activity || '').substring(0, 16))}
+        </td>
+        <td style="padding:12px;text-align:right">
+          <div style="display:flex;gap:6px;justify-content:flex-end">
+            ${cleanPhone ? `<a href="${waUrl}" target="_blank" class="btn btn-sm" style="background:#25D366;border-color:#25D366;color:#fff" title="Relancer sur WhatsApp">💬 WhatsApp</a>` : ''}
+            ${c.email ? `<a href="${emailUrl}" class="btn btn-ghost btn-sm" title="Relancer par Email">✉️ Email</a>` : ''}
+          </div>
+        </td>
+      </tr>
+    `;
+  });
+
+  html += `
+        </tbody>
+      </table>
+    </div>
+  `;
+  container.innerHTML = html;
+}
+
+function filterAdminClientRows() {
+  const q = (document.getElementById('adminClientSearch')?.value || '').toLowerCase();
+  document.querySelectorAll('.admin-client-tr').forEach(tr => {
+    tr.style.display = tr.innerText.toLowerCase().includes(q) ? '' : 'none';
+  });
+}
+
+function showTab(name) {
+  ['list','clients','edit','photos','reservations','allreservations','new'].forEach(t => {
+    const tabId = 'tab' + t.charAt(0).toUpperCase() + t.slice(1);
+    const tabEl = document.getElementById(tabId);
+    if (tabEl) tabEl.classList.toggle('hidden', t !== name);
+    const tabBtn = document.querySelector(`.tab[data-tab="${t}"]`);
+    if (tabBtn) tabBtn.classList.toggle('active', t === name);
+  });
+  if (name === 'allreservations') {
+    loadReservations().then(() => renderAllReservations());
+  } else if (name === 'clients') {
+    loadAdminClients();
+  }
+}
+
+document.querySelectorAll('.tab').forEach(btn => {
+  btn.addEventListener('click', () => showTab(btn.dataset.tab));
+});
+
+const _newBienBtn = document.getElementById('newBienBtn');
+if (_newBienBtn) _newBienBtn.addEventListener('click', () => showTab('new'));
+
+// ── SHOW ADMIN ───────────────────────────────────────────────
+function switchAdminTab(tab) {
+  ['list','clients','edit','photos','reservations','allreservations','new'].forEach(t => {
+    document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1))?.classList.add('hidden');
+  });
+  document.getElementById('tab' + tab.charAt(0).toUpperCase() + tab.slice(1))?.classList.remove('hidden');
+  
+  if (tab === 'allreservations') {
+    renderAllReservations();
+  }
+}
+
+async function showAdmin(sessionData) {
+  document.getElementById('loginView').classList.add('hidden');
+  document.getElementById('adminView').classList.remove('hidden');
+  document.getElementById('logoutBtn').classList.remove('hidden');
+  const comptaBtn = document.getElementById('comptaBtn');
+  if (comptaBtn) comptaBtn.classList.remove('hidden');
+  const hotelBtn = document.getElementById('hotelAdminBtn');
+  if (hotelBtn) hotelBtn.classList.remove('hidden');
+  
+  // Utiliser les informations de session déjà chargées
+  if (sessionData && sessionData.logged_in) {
+    adminSpace = sessionData.space;
+    const ind = document.getElementById('adminSpaceIndicator');
+    if (ind) {
+      ind.textContent = '👤 ' + sessionData.user + ' (' + (sessionData.space === 'location' ? 'Location' : 'Principal') + ')';
+      ind.style.display = 'inline-block';
+    }
+  }
+  
+  data = await api('/properties.php');
+  await loadReservations();
+  renderReservationsTab();
+  if (!document.getElementById('tabAllreservations').classList.contains('hidden')) {
+    renderAllReservations();
+  }
+  loadAvailability();
+}
+
+// ── AVAILABILITY & RESERVATIONS ──────────────────────────────────
+async function loadAvailability() {
+  try {
+    availability = await api('/availability.php?action=get');
+    renderCalendar();
+  } catch (e) { console.error('Error loading availability:', e); }
+}
+
+async function loadReservations() {
+  try {
+    reservations = await api('/reservations.php?action=list');
+    renderRequests();
+    renderValidated();
+    renderBienList(); // Update booking pending badges on villas list!
+  } catch (e) { console.error('Error loading reservations:', e); }
+}
+
+function renderReservationsTab() {
+  renderRequests();
+  renderValidated();
+}
+
+function renderCalendar() {
+  const container = document.getElementById('calendarContainer');
+  if (!container) return;
+  if (!currentKey || !availability[currentKey]) {
+    container.innerHTML = '<div style="text-align:center;color:var(--muted);padding:20px">Sélectionnez un bien d\'abord</div>';
+    return;
+  }
+
+  const year = currentMonth.getFullYear();
+  const month = currentMonth.getMonth();
+  const firstDay = new Date(year, month, 1);
+  const lastDay = new Date(year, month + 1, 0);
+  const monthNames = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
+  const dayNames = ['L','M','M','J','V','S','D'];
+  let startDay = firstDay.getDay();
+  if (startDay === 0) startDay = 7;
+
+  const blockedDates = availability[currentKey].blocked_dates || [];
+  const reservedDates = [];
+  (availability[currentKey].reservations || []).forEach(r => {
+    let d = new Date(r.start);
+    const end = new Date(r.end);
+    while (d <= end) {
+      reservedDates.push(d.toISOString().split('T')[0]);
+      d.setDate(d.getDate() + 1);
+    }
+  });
+
+  let html = `<div class="calendar">
+    <div class="calendar-header">
+      <div class="calendar-nav">
+        <button type="button" id="calPrev">←</button>
+      </div>
+      <div class="calendar-month">${monthNames[month]} ${year}</div>
+      <div class="calendar-nav">
+        <button type="button" id="calNext">→</button>
+      </div>
+    </div>
+    <div class="calendar-grid">`;
+
+  for (let i = 1; i < startDay; i++) {
+    html += '<div class="calendar-date disabled"></div>';
+  }
+
+  for (let day = 1; day <= lastDay.getDate(); day++) {
+    const d = new Date(year, month, day);
+    const dateStr = d.toISOString().split('T')[0];
+    const isBlocked = blockedDates.includes(dateStr);
+    const isReserved = reservedDates.includes(dateStr);
+    const isToday = dateStr === new Date().toISOString().split('T')[0];
+    let classes = 'calendar-date';
+    if (isBlocked) classes += ' blocked';
+    if (isReserved) classes += ' reserved';
+    if (isToday) classes += ' today';
+    html += `<div class="${classes}" data-date="${dateStr}">${day}</div>`;
+  }
+
+  html += '</div></div>';
+  container.innerHTML = html;
+
+  container.querySelector('#calPrev').addEventListener('click', () => {
+    currentMonth.setMonth(currentMonth.getMonth() - 1);
+    renderCalendar();
+  });
+  container.querySelector('#calNext').addEventListener('click', () => {
+    currentMonth.setMonth(currentMonth.getMonth() + 1);
+    renderCalendar();
+  });
+  container.querySelectorAll('.calendar-date:not(.disabled)').forEach(el => {
+    el.addEventListener('click', () => toggleDateBlock(el.dataset.date));
+  });
+}
+
+async function toggleDateBlock(dateStr) {
+  if (!currentKey) return;
+  
+  // First check if date is currently blocked to decide whether to block or unblock
+  const isBlocked = availability[currentKey]?.blocked_dates?.includes(dateStr);
+  const action = isBlocked ? 'unblock' : 'block';
+  
+  try {
+    const formData = new FormData();
+    formData.append('villa', currentKey);
+    formData.append('date', dateStr);
+    
+    await api('/availability.php?action=' + action, {
+      method: 'POST',
+      body: formData
+    });
+    
+    // Reload availability to get the latest state
+    await loadAvailability();
+    showMsg('reservationMsg', isBlocked ? 'Date débloquée avec succès' : 'Date bloquée avec succès', true);
+  } catch (err) {
+    showMsg('reservationMsg', err.message, false);
+  }
+}
+
+async function blockDateRange() {
+  console.log('blockDateRange called! Current key:', currentKey);
+  if (!currentKey) {
+    alert('Veuillez d\'abord sélectionner un bien (cliquez sur un bien dans la liste, ou sur le bouton « Réservations » d\'un bien !');
+    return;
+  }
+  const start = document.getElementById('blockStart').value;
+  const end = document.getElementById('blockEnd').value;
+  console.log('Block range:', start, 'to', end);
+  if (!start || !end) {
+    showMsg('reservationMsg', 'Veuillez sélectionner une date de début et de fin.', false);
+    return;
+  }
+  
+  try {
+    const formData = new FormData();
+    formData.append('villa', currentKey);
+    formData.append('start', start);
+    formData.append('end', end);
+    
+    console.log('Calling api with formData:', Object.fromEntries(formData));
+    const result = await api('/availability.php?action=block_range', {
+      method: 'POST',
+      body: formData
+    });
+    console.log('API Result:', result);
+    
+    // Reload availability to get the latest state
+    await loadAvailability();
+    document.getElementById('blockStart').value = '';
+    document.getElementById('blockEnd').value = '';
+    showMsg('reservationMsg', 'Période bloquée avec succès.', true);
+  } catch (err) {
+    console.error('API error:', err);
+    showMsg('reservationMsg', err.message, false);
+  }
+}
+
+function renderRequests() {
+  const listEl = document.getElementById('requestsList');
+  if (!listEl) return;
+  const requests = (reservations.requests || []).filter(r => r.villa === currentKey);
+  if (!requests.length) {
+    listEl.innerHTML = '<div style="text-align:center;color:var(--muted);padding:20px">Aucune demande de réservation pour ce bien</div>';
+    return;
+  }
+  listEl.innerHTML = requests.map(r => `
+    <div class="request-item">
+      <div class="request-header">
+        <div class="request-name">${esc(r.first_name)} ${esc(r.last_name)}</div>
+        <span class="request-status">En attente</span>
+      </div>
+      <div class="request-details">
+        <div>Dates: ${r.start} → ${r.end} (${r.nights} nuit${r.nights > 1 ? 's' : ''})</div>
+        <div>Personnes: ${r.guests}</div>
+        <div>Chef: ${r.chef}</div>
+        <div>Contact: ${r.phone}${r.email ? ' / ' + r.email : ''}</div>
+        <div>Total: ${Number(r.total_amount).toLocaleString('fr-FR')} ${(data[currentKey]?.priceUnit || '')}</div>
+      </div>
+      <div class="row" style="margin-top:10px;">
+        <button type="button" class="btn" data-act="validate" data-id="${r.id}">✅ Valider</button>
+        <button type="button" class="btn btn-danger btn-sm" data-act="reject" data-id="${r.id}">❌ Refuser</button>
+      </div>
+    </div>
+  `).join('');
+  listEl.querySelectorAll('[data-act="validate"]').forEach(btn => {
+    btn.addEventListener('click', () => validateRequest(btn.dataset.id));
+  });
+  listEl.querySelectorAll('[data-act="reject"]').forEach(btn => {
+    btn.addEventListener('click', () => rejectRequest(btn.dataset.id));
+  });
+}
+
+async function validateRequest(id) {
+  if (!confirm('Valider cette demande de réservation ?')) return;
+  try {
+    const fd = new FormData();
+    fd.append('action', 'validate');
+    fd.append('request_id', id);
+    const res = await api('/reservations.php', {
+      method: 'POST',
+      body: fd
+    });
+    await loadReservations();
+    await loadAvailability();
+    renderReservationsTab();
+    if (!document.getElementById('tabAllreservations').classList.contains('hidden')) {
+      renderAllReservations();
+    }
+    showMsg('reservationMsg', 'Demande validée avec succès.', true);
+    if (res && res.success) {
+      openAccessModal(res);
+    }
+  } catch (err) {
+    showMsg('reservationMsg', err.message, false);
+  }
+}
+
+async function rejectRequest(id) {
+  if (!confirm('Refuser cette demande de réservation ?')) return;
+  try {
+    const fd = new FormData();
+    fd.append('action', 'reject');
+    fd.append('request_id', id);
+    await api('/reservations.php', {
+      method: 'POST',
+      body: fd
+    });
+    await loadReservations();
+    await loadAvailability();
+    renderReservationsTab();
+    if (!document.getElementById('tabAllreservations').classList.contains('hidden')) {
+      renderAllReservations();
+    }
+    showMsg('reservationMsg', 'Demande refusée avec succès.', true);
+  } catch (err) {
+    showMsg('reservationMsg', err.message, false);
+  }
+}
+
+async function deleteValidated(accessKey) {
+  if (!accessKey) return;
+  if (!confirm('Supprimer cette réservation validée ? Les dates seront automatiquement débloquées. Cette action est irréversible.')) return;
+  try {
+    const fd = new FormData();
+    fd.append('action', 'delete_validated');
+    fd.append('access_key', accessKey);
+    await api('/reservations.php', {
+      method: 'POST',
+      body: fd
+    });
+    await loadReservations();
+    await loadAvailability();
+    renderReservationsTab();
+    if (!document.getElementById('tabAllreservations').classList.contains('hidden')) {
+      renderAllReservations();
+    }
+    showMsg('reservationMsg', 'Réservation validée supprimée avec succès.', true);
+  } catch (err) {
+    showMsg('reservationMsg', err.message, false);
+  }
+}
+
+function copyText(text, okText) {
+  let done = false;
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function() {
+        showMsg('reservationMsg', okText || 'Lien copié !', true);
+      }).catch(function(){});
+      done = true;
+    }
+  } catch(e) {}
+  if (!done) {
+    const ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.position = 'fixed';
+    ta.style.opacity = '0';
+    document.body.appendChild(ta);
+    ta.select();
+    try {
+      document.execCommand('copy');
+      showMsg('reservationMsg', okText || 'Lien copié !', true);
+    } catch(e) {}
+    document.body.removeChild(ta);
+  }
+}
+
+function formatPhoneWA(phone) {
+  if (!phone) return '221780140942';
+  let digits = String(phone).replace(/[^0-9]/g, '');
+  if (!digits) return '221780140942';
+  if (digits.length <= 9 && digits.charAt(0) !== '2') {
+    digits = '221' + digits;
+  }
+  return digits;
+}
+
+function prettyPayMethod(m) {
+  return ({
+    orange_money: 'Orange Money',
+    wave: 'Wave',
+    bank_transfer: 'Virement bancaire'
+  })[m] || m;
+}
+
+function buildWhatsAppClientMsg(r, url) {
+  const name = ((r.first_name || '') + ' ' + (r.last_name || '')).trim();
+  const startStr = r.start || r.start_date || '';
+  const endStr = r.end || r.end_date || '';
+  const startDate = startStr ? new Date(startStr + 'T00:00:00') : null;
+  const endDate = endStr ? new Date(endStr + 'T00:00:00') : null;
+  const nights = (startDate && endDate && endDate > startDate) ? Math.round((endDate - startDate) / 86400000) : (r.nights || 1);
+
+  let total = Number(r.total_amount || r.total || 0);
+  if (!total || total <= 0) {
+    const villaKey = r.villa || '';
+    let villaObj = (typeof properties !== 'undefined' && properties && properties[villaKey]) ? properties[villaKey] : null;
+    if (!villaObj && typeof properties !== 'undefined' && properties) {
+      Object.keys(properties).forEach(k => {
+        if (properties[k] && (properties[k].name === r.villa_name || properties[k].name === r.villa)) villaObj = properties[k];
+      });
+    }
+    const pricePerNight = villaObj ? (parseInt(villaObj.price, 10) || 0) : (parseInt(r.base_price, 10) || 0);
+    if (pricePerNight > 0) {
+      total = pricePerNight * nights;
+    }
+  }
+
+  const villaName = r.villa_name || r.villa || (typeof properties !== 'undefined' && properties && properties[r.villa] ? properties[r.villa].name : 'Villa');
+  const guestsText = (r.guests && r.guests !== '?') ? r.guests : (typeof properties !== 'undefined' && properties && properties[r.villa] && properties[r.villa].persons ? properties[r.villa].persons : 'Non spécifié');
+  const totalText = total > 0 ? Number(total).toLocaleString('fr-FR') + ' FCFA' : 'À confirmer avec l\'équipe';
+  
+  return `Bonjour ${name},\n\n`
+    + `Merci pour votre réservation à *Baobab Horizon* ! ✨\n\n`
+    + `Votre demande pour la villa *${villaName}* a été *validée*.\n`
+    + `📍 Dates : ${startStr} → ${endStr} (${nights} nuit${nights > 1 ? 's' : ''})\n`
+    + `👥 Personnes : ${guestsText}\n`
+    + `💰 Total : ${totalText}\n\n`
+    + `Veuillez remplir vos informations et choisir votre mode de paiement en cliquant sur le lien ci-dessous :\n`
+    + `${url || r.access_url || ''}\n\n`
+    + `Cela nous permettra de vous générer votre facture officielle.\n\n`
+    + `À très bientôt !\n— Équipe Baobab Horizon\n📞 +221 78 014 09 42`;
+}
+
+function buildAccessUrlFallback(key) {
+  if (!key) return '';
+  const loc = window.location;
+  let path = loc.pathname.replace(/\/admin\/[^/]*$/, '/reservation.php');
+  if (path.toLowerCase().includes('/location/')) {
+    path = path.replace(/\/location\//i, '/');
+  }
+  return loc.origin + path + '?key=' + encodeURIComponent(key);
+}
+
+function openAccessModal(res) {
+  const modal = document.getElementById('accessModal');
+  const body = document.getElementById('accessModalBody');
+  if (!modal || !body) return;
+  
+  const accessUrl = res.access_url || buildAccessUrlFallback(res.access_key);
+  const waUrl = 'https://wa.me/' + formatPhoneWA(res.phone) + '?text=' + encodeURIComponent(buildWhatsAppClientMsg(res, accessUrl));
+  const totalFmt = Number(res.total || res.total_amount || 0).toLocaleString('fr-FR') + ' FCFA';
+  const msgClient = buildWhatsAppClientMsg(res, accessUrl);
+  
+  body.innerHTML = `
+    <p style="color:var(--muted); font-size:.8rem; margin-bottom:18px;">
+      Envoyez le lien ci-dessous au client pour qu'il remplisse ses informations et reçoive sa facture.
+    </p>
+    <div class="modal-row">
+      <label>Résumé de la demande</label>
+      <div style="font-size:.82rem; line-height:1.8; background:rgba(184,147,90,.06); padding:12px; border:1px solid rgba(184,147,90,.18);">
+        <div><strong>Client :</strong> ${esc(res.first_name)} ${esc(res.last_name)}</div>
+        <div><strong>Villa :</strong> ${esc(res.villa_name || res.villa)}</div>
+        <div><strong>Dates :</strong> ${res.start || res.start_date} → ${res.end || res.end_date}</div>
+        <div><strong>Téléphone :</strong> ${esc(res.phone)}</div>
+        <div style="margin-top:6px; color:var(--gold-light);"><strong>Total :</strong> ${totalFmt}</div>
+      </div>
+    </div>
+    <div class="modal-row">
+      <label>Lien d'accès client (à copier)</label>
+      <div style="display:flex; gap:8px;">
+        <input type="text" readonly id="accessUrlInput" value="${esc(accessUrl)}" style="flex:1; background:rgba(0,0,0,0.2); border:1px solid rgba(184,147,90,0.3); color:var(--cream); padding:8px 12px; font-size:.8rem;">
+        <button type="button" class="btn btn-sm" id="copyUrlBtn">📋 Copier</button>
+      </div>
+    </div>
+    <div class="modal-row">
+      <label>Message WhatsApp prêt à envoyer</label>
+      <textarea id="waMsgTextarea" rows="8" spellcheck="false" style="font-size:.8rem; line-height:1.4; background:rgba(0,0,0,0.2); border:1px solid rgba(184,147,90,0.3); color:var(--cream); width:100%; padding:8px 12px;">${esc(msgClient)}</textarea>
+    </div>
+    <div style="display:flex; gap:10px; margin-top:20px;">
+      <a href="${waUrl}" target="_blank" rel="noopener" class="btn" style="text-decoration:none;">💬 Envoyer via WhatsApp</a>
+      <button type="button" class="btn btn-ghost" id="closeAccessModalBtnInner">Fermer</button>
+    </div>
+  `;
+  
+  modal.classList.add('open');
+  
+  document.getElementById('copyUrlBtn').addEventListener('click', () => {
+    copyText(accessUrl, 'Lien d\'accès copié !');
+  });
+  
+  const closeBtn = document.getElementById('closeAccessModalBtnInner');
+  if (closeBtn) {
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('open');
+    });
+  }
+}
+
+function renderValidated() {
+  const listEl = document.getElementById('validatedList');
+  if (!listEl) return;
+  const list = (reservations.validated || []).filter(r => r.villa === currentKey);
+  if (!list.length) {
+    listEl.innerHTML = '<div style="text-align:center;color:var(--muted);padding:20px">Aucune réservation validée pour ce bien</div>';
+    return;
+  }
+  listEl.innerHTML = list.map(r => {
+    const hasInvoice = !!r.invoice_generated;
+    const statusClass = hasInvoice ? 'invoice' : 'ok';
+    const statusLabel = hasInvoice ? ('Facture #' + (r.invoice_number || '')) : 'Validée — en attente infos client';
+    const accessUrl = r.access_url || buildAccessUrlFallback(r.access_key);
+    const waClient = 'https://wa.me/' + formatPhoneWA(r.phone) + '?text=' + encodeURIComponent(buildWhatsAppClientMsg(r, accessUrl));
+    const pdfUrl = '../reservation.php?key=' + encodeURIComponent(r.access_key) + '&download=1';
+    
+    return `
+      <div class="request-item">
+        <div class="request-header">
+          <div class="request-name">${esc(r.first_name)} ${esc(r.last_name)}</div>
+          <span class="request-status ${statusClass}">${esc(statusLabel)}</span>
+        </div>
+        <div class="request-details">
+          <div>Dates: ${r.start || r.start_date} → ${r.end || r.end_date} (${r.nights} nuit${r.nights > 1 ? 's' : ''})</div>
+          <div>Personnes: ${r.guests} · Option Chef: ${r.chef}</div>
+          <div>Contact: ${r.phone}${r.email ? ' / ' + r.email : ''}</div>
+          <div>Total: ${Number(r.total_amount).toLocaleString('fr-FR')} ${(data[currentKey]?.priceUnit || '')}</div>
+          ${r.validated_at ? `<div>Validée le: ${r.validated_at}</div>` : ''}
+          ${hasInvoice && r.personal_info && r.personal_info.payment_method ? `<div>Mode de paiement: ${esc(prettyPayMethod(r.personal_info.payment_method))}</div>` : ''}
+        </div>
+        <a class="request-link" href="${esc(accessUrl)}" target="_blank" rel="noopener">🔗 ${esc(accessUrl)}</a>
+        <div class="request-actions">
+          <button type="button" class="btn btn-ghost btn-sm" data-act="copyurl" data-url="${esc(accessUrl)}">📋 Copier lien</button>
+          <a class="btn btn-ghost btn-sm" style="text-decoration:none;" href="${esc(waClient)}" target="_blank" rel="noopener">💬 WhatsApp client</a>
+          ${r.access_key ? `<a class="btn btn-sm" style="text-decoration:none; background:var(--gold); color:#000;" href="facture_reservation.html?key=${encodeURIComponent(r.access_key)}" target="_blank" rel="noopener">📄 Voir Facture Officielle</a>` : ''}
+          <button type="button" class="btn btn-danger btn-sm" data-act="delval" data-key="${esc(r.access_key || '')}">🗑️ Supprimer</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+  
+  listEl.querySelectorAll('[data-act="copyurl"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      copyText(btn.dataset.url, 'Lien copié !');
+    });
+  });
+  
+  listEl.querySelectorAll('[data-act="delval"]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      deleteValidated(btn.dataset.key);
+    });
+  });
+}
+
+function renderAllReservations() {
+  const reqEl = document.getElementById('allRequestsList');
+  const valEl = document.getElementById('allValidatedList');
+  if (!reqEl || !valEl) return;
+  
+  const reqList = reservations.requests || [];
+  if (!reqList.length) {
+    reqEl.innerHTML = '<div style="text-align:center;color:var(--muted);padding:20px">Aucune demande en attente.</div>';
+  } else {
+    reqEl.innerHTML = reqList.map(r => `
+      <div class="request-item">
+        <div class="request-header">
+          <div class="request-name">${esc(r.first_name)} ${esc(r.last_name)} <span style="font-size:0.75rem; color:var(--gold-light); margin-left:8px;">[${esc(r.villa_name || r.villa)}]</span></div>
+          <span class="request-status pending">En attente</span>
+        </div>
+        <div class="request-details">
+          <div>Dates: ${r.start || r.start_date} → ${r.end || r.end_date} (${r.nights} nuit${r.nights > 1 ? 's' : ''})</div>
+          <div>Personnes: ${r.guests} · Option Chef: ${r.chef}</div>
+          <div>Contact: ${r.phone} / ${r.email}</div>
+          <div>Total: ${Number(r.total_amount).toLocaleString('fr-FR')} ${data[r.villa]?.priceUnit || 'FCFA'}</div>
+        </div>
+        <div class="request-actions">
+          <button type="button" class="btn btn-sm" style="background:var(--ok);border-color:var(--ok)" data-act="val" data-id="${esc(r.id)}" data-v="${esc(r.villa)}">✅ Valider</button>
+          <a class="btn btn-ghost btn-sm" style="text-decoration:none;" href="https://wa.me/${formatPhoneWA(r.phone)}" target="_blank" rel="noopener">💬 WhatsApp</a>
+          <button type="button" class="btn btn-danger btn-sm" data-act="rej" data-id="${esc(r.id)}" data-v="${esc(r.villa)}">❌ Refuser</button>
+        </div>
+      </div>
+    `).join('');
+  }
+  
+  const valList = reservations.validated || [];
+  if (!valList.length) {
+    valEl.innerHTML = '<div style="text-align:center;color:var(--muted);padding:20px">Aucune réservation validée.</div>';
+  } else {
+    // Trier de la plus récente à la plus ancienne
+    const sortedVal = [...valList].sort((a,b) => new Date(b.created_at) - new Date(a.created_at));
+    valEl.innerHTML = sortedVal.map(r => {
+      const hasInvoice = !!r.invoice_generated;
+      const statusClass = hasInvoice ? 'invoice' : 'ok';
+      const statusLabel = hasInvoice ? ('Facture #' + (r.invoice_number || '')) : 'Validée';
+      const accessUrl = r.access_url || buildAccessUrlFallback(r.access_key);
+      const waClient = 'https://wa.me/' + formatPhoneWA(r.phone) + '?text=' + encodeURIComponent(buildWhatsAppClientMsg(r, accessUrl));
+      const pdfUrl = 'facture_reservation.html?key=' + encodeURIComponent(r.access_key);
+      
+      return `
+        <div class="request-item">
+          <div class="request-header">
+            <div class="request-name">${esc(r.first_name)} ${esc(r.last_name)} <span style="font-size:0.75rem; color:var(--gold-light); margin-left:8px;">[${esc(r.villa_name || r.villa)}]</span></div>
+            <span class="request-status ${statusClass}">${esc(statusLabel)}</span>
+          </div>
+          <div class="request-details">
+            <div>Dates: ${r.start || r.start_date} → ${r.end || r.end_date} (${r.nights} nuit${r.nights > 1 ? 's' : ''})</div>
+            <div>Contact: ${r.phone} / ${r.email}</div>
+            <div>Total: ${Number(r.total_amount).toLocaleString('fr-FR')} ${data[r.villa]?.priceUnit || 'FCFA'}</div>
+            ${r.validated_at ? `<div>Validée le: ${r.validated_at}</div>` : ''}
+          </div>
+          <a class="request-link" href="${esc(accessUrl)}" target="_blank" rel="noopener">🔗 ${esc(accessUrl)}</a>
+          <div class="request-actions">
+            <button type="button" class="btn btn-ghost btn-sm" data-act="copyurl" data-url="${esc(accessUrl)}">📋 Copier lien</button>
+            <a class="btn btn-ghost btn-sm" style="text-decoration:none;" href="${esc(waClient)}" target="_blank" rel="noopener">💬 WhatsApp</a>
+            ${r.access_key ? `<a class="btn btn-sm" style="text-decoration:none;" href="${esc(pdfUrl)}" target="_blank" rel="noopener">📄 Facture PDF</a>` : ''}
+            <button type="button" class="btn btn-danger btn-sm" data-act="delval" data-key="${esc(r.access_key || '')}">🗑️ Supprimer</button>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+  
+  // Attach event listeners for allreservations tab
+  reqEl.querySelectorAll('[data-act="val"]').forEach(btn => {
+    btn.addEventListener('click', () => { currentKey = btn.dataset.v; validateRequest(btn.dataset.id); });
+  });
+  reqEl.querySelectorAll('[data-act="rej"]').forEach(btn => {
+    btn.addEventListener('click', () => { currentKey = btn.dataset.v; rejectRequest(btn.dataset.id); });
+  });
+  
+  valEl.querySelectorAll('[data-act="copyurl"]').forEach(btn => {
+    btn.addEventListener('click', () => copyText(btn.dataset.url, 'Lien copié !'));
+  });
+  valEl.querySelectorAll('[data-act="delval"]').forEach(btn => {
+    btn.addEventListener('click', () => deleteValidated(btn.dataset.key));
+  });
+}
+
+
+// ── RENDER LIST ───────────────────────────────────────────────
+function renderBienList() {
+  const list = document.getElementById('bienList');
+  const keys = Object.keys(data);
+  if (!keys.length) {
+    list.innerHTML = '<p style="color:var(--muted);padding:16px">Aucun bien. Créez-en un avec le bouton ci-dessous.</p>';
+    return;
+  }
+  list.innerHTML = keys.map(k => {
+    const v = data[k];
+    const badge = `<span class="badge badge-${v.type}">${v.type}</span>`;
+    
+    // Calculate pending requests count
+    const pendingCount = (reservations.requests || []).filter(r => r.villa === k).length;
+    const countBadge = pendingCount > 0 
+      ? `<span class="badge" style="background:var(--danger); color:#fff; border:1px solid var(--danger); font-weight:bold; margin-left:6px; font-size:0.55rem; padding:2px 6px;">${pendingCount} DEMANDE(S)</span>` 
+      : '';
+      
+    const colorInput = `<label style="display:inline-flex; align-items:center; gap:6px; font-size:0.65rem; color:var(--gold-light); cursor:pointer; border:1px solid rgba(184,147,90,.3); padding:2px 8px; border-radius:2px;" title="Couleur visuelle">
+      Couleur <input type="color" class="bien-color-picker" data-key="${k}" value="${v.color || '#9C6F1C'}" style="width:20px; height:20px; padding:0; border:none; background:transparent; cursor:pointer;" onclick="event.stopPropagation()">
+    </label>`;
+      
+    const sectionLabel = v.section === 'accueil' ? '🏡' : v.section === 'vente' ? '🏠' : '📍';
+    const availDot = v.available !== false 
+        ? '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);margin-right:4px"></span>'
+        : '<span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--danger);margin-right:4px"></span>'; 
+      return `<a href="#" class="bien-item ${k === currentKey ? 'active' : ''}" data-key="${k}" style="text-decoration:none;color:inherit">
+      <div style="flex:1">
+        <div class="bien-item-name">${availDot}${esc(v.name)} ${countBadge}</div>
+        <div class="bien-item-type">${badge} ${sectionLabel} ${esc(v.zone || '')}</div>
+      </div>
+      <div class="bien-item-btns" onclick="event.stopPropagation()">
+        <button type="button" class="btn btn-ghost btn-sm" data-action="edit" data-key="${k}">Modifier</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-action="photos" data-key="${k}">Photos (${(v.images||[]).length})</button>
+        ${colorInput}
+      </div>
+    </a>`;
+  }).join('');
+
+  list.querySelectorAll('[data-action]').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const k = btn.dataset.key;
+      selectBien(k);
+      showTab(btn.dataset.action);
+    });
+  });
+  list.querySelectorAll('.bien-color-picker').forEach(input => {
+    input.addEventListener('change', async (e) => {
+      e.stopPropagation();
+      const k = input.dataset.key;
+      data[k].color = input.value;
+      try {
+        await api('/properties.php', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+        // show success message in the global msg container if exists, otherwise in editMsg
+        showMsg('msg', 'Couleur mise à jour pour ' + data[k].name, true) || showMsg('editMsg', 'Couleur mise à jour pour ' + data[k].name, true);
+      } catch(err) {
+        console.error(err);
+      }
+    });
+  });
+  list.querySelectorAll('.bien-item').forEach(item => {
+    item.addEventListener('click', (e) => {
+      e.preventDefault();
+      selectBien(item.dataset.key);
+      showTab('photos');
+    });
+  });
+}
+
+function esc(s) {
+  return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+
+// ── SELECT BIEN ───────────────────────────────────────────────
+function selectBien(key) {
+  currentKey = key;
+  const v = data[key];
+  if (!v) return;
+
+  // Edit tab
+  document.getElementById('editSub').textContent = 'Modification : ' + v.name;
+  document.getElementById('fInAccueil').checked = v.in_accueil || v.section === 'accueil';
+  document.getElementById('fInVacances').checked = v.in_vacances || v.section === 'location';
+  document.getElementById('fInVentes').checked = v.in_ventes || v.section === 'vente';
+  document.getElementById('fAvailable').checked = v.available !== false;
+  updateAvailableKnob();
+  document.getElementById('fName').value = v.name || '';
+  document.getElementById('fZone').value = v.zone || '';
+  document.getElementById('fPrice').value = v.price || 0;
+  document.getElementById('fPriceUnit').value = v.priceUnit || '';
+  document.getElementById('fPriceNote').value = v.priceNote || '';
+  document.getElementById('fBedrooms').value = v.bedrooms || 0;
+  document.getElementById('fPersons').value = v.persons || 0;
+  document.getElementById('fBathrooms').value = v.bathrooms || 0;
+  document.getElementById('fArea').value = v.area || '';
+  document.getElementById('fAreaLabel').value = v.areaLabel || '';
+  document.getElementById('fTags').value = (v.tags || []).join(', ');
+  document.getElementById('fColor').value = v.color || '#9C6F1C';
+  document.getElementById('fDesc').value = v.description || '';
+  document.getElementById('fKey').value = key;
+
+  // Photos tab
+  document.getElementById('photoSub').textContent = 'Photos de : ' + v.name;
+  
+  // Reservations tab
+  document.getElementById('reservationSub').textContent = 'Réservations pour : ' + v.name;
+  
+  renderPhotos();
+  renderBienList();
+  renderCalendar();
+  renderRequests();
+}
+
+// ── SAVE EDIT ─────────────────────────────────────────────────
+document.getElementById('saveEditBtn').addEventListener('click', async () => {
+  const oldKey = currentKey;
+  const newKey = document.getElementById('fKey').value.trim().toLowerCase();
+  if (!newKey || !/^[a-z0-9_-]+$/.test(newKey)) {
+    showMsg('editMsg', 'Clé technique invalide (lettres minuscules, chiffres, tirets)', false); return;
+  }
+  const name = document.getElementById('fName').value.trim();
+  if (!name) { showMsg('editMsg', 'Le nom est obligatoire', false); return; }
+
+  // Synchroniser les photos avant de sauvegarder pour préserver les catégories
+  if (data[currentKey]) {
+    syncFlatImages(data[currentKey]);
+  }
+
+  const updated = buildBienFromForm('f');
+  if (newKey !== oldKey) {
+    delete data[oldKey];
+    currentKey = newKey;
+  }
+  data[newKey] = updated;
+
+  console.log('Saving property:', newKey, updated);
+  console.log('Photos structure:', updated.photos);
+  
+  try {
+    const response = await api('/properties.php', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    console.log('Save response:', response);
+    dirty = false;
+    renderBienList();
+    showMsg('editMsg', 'Bien enregistré avec succès.', true);
+  } catch(err) { 
+    console.error('Save error:', err);
+    showMsg('editMsg', 'Erreur sauvegarde: ' + err.message, false); 
+  }
+});
+
+// ── DELETE ────────────────────────────────────────────────────
+document.getElementById('deleteBtn').addEventListener('click', async () => {
+  if (!currentKey) return;
+  if (!confirm(`Supprimer "${data[currentKey]?.name}" ? Cette action est irréversible.`)) return;
+  delete data[currentKey];
+  currentKey = '';
+  try {
+    await api('/properties.php', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    renderBienList();
+    showTab('list');
+    showMsg('editMsg', 'Bien supprimé.', true);
+  } catch(err) { showMsg('editMsg', err.message, false); }
+});
+
+// ── CREATE NEW ────────────────────────────────────────────────
+document.getElementById('createBtn')?.addEventListener('click', async () => {
+  const key = document.getElementById('nKey').value.trim().toLowerCase();
+  if (!key || !/^[a-z0-9_-]+$/.test(key)) {
+    showMsg('newMsg', 'Clé technique invalide (lettres minuscules, chiffres, tirets)', false); return;
+  }
+  if (data[key]) {
+    showMsg('newMsg', 'Cette clé existe déjà ! Choisissez-en une autre.', false); return;
+  }
+  const name = document.getElementById('nName').value.trim();
+  if (!name) { showMsg('newMsg', 'Le nom est obligatoire', false); return; }
+  
+  const inAccueil = document.getElementById('nInAccueil')?.checked || false;
+  const inVacances = document.getElementById('nInVacances')?.checked || false;
+  const inVentes = document.getElementById('nInVentes')?.checked || false;
+  
+  const newBien = {
+    type: document.getElementById('nType').value || 'vacances',
+    section: inVacances ? 'location' : (inVentes ? 'vente' : 'location'),
+    in_accueil: inAccueil,
+    in_vacances: inVacances,
+    in_ventes: inVentes,
+    name: name,
+    zone: document.getElementById('nZone').value.trim(),
+    price: parseInt(document.getElementById('nPrice').value) || 0,
+    priceUnit: document.getElementById('nPriceUnit').value.trim(),
+    priceNote: document.getElementById('nPriceNote').value.trim(),
+    description: document.getElementById('nDesc').value.trim(),
+    bedrooms: parseInt(document.getElementById('nBedrooms').value) || 0,
+    persons: parseInt(document.getElementById('nPersons').value) || 0,
+    bathrooms: parseInt(document.getElementById('nBathrooms').value) || 0,
+    area: document.getElementById('nArea').value.trim(),
+    areaLabel: document.getElementById('nAreaLabel').value.trim(),
+    tags: document.getElementById('nTags').value.split(',').map(t => t.trim()).filter(Boolean),
+    available: true,
+    images: [],
+    photos: { exterieur: [], interieur: [], chambres: [] }
+  };
+  
+  data[key] = newBien;
+  currentKey = key;
+  
+  try {
+    await api('/properties.php', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    // Reset form
+    ['nKey','nName','nZone','nPrice','nPriceUnit','nPriceNote','nDesc','nArea','nAreaLabel','nTags'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '';
+    });
+    ['nInAccueil','nInVacances','nInVentes'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.checked = false;
+    });
+    ['nBedrooms','nPersons','nBathrooms','nPrice'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.value = '0';
+    });
+    renderBienList();
+    showTab('list');
+    selectBien(key);
+    showMsg('newMsg', '✅ Bien créé avec succès !', true);
+    // Auto-switch to edit tab
+    setTimeout(() => showTab('edit'), 500);
+  } catch(err) {
+    showMsg('newMsg', 'Erreur: ' + err.message, false);
+  }
+});
+
+function updateAvailableKnob() {
+  const cb = document.getElementById('fAvailable');
+  const knob = document.getElementById('fAvailableKnob');
+  if (!cb || !knob) return;
+  const bg = knob.parentElement.querySelector('span:first-child');
+  if (cb.checked) {
+    knob.style.left = '25px';
+    knob.style.background = 'var(--ok)';
+    if (bg) bg.style.background = 'rgba(90,158,111,.3)';
+  } else {
+    knob.style.left = '3px';
+    knob.style.background = 'var(--danger)';
+    if (bg) bg.style.background = 'rgba(196,92,92,.2)';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  const fAvail = document.getElementById('fAvailable');
+  if (fAvail) fAvail.addEventListener('change', updateAvailableKnob);
+});
+
+function buildBienFromForm(prefix) {
+  const g = id => document.getElementById(prefix + id.charAt(0).toUpperCase() + id.slice(1))?.value ?? '';
+  const tags = g('tags').split(',').map(t => t.trim()).filter(Boolean);
+  const availCheck = document.getElementById(prefix + 'Available');
+  const available = availCheck ? availCheck.checked : true;
+  
+  const inAccueil = document.getElementById(prefix + 'InAccueil')?.checked || false;
+  const inVacances = document.getElementById(prefix + 'InVacances')?.checked || false;
+  const inVentes = document.getElementById(prefix + 'InVentes')?.checked || false;
+  
+  return {
+    type: document.getElementById(prefix + 'Type').value || 'vacances',
+    section: inVacances ? 'location' : (inVentes ? 'vente' : 'location'),
+    in_accueil: inAccueil,
+    in_vacances: inVacances,
+    in_ventes: inVentes,
+    name: g('name').trim(),
+    zone: g('zone').trim(),
+    price: parseInt(g('price')) || 0,
+    priceUnit: g('priceUnit').trim(),
+    priceNote: g('priceNote').trim(),
+    description: g('desc').trim(),
+    bedrooms: parseInt(g('bedrooms')) || 0,
+    persons: parseInt(g('persons')) || 0,
+    bathrooms: parseInt(g('bathrooms')) || 0,
+    area: g('area').trim(),
+    areaLabel: g('areaLabel').trim(),
+    tags: tags,
+    color: g('color').trim() || '#9C6F1C',
+    available: available,
+    images: (data[currentKey]?.images || []),
+    photos: (data[currentKey]?.photos || { exterieur: [], interieur: [], chambres: [] })
+  };
+}
+
+// ── PHOTOS ────────────────────────────────────────────────────
+function syncFlatImages(villa) {
+  if (!villa) return;
+  if (!villa.photos) villa.photos = { exterieur: [], interieur: [], chambres: [] };
+  const photos = villa.photos;
+  villa.images = [].concat(
+    photos.exterieur || [],
+    photos.interieur || [],
+    photos.chambres || []
+  ).filter(Boolean);
+}
+
+function renderPhotos() {
+  const grid = document.getElementById('photoGrid');
+  if (!grid) return;
+  
+  if (!data[currentKey]) return;
+  if (!data[currentKey].photos) {
+    data[currentKey].photos = { exterieur: [], interieur: [], chambres: [] };
+  }
+  
+  const photos = data[currentKey].photos;
+  if (!photos.exterieur) photos.exterieur = [];
+  if (!photos.interieur) photos.interieur = [];
+  if (!photos.chambres) photos.chambres = [];
+  
+  // Migration locale si besoin
+  if (data[currentKey].images && data[currentKey].images.length > 0 && 
+      photos.exterieur.length === 0 && photos.interieur.length === 0 && photos.chambres.length === 0) {
+    photos.exterieur = [...data[currentKey].images];
+  }
+  
+  const categories = [
+    { key: 'exterieur', label: 'À l\'extérieur' },
+    { key: 'interieur', label: 'À l\'intérieur' },
+    { key: 'chambres', label: 'Les chambres' }
+  ];
+  
+  const prefix = adminSpace === 'location' ? '../Location/' : '../';
+  
+  let html = '';
+  categories.forEach(cat => {
+    const list = photos[cat.key] || [];
+    html += `
+      <div style="margin-top:24px; margin-bottom:12px; width:100%;">
+        <h3 style="font-family:'Lora',serif; font-size:1.3rem; color:var(--gold); border-bottom:1px solid rgba(184,147,90,.15); padding-bottom:6px; margin-bottom:12px; font-weight:normal;">
+          ${cat.label} (${list.length})
+        </h3>
+        <div class="photo-grid" data-cat="${cat.key}">
+          ${list.map((url, i) => `
+            <div class="photo" data-idx="${i}" data-cat="${cat.key}">
+              <span class="photo-idx">${i + 1}</span>
+              <img src="${url.startsWith('http') ? url : prefix + url}" alt="" onerror="this.style.opacity='.3'">
+              <div class="photo-actions" style="flex-wrap:wrap; gap:3px;">
+                <button type="button" class="btn btn-ghost btn-sm" data-act="up" ${i===0?'disabled':''} style="padding:4px 8px;">↑</button>
+                <button type="button" class="btn btn-ghost btn-sm" data-act="down" ${i===list.length-1?'disabled':''} style="padding:4px 8px;">↓</button>
+                <select class="photo-cat-select" style="padding:2px 4px; font-size:.65rem; color:var(--cream); background:var(--night-soft); border:1px solid rgba(184,147,90,.3); max-width:85px;">
+                  ${categories.map(c => `<option value="${c.key}" ${c.key === cat.key ? 'selected' : ''}>${c.key === 'exterieur' ? 'Extérieur' : c.key === 'interieur' ? 'Intérieur' : 'Chambres'}</option>`).join('')}
+                </select>
+                <button type="button" class="btn btn-danger btn-sm" data-act="del" style="padding:4px 8px;">✕</button>
+              </div>
+            </div>
+          `).join('')}
+          ${list.length === 0 ? `<p style="color:var(--muted); font-size:.85rem; font-style:italic; grid-column:1/-1; padding:10px 0;">Aucune photo dans cette catégorie.</p>` : ''}
+        </div>
+      </div>
+    `;
+  });
+  
+  grid.style.display = 'block';
+  grid.innerHTML = html;
+
+  grid.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const photoEl = btn.closest('.photo');
+      const idx = +photoEl.dataset.idx;
+      const cat = photoEl.dataset.cat;
+      const act = btn.dataset.act;
+      const list = photos[cat];
+      
+      if (act === 'up' && idx > 0) {
+        [list[idx-1], list[idx]] = [list[idx], list[idx-1]];
+        syncFlatImages(data[currentKey]);
+        renderPhotos();
+      }
+      if (act === 'down' && idx < list.length-1) {
+        [list[idx+1], list[idx]] = [list[idx], list[idx+1]];
+        syncFlatImages(data[currentKey]);
+        renderPhotos();
+      }
+      if (act === 'del') {
+        if (!confirm('Supprimer cette photo ?')) return;
+        const url = list.splice(idx, 1)[0];
+        syncFlatImages(data[currentKey]);
+        renderPhotos(); renderBienList();
+        if (url.startsWith('images/')) {
+          api('/delete-image.php', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({url}) }).catch(()=>{});
+        }
+      }
+    });
+  });
+
+  grid.querySelectorAll('.photo-cat-select').forEach(select => {
+    select.addEventListener('change', (e) => {
+      const photoEl = select.closest('.photo');
+      const idx = +photoEl.dataset.idx;
+      const oldCat = photoEl.dataset.cat;
+      const newCat = e.target.value;
+      
+      if (oldCat !== newCat) {
+        const url = photos[oldCat].splice(idx, 1)[0];
+        if (!photos[newCat]) photos[newCat] = [];
+        photos[newCat].push(url);
+        syncFlatImages(data[currentKey]);
+        renderPhotos();
+      }
+    });
+  });
+}
+
+async function uploadFiles(files) {
+  if (!currentKey) { showMsg('photoMsg', 'Sélectionnez un bien avant d\'uploader des photos.', false); return; }
+  const category = document.getElementById('uploadCategorySelect').value || 'exterieur';
+  let done = 0;
+  showMsg('photoMsg', '⏳ Upload en cours (0 / ' + files.length + ')…', true);
+  console.log('Starting upload for villa:', currentKey, 'category:', category, 'files:', files.length);
+  
+  for (const file of files) {
+    const fd = new FormData();
+    fd.append('villa', currentKey);
+    fd.append('photo', file);
+    fd.append('category', category);
+    
+    console.log('Uploading file:', file.name, 'size:', file.size, 'type:', file.type);
+    
+    try {
+      const res = await fetch(API + '/upload.php', { method: 'POST', credentials: 'same-origin', body: fd });
+      console.log('Upload response status:', res.status);
+      
+      const json = await res.json();
+      console.log('Upload response JSON:', json);
+      
+      if (!res.ok) throw new Error(json.error || 'Upload échoué (status: ' + res.status + ')');
+      
+      // Mettre à jour le modèle local
+      const cat = json.category || category;
+      if (!data[currentKey].photos) data[currentKey].photos = { exterieur: [], interieur: [], chambres: [] };
+      if (!data[currentKey].photos[cat]) data[currentKey].photos[cat] = [];
+      if (!data[currentKey].photos[cat].includes(json.url)) data[currentKey].photos[cat].push(json.url);
+      syncFlatImages(data[currentKey]);
+      done++;
+      showMsg('photoMsg', '⏳ Upload en cours (' + done + ' / ' + files.length + ')…', true);
+      console.log('File uploaded successfully:', json.url);
+    } catch(err) {
+      console.error('Upload error for file:', file.name, err);
+      showMsg('photoMsg', '❌ Erreur upload ' + file.name + ': ' + err.message, false);
+      return;
+    }
+  }
+  renderPhotos();
+  renderBienList();
+  // Recharger depuis le serveur pour s'assurer de la cohérence
+  try {
+    const fresh = await api('/properties.php');
+    Object.keys(fresh).forEach(k => { data[k] = fresh[k]; });
+    renderPhotos();
+    renderBienList();
+    showMsg('photoMsg', '✅ ' + files.length + ' photo(s) uploadée(s) dans "' + category + '".', true);
+  } catch(err) {
+    console.error('Error refreshing properties after upload:', err);
+    showMsg('photoMsg', '✅ ' + files.length + ' photo(s) uploadée(s). (Erreur lors du rafraîchissement)', true);
+  }
+}
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+// L'input est en position absolue transparent — le clic natif suffit
+fileInput.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;opacity:0;cursor:pointer;z-index:2;';
+fileInput.addEventListener('change', () => { if (fileInput.files && fileInput.files.length) uploadFiles(fileInput.files); fileInput.value = ''; });
+// Drag & drop capturé avant l'input (phase capture = true)
+dropZone.addEventListener('dragenter', e => { e.preventDefault(); dropZone.classList.add('drag'); }, true);
+dropZone.addEventListener('dragover',  e => { e.preventDefault(); }, true);
+dropZone.addEventListener('dragleave', e => { if (!dropZone.contains(e.relatedTarget)) dropZone.classList.remove('drag'); }, true);
+dropZone.addEventListener('drop', e => {
+  e.preventDefault(); e.stopPropagation(); dropZone.classList.remove('drag');
+  if (e.dataTransfer && e.dataTransfer.files.length) uploadFiles(e.dataTransfer.files);
+}, true);
+
+document.getElementById('addUrlBtn').addEventListener('click', async () => {
+  if (!currentKey) { showMsg('photoMsg', 'Sélectionnez un bien d\'abord.', false); return; }
+  const url = document.getElementById('urlInput').value.trim();
+  if (!url || !url.startsWith('http')) { showMsg('photoMsg', 'URL invalide (doit commencer par http).', false); return; }
+  const category = document.getElementById('uploadCategorySelect').value || 'exterieur';
+  if (!data[currentKey].photos) data[currentKey].photos = { exterieur: [], interieur: [], chambres: [] };
+  if (!data[currentKey].photos[category]) data[currentKey].photos[category] = [];
+  if (!data[currentKey].photos[category].includes(url)) data[currentKey].photos[category].push(url);
+  syncFlatImages(data[currentKey]);
+  document.getElementById('urlInput').value = '';
+  renderPhotos(); renderBienList();
+  try {
+    await api('/properties.php', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    showMsg('photoMsg', '✅ URL ajoutée et enregistrée.', true);
+  } catch(err) { showMsg('photoMsg', '❌ ' + err.message, false); }
+});
+
+document.getElementById('savePhotosBtn').addEventListener('click', async () => {
+  try {
+    await api('/properties.php', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(data) });
+    showMsg('photoMsg', '✅ Photos enregistrées.', true);
+    renderBienList();
+  } catch(err) { showMsg('photoMsg', '❌ ' + err.message, false); }
+});
+
+// Reservations tab event listeners
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM fully loaded');
+  
+  const blockBtn = document.getElementById('blockDatesBtn');
+  if (blockBtn) {
+    blockBtn.addEventListener('click', function(e) {
+      console.log('Block dates button clicked');
+      blockDateRange();
+    });
+  } else {
+    console.error('blockDatesBtn not found');
+  }
+  
+  const refreshBtn = document.getElementById('refreshAvailabilityBtn');
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', function(e) {
+      console.log('Refresh button clicked');
+      loadAvailability();
+      loadReservations();
+      showMsg('reservationMsg', 'Données rafraîchies!', true);
+    });
+  } else {
+    console.error('refreshAvailabilityBtn not found');
+  }
+});
+
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+checkSession();
+</script>
+<!-- Modal d'accès client -->
+<div id="accessModal" class="modal-overlay">
+  <div class="modal-dialog">
+    <div class="modal-header">
+      <div class="modal-title">Lien d'accès client généré</div>
+      <button type="button" class="modal-close" id="closeAccessModalBtn">&times;</button>
+    </div>
+    <div class="modal-body" id="accessModalBody"></div>
+  </div>
+</div>
+
+</body>
+</html>

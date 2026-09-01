@@ -1,0 +1,1034 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Locations — Baobab Horizon · Petite Côte du Sénégal</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
+  
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- CURTAIN -->
+  <div id="curtain">
+    <div class="ct"></div>
+    <div class="cl"></div>
+    <div class="cb"></div>
+  </div>
+  <div id="clogo">Baobab <span>Horizon</span></div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-in">
+      <button class="modal-cl" onclick="closeModal()">✕ Fermer</button>
+      <img class="modal-img" id="modal-img" src="" alt="">
+      <div class="modal-nav">
+        <button class="mbtn" onclick="modalNav(-1)">&#8592;</button>
+        <button class="mbtn" onclick="modalNav(1)">&#8594;</button>
+      </div>
+      <div class="modal-cap" id="modal-cap"></div>
+    </div>
+  </div>
+
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="LOGO.jpg" alt="Baobab Horizon" style="height: 95px; width: auto;"></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Accueil</a></li>
+      <li><a href="ventes.html">Acheter</a></li>
+      <li><a href="vacances.html">Louer</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      
+      <a href="https://wa.me/221780140942" class="nav-cta" target="_blank">Nous contacter</a>
+      <button class="nav-menu-btn" type="button" aria-expanded="false" aria-label="Ouvrir le menu">Menu</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-ov"></div>
+    <div class="hero-cnt">
+      <p class="hero-eye">Petite Côte du Sénégal</p>
+      <h1 class="hero-h1">Baobab <em>Horizon</em></h1>
+      <p class="hero-sub">Immobilier de prestige & séjours sur mesure</p>
+      <div class="hero-btns">
+        <a href="#intro" class="btn-s">Découvrir nos biens</a>
+        <a href="contact.html" class="btn-p">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="intro">
+    <div>
+      <p class="intro-label">Notre sélection</p>
+      <h2 class="intro-title">Des adresses<br>pensées pour <em>l'exception</em></h2>
+      <div class="intro-div"></div>
+      <p class="intro-text">Baobab Horizon sélectionne des propriétés de prestige sur la Petite Côte du Sénégal — pour
+        des séjours courts ou longue durée, dans des cadres d'exception entre mer, lagon et nature.</p>
+    </div>
+    <div class="stats">
+      <div>
+        <div class="stat-n">5</div>
+        <div class="stat-l">Villas disponibles</div>
+      </div>
+      <div>
+        <div class="stat-n">7</div>
+        <div class="stat-l">Locaux commerciaux</div>
+      </div>
+      <div>
+        <div class="stat-n">70+</div>
+        <div class="stat-l">Personnes accueillies</div>
+      </div>
+      <div>
+        <div class="stat-n">3</div>
+        <div class="stat-l">Zones d'implantation</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTRE HISTOIRE -->
+  <section class="story">
+    <div class="story-media">
+      <div class="story-img main">
+        <img src="photo_ca.jpg" alt="Baobab Horizon">
+      </div>
+      <div class="story-img small">
+        <img src="photo_ca.jpg" alt="Baobab Horizon">
+      </div>
+    </div>
+    <div class="story-copy">
+      <p class="story-eye">Notre histoire</p>
+      <h2 class="story-title">L'immobilier de prestige<br>au cœur de la <em>Petite Côte</em></h2>
+      <div class="story-line"></div>
+      <p class="story-text">Fondée par des passionnés de la Petite Côte sénégalaise, Baobab Horizon est née d'une
+        conviction simple : cette région exceptionnelle méritait un partenaire immobilier à la hauteur de son potentiel.
+      </p>
+      <p class="story-text">Notre équipe locale est présente à Ngaparou, Somone et Nguérigne. Qu'il s'agisse d'un
+        investissement, d'une résidence secondaire ou d'un séjour de rêve, nous construisons avec vous un projet clair,
+        fiable et sur mesure.</p>
+      <div class="story-points">
+        <div class="story-point">Expertise locale et connaissance du terrain</div>
+        <div class="story-point">Accompagnement personnalisé</div>
+        <div class="story-point">Sécurité juridique et transparence</div>
+        <div class="story-point">Biens sélectionnés avec exigence</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACCOMPAGNEMENT -->
+  <section class="support">
+    <div class="support-img">
+      <img src="images/BaobabH.jpg" alt="Baobab Horizon" style="width:100%;height:100%;object-fit:cover">
+    </div>
+    <div class="support-copy">
+      <p class="story-eye">Accompagnement</p>
+      <h2 class="story-title">Investir ou séjourner<br>sur la <em>Petite Côte</em></h2>
+      <p class="story-text">Notre équipe locale vous accompagne de la recherche à la signature, avec une connaissance
+        approfondie des zones de Ngaparou, Somone, Saly et Nguérigne. Un seul interlocuteur, de bout en bout.</p>
+      <div class="support-list">
+        <div class="support-point">Recherche personnalisée</div>
+        <div class="support-point">Visites organisées</div>
+        <div class="support-point">Conseil local fiable</div>
+        <div class="support-point">Suivi jusqu'à la signature</div>
+      </div>
+      <a href="contact.html" class="btn-s" style="width:fit-content">Nous contacter</a>
+    </div>
+  </section>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <div class="filter-bar">
+      <button class="fbtn active" onclick="filterVillas('all',this)">Toutes les villas</button>
+      <button class="fbtn" onclick="filterVillas('vacances',this)">Courte durée</button>
+      <button class="fbtn" onclick="filterVillas('longue',this)">Longue durée</button>
+    </div>
+  </div>
+
+  <!-- VILLAS -->
+  <section class="villas">
+    <div class="sec-hd">
+      <h2 class="sec-title">Nos villas de <em>vacances</em></h2>
+      <span class="sec-ct" id="vcnt">5 propriétés</span>
+    </div>
+
+    <!-- Guédé Home -->
+    <article class="vcard" data-type="vacances">
+      <div class="vgal" onclick="openModal('guede')">
+        <img id="guede-img" src="https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=80"
+          alt="Villa Guédé Home">
+        <div class="gcnt" id="guede-cnt">1 / 6</div>
+        <div class="gnav">
+          <button class="gbtn" onclick="event.stopPropagation();chg('guede',-1)">&#8592;</button>
+          <button class="gbtn" onclick="event.stopPropagation();chg('guede',1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="vinfo">
+        <p class="vzone">&#9679; Nguerigne · Petite Côte</p>
+        <h3 class="vname">Villa<br><em>Guédé Home</em></h3>
+        <div class="vspecs">
+          <div>
+            <div class="sv">7</div>
+            <div class="sl">Chambres</div>
+          </div>
+          <div>
+            <div class="sv">14</div>
+            <div class="sl">Personnes</div>
+          </div>
+          <div>
+            <div class="sv">1 200</div>
+            <div class="sl">m² hab.</div>
+          </div>
+        </div>
+        <div class="vtags">
+          <span class="tag">Piscine</span><span class="tag">Pool house</span>
+          <span class="tag">3 suites</span><span class="tag">Clim.</span><span class="tag">2 000m² terrain</span>
+        </div>
+        <p class="vdesc">Propriété exceptionnelle de 1 200m² habitables à Nguerigne, proche de Saly et Somone. Trois
+          suites spacieuses, pool house privé, cadre résidentiel d'une rare sérénité pouvant accueillir jusqu'à 14
+          personnes.</p>
+        <div class="vfoot">
+          <div>
+            <div class="price-a">440 000</div>
+            <div class="price-u">FCFA · par nuit</div>
+          </div>
+          <div class="vacts">
+            <button type="button" class="btn-s" onclick="openReservationModal('guede','Villa Guédé Home',150000)" style="background:var(--gold);color:var(--night);border-color:var(--gold);font-weight:600">✉ Réserver</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Casa -->
+    <article class="vcard" data-type="vacances">
+      <div class="vgal" onclick="openModal('casa')">
+        <img id="casa-img" src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80"
+          alt="Villa Casa">
+        <div class="gcnt" id="casa-cnt">1 / 6</div>
+        <div class="gnav">
+          <button class="gbtn" onclick="event.stopPropagation();chg('casa',-1)">&#8592;</button>
+          <button class="gbtn" onclick="event.stopPropagation();chg('casa',1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="vinfo">
+        <p class="vzone">&#9679; Nguerigne · Petite Côte</p>
+        <h3 class="vname">Villa<br><em>Casa</em></h3>
+        <div class="vspecs">
+          <div>
+            <div class="sv">6</div>
+            <div class="sl">Chambres</div>
+          </div>
+          <div>
+            <div class="sv">12</div>
+            <div class="sl">Personnes</div>
+          </div>
+          <div>
+            <div class="sv">220</div>
+            <div class="sl">m²</div>
+          </div>
+        </div>
+        <div class="vtags">
+          <span class="tag">Piscine privée</span><span class="tag">Chef à domicile</span>
+          <span class="tag">Plages proches</span><span class="tag">Cadre calme</span>
+        </div>
+        <p class="vdesc">Villa de caractère idéale pour un séjour en famille ou entre amis. Piscine privée, salon
+          lumineux, salle à manger conviviale. Chef à domicile disponible sur demande.</p>
+        <div class="vfoot">
+          <div>
+            <div class="price-a">330 000</div>
+            <div class="price-u">FCFA · par nuit</div>
+          </div>
+          <div class="vacts">
+            <button type="button" class="btn-s" onclick="openReservationModal('casa','Villa Casa',120000)" style="background:var(--gold);color:var(--night);border-color:var(--gold);font-weight:600">✉ Réserver</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Palm Évasion -->
+    <article class="vcard" data-type="vacances">
+      <div class="vgal" onclick="openModal('palm')">
+        <img id="palm-img" src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80"
+          alt="Villa Palm Évasion">
+        <div class="gcnt" id="palm-cnt">1 / 6</div>
+        <div class="gnav">
+          <button class="gbtn" onclick="event.stopPropagation();chg('palm',-1)">&#8592;</button>
+          <button class="gbtn" onclick="event.stopPropagation();chg('palm',1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="vinfo">
+        <p class="vzone">&#9679; Nguerigne · 50m de la plage</p>
+        <h3 class="vname">Villa<br><em>Palm Évasion</em></h3>
+        <div class="vspecs">
+          <div>
+            <div class="sv">8</div>
+            <div class="sl">Chambres</div>
+          </div>
+          <div>
+            <div class="sv">16</div>
+            <div class="sl">Personnes</div>
+          </div>
+          <div>
+            <div class="sv">50m</div>
+            <div class="sl">de la plage</div>
+          </div>
+        </div>
+        <div class="vtags">
+          <span class="tag">Jacuzzi</span><span class="tag">Sauna</span>
+          <span class="tag">Salle de sport</span><span class="tag">Cinéma privé</span>
+          <span class="tag">Chef</span><span class="tag">Parking sécurisé</span>
+        </div>
+        <p class="vdesc">La villa la plus complète de notre sélection. À 50m de la plage, jacuzzi, sauna, salle de sport
+          et cinéma privé. Parking intérieur sécurisé. Chef à domicile disponible.</p>
+        <div class="vfoot">
+          <div>
+            <div class="price-a">400 000</div>
+            <div class="price-u">FCFA · par nuit</div>
+            <div class="price-n">Hors électricité</div>
+          </div>
+          <div class="vacts">
+            <button type="button" class="btn-s" onclick="openReservationModal('palm','Villa Palm Évasion',180000)" style="background:var(--gold);color:var(--night);border-color:var(--gold);font-weight:600">✉ Réserver</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Torino -->
+    <article class="vcard" data-type="vacances">
+      <div class="vgal" onclick="openModal('torino')">
+        <img id="torino-img" src="https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1200&q=80"
+          alt="Villa Torino">
+        <div class="gcnt" id="torino-cnt">1 / 6</div>
+        <div class="gnav">
+          <button class="gbtn" onclick="event.stopPropagation();chg('torino',-1)">&#8592;</button>
+          <button class="gbtn" onclick="event.stopPropagation();chg('torino',1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="vinfo">
+        <p class="vzone">&#9679; Somone · 300m plage · 500m lagon</p>
+        <h3 class="vname">Villa<br><em>Torino</em></h3>
+        <div class="vspecs">
+          <div>
+            <div class="sv">6</div>
+            <div class="sl">Chambres</div>
+          </div>
+          <div>
+            <div class="sv">12</div>
+            <div class="sl">Personnes</div>
+          </div>
+          <div>
+            <div class="sv">300m</div>
+            <div class="sl">de la plage</div>
+          </div>
+        </div>
+        <div class="vtags">
+          <span class="tag">Piscine privée</span><span class="tag">Lagon 500m</span>
+          <span class="tag">Chef disponible</span><span class="tag">Ménage option</span>
+        </div>
+        <p class="vdesc">Nichée à La Somone, entre plage et lagon — la Villa Torino offre sérénité et accessibilité.
+          Piscine privée, salon confortable. Chef et ménage disponibles sur demande.</p>
+        <div class="vfoot">
+          <div>
+            <div class="price-a">340 000</div>
+            <div class="price-u">FCFA · par nuit</div>
+            <div class="price-n">360 000 avec chef inclus</div>
+          </div>
+          <div class="vacts">
+            <button type="button" class="btn-s" onclick="openReservationModal('torino','Villa Torino',200000)" style="background:var(--gold);color:var(--night);border-color:var(--gold);font-weight:600">✉ Réserver</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- V-House -->
+    <article class="vcard" data-type="vacances">
+      <div class="vgal" onclick="openModal('vhouse')">
+        <img id="vhouse-img" src="https://images.unsplash.com/photo-1585032226651-759b368d7246?w=1200&q=80"
+          alt="V-House">
+        <div class="gcnt" id="vhouse-cnt">1 / 6</div>
+        <div class="gnav">
+          <button class="gbtn" onclick="event.stopPropagation();chg('vhouse',-1)">&#8592;</button>
+          <button class="gbtn" onclick="event.stopPropagation();chg('vhouse',1)">&#8594;</button>
+        </div>
+      </div>
+      <div class="vinfo">
+        <p class="vzone">&#9679; Nguérigne · Petite Côte</p>
+        <h3 class="vname"><em>V-House</em></h3>
+        <div class="vspecs">
+          <div>
+            <div class="sv">5</div>
+            <div class="sl">Chambres</div>
+          </div>
+          <div>
+            <div class="sv">10</div>
+            <div class="sl">Personnes</div>
+          </div>
+          <div>
+            <div class="sv">Parc</div>
+            <div class="sl">Exotique inclus</div>
+          </div>
+        </div>
+        <div class="vtags">
+          <span class="tag">Personnel inclus</span><span class="tag">Chef privé</span>
+          <span class="tag">Verdoyant</span><span class="tag">Parc Exotique</span>
+        </div>
+        <p class="vdesc">4 chambres adultes et 1 chambre enfants dans un cadre calme à Nguérigne. Personnel de maison
+          inclus, chef privé en option. Accès gratuit au Parc Exotique à proximité.</p>
+        <div class="vfoot">
+          <div>
+            <div class="price-a">340 000</div>
+            <div class="price-u">FCFA · par nuit</div>
+          </div>
+          <div class="vacts">
+            <button type="button" class="btn-s" onclick="openReservationModal('vhouse','V-House',250000)" style="background:var(--gold);color:var(--night);border-color:var(--gold);font-weight:600">✉ Réserver</button>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <!-- LONGUE DURÉE -->
+  <div class="ld" id="ld-block" data-type="longue">
+    <div>
+      <span class="ld-badge">Longue durée</span>
+      <h2 class="ld-title">Villa Guédé Home<br><em>Résidentiel</em></h2>
+      <p class="ld-desc">La même propriété d'exception disponible en location longue durée. Idéale pour des familles
+        expatriées ou entreprises en déplacement. 7 chambres climatisées dont 3 suites, piscine, pool house, 2 000m² de
+        terrain.</p>
+    </div>
+    <div class="ld-info">
+      <div class="ld-pb">
+        <p class="ld-pl">Tarif mensuel</p>
+        <div class="ld-pa">3 000 000</div>
+        <p class="ld-ps">FCFA · par mois</p>
+      </div>
+      <div class="ld-grid">
+        <div class="ld-sp">
+          <div class="ld-sv">7</div>
+          <div class="ld-sl">Chambres</div>
+        </div>
+        <div class="ld-sp">
+          <div class="ld-sv">14</div>
+          <div class="ld-sl">Personnes max</div>
+        </div>
+        <div class="ld-sp">
+          <div class="ld-sv">1 200m²</div>
+          <div class="ld-sl">Habitables</div>
+        </div>
+        <div class="ld-sp">
+          <div class="ld-sv">2 000m²</div>
+          <div class="ld-sl">Terrain</div>
+        </div>
+      </div>
+      <a href="https://wa.me/221780140942?text=Longue%20dur%C3%A9e%20Gu%C3%A9d%C3%A9%20Home" class="btn-p"
+        target="_blank" style="width:fit-content">&#8599; Contacter via WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- COMMERCIAUX -->
+  <div class="comm">
+    <div class="comm-hd">
+      <span class="comm-tag">Commercial</span>
+      <h2 class="comm-title">Les Magasins <em>Créoles</em></h2>
+    </div>
+    <div class="comm-grid">
+      <div class="ci">
+        <div class="ci-n">01</div>
+        <div class="ci-s">39,64 m²</div>
+        <div class="ci-p">607 000 FCFA HT / mois</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">02</div>
+        <div class="ci-s">101,97 m²</div>
+        <div class="ci-p">1 404 000 FCFA HT / mois</div>
+        <div class="ci-note">Tarif dégressif</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">03</div>
+        <div class="ci-s">53,98 m²</div>
+        <div class="ci-p">827 000 FCFA HT / mois</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">04</div>
+        <div class="ci-s">39,64 m²</div>
+        <div class="ci-p">607 000 FCFA HT / mois</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">05</div>
+        <div class="ci-s">40,10 m²</div>
+        <div class="ci-p">614 000 FCFA HT / mois</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">06</div>
+        <div class="ci-s">164,13 m²</div>
+        <div class="ci-p">2 133 500 FCFA HT / mois</div>
+        <div class="ci-note">Tarif dégressif</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">07</div>
+        <div class="ci-s">54,02 m²</div>
+        <div class="ci-p">827 000 FCFA HT / mois</div>
+      </div>
+    </div>
+    <div class="comm-ft">
+      <p>Tarifs HT, hors assurances et charges. Dépôt de garantie : 2 mois. Durée minimale : 1 an.</p>
+      <a href="https://wa.me/221780140942?text=Magasins%20Cr%C3%A9oles" class="btn-p" target="_blank">&#8599;
+        Renseignements</a>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta">
+    <p class="cta-eye">Votre projet · Parlons-en</p>
+    <h2 class="cta-h2">Un bien vous <em>intéresse ?</em></h2>
+    <p class="cta-sub">Notre équipe organise une visite et répond à toutes vos questions</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/221780140942" class="btn-p" target="_blank">&#8599; WhatsApp direct</a>
+      <a href="contact.html" class="btn-s">Formulaire de contact</a>
+    </div>
+  </div>
+
+  <!-- AVIS CLIENTS -->
+  <section class="reviews">
+    <div class="reviews-head">
+      <p class="reviews-eye">Avis clients</p>
+      <h2 class="reviews-title">Ce que disent <em>nos clients</em></h2>
+      <div class="reviews-line"></div>
+    </div>
+    <div class="reviews-grid">
+      <article class="review-card">
+        <div class="quote">“</div>
+        <p class="review-text">Service impeccable, l'équipe nous a accompagnés du début à la fin pour notre séjour à
+          Somone. Réactifs, disponibles et de très bon conseil.</p>
+        <div class="review-author">
+          <div class="avatar">PL</div>
+          <div>
+            <div class="author-name">Pierre L.</div>
+            <div class="author-meta">Vacancier français · Somone</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+      <article class="review-card">
+        <div class="quote">“</div>
+        <p class="review-text">Villa de rêve à Ngaparou, piscine, vue mer et jardin. La réservation s'est faite en
+          quelques échanges. Communication parfaite du début à la fin.</p>
+        <div class="review-author">
+          <div class="avatar">SM</div>
+          <div>
+            <div class="author-name">Sophie M.</div>
+            <div class="author-meta">Séjour familial · Ngaparou</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+      <article class="review-card">
+        <div class="quote">“</div>
+        <p class="review-text">Nous cherchions un bien fiable pour un investissement sur la Petite Côte. Baobab Horizon
+          a su nous orienter avec sérieux et transparence.</p>
+        <div class="review-author">
+          <div class="avatar">AD</div>
+          <div>
+            <div class="author-name">Aminata D.</div>
+            <div class="author-meta">Projet immobilier · Saly</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+      <article class="review-card">
+        <div class="quote">“</div>
+        <p class="review-text">Une équipe locale très professionnelle. Ils connaissent parfaitement les zones, les prix
+          et les bons interlocuteurs. On s'est senti accompagnés du début à la signature.</p>
+        <div class="review-author">
+          <div class="avatar">KB</div>
+          <div>
+            <div class="author-name">Karim B.</div>
+            <div class="author-meta">Investisseur · Nguerigne</div>
+            <div class="stars">★★★★★</div>
+          </div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="sponsors-bar" aria-label="Nos partenaires">
+    <p class="sponsors-label">Nos partenaires</p>
+    <div class="sponsors-track-wrap">
+      <div class="sponsors-track">
+        <div class="sponsors-group"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lead-modal" id="leadModal" onclick="if(event.target===this)closeLeadModal()">
+    <div class="lead-box">
+      <button type="button" class="lead-close" onclick="closeLeadModal()">&times;</button>
+      <p class="lead-eyebrow">Pré-réservation WhatsApp</p>
+      <h2 class="lead-title">Avant de continuer sur WhatsApp</h2>
+      <p class="lead-sub">Le client remplit ici ses informations avant l'ouverture de WhatsApp. Vous recevez donc un
+        message plus complet avec les coordonnées, les dates et les preferences.</p>
+      <div class="lead-summary">
+        <div><span>Bien concerné</span><strong id="leadContext">Demande générale</strong></div>
+        <div><span>Budget indicatif</span><strong id="leadPrice">À confirmer</strong></div>
+      </div>
+      <div class="lead-grid">
+        <div class="lead-field"><label for="leadFirstName">Prénom</label><input type="text" id="leadFirstName"
+            placeholder="Votre prénom"></div>
+        <div class="lead-field"><label for="leadLastName">Nom</label><input type="text" id="leadLastName"
+            placeholder="Votre nom"></div>
+        <div class="lead-field"><label for="leadPhone">Numéro de téléphone</label><input type="tel" id="leadPhone"
+            placeholder="77 000 00 00"></div>
+        <div class="lead-field"><label for="leadEmail">Adresse email</label><input type="email" id="leadEmail"
+            placeholder="votre@email.com"></div>
+        <div class="lead-field full"><label for="leadAddress">Adresse</label><input type="text" id="leadAddress"
+            placeholder="Votre adresse complète"></div>
+        <div class="lead-field"><label for="leadProjectType">Type de demande</label><select id="leadProjectType">
+            <option>Location vacances</option>
+            <option>Location longue durée</option>
+            <option>Achat immobilier</option>
+            <option>Local commercial</option>
+            <option>Renseignement général</option>
+          </select></div>
+        <div class="lead-field"><label for="leadPaymentMethod">Méthode de paiement souhaitée</label><select
+            id="leadPaymentMethod">
+            <option>Wave</option>
+            <option>Orange Money</option>
+            <option>Virement bancaire</option>
+            <option>Carte bancaire</option>
+            <option>Espèces</option>
+            <option>À définir</option>
+          </select></div>
+        <div class="lead-field lead-rental-only"><label for="leadStartDate">Date d'arrivée</label><input type="date"
+            id="leadStartDate"></div>
+        <div class="lead-field lead-rental-only"><label for="leadEndDate">Date de départ</label><input type="date"
+            id="leadEndDate"></div>
+        <div class="lead-field lead-rental-only"><label for="leadNights">Nombre de jours</label><input type="number"
+            id="leadNights" min="1" readonly placeholder="Calculé automatiquement"></div>
+        <div class="lead-field lead-rental-only"><label for="leadGuests">Nombre de personnes</label><input type="number"
+            id="leadGuests" min="1" placeholder="Ex: 6"></div>
+        <div class="lead-field lead-rental-only"><label for="leadChef">Option chef cuisinier</label><select
+            id="leadChef">
+            <option>Oui</option>
+            <option>Non</option>
+            <option>À confirmer</option>
+          </select></div>
+
+        <div class="lead-field full"><label for="leadMessage">Informations complementaires</label><textarea
+            id="leadMessage"
+            placeholder="Precisez vos besoins, vos horaires, votre budget ou toute information utile."></textarea></div>
+      </div>
+      <p class="lead-note" id="leadNote">Aucune donnée n'est stockée sur le site. Le formulaire sert uniquement à
+        préparer votre message WhatsApp.</p>
+      <div class="lead-actions">
+        <button type="button" class="lead-cancel" onclick="closeLeadModal()">Annuler</button>
+        <button type="button" class="lead-submit" onclick="submitLeadWhatsApp()">Continuer sur WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="ft">
+      <div>
+        <a href="index.html" class="f-logo"><img src="LOGO.jpg" alt="Baobab Horizon" style="height: 60px; width: auto;"></a>
+        <p class="f-tag">Votre partenaire immobilier de prestige sur la Petite Côte du Sénégal. Ventes, locations et
+          séjours sur mesure.</p>
+        <div class="f-soc">
+          <a href="https://www.tiktok.com/@baobab_horizon" class="f-sl" target="_blank" rel="noopener"
+            aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+            </svg></a>
+          <a href="https://www.instagram.com/baobab_horizon" class="f-sl" target="_blank" rel="noopener"
+            aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+            </svg></a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Accueil</a></li>
+          <li><a href="ventes.html">Ventes</a></li>
+          <li><a href="vacances.html">Locations</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Zones</h4>
+        <ul>
+          <li><a href="ventes.html">Nguerigne</a></li>
+          <li><a href="ventes.html">Somone</a></li>
+          <li><a href="ventes.html">Ngaparou</a></li>
+          <li><a href="ventes.html">Saly</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:+221778014094">+221 77 801 40 94</a></li>
+          <li><a href="tel:+221773371813">+221 77 337 18 13</a></li>
+          <li><a href="https://wa.me/221780140942" target="_blank">WhatsApp</a></li>
+          <li><a href="mailto:baoabhorizon@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="f-bot">
+      <span>© 2026 Baobab Horizon · Tous droits réservés</span>
+      <span>Mentions légales · Confidentialité</span>
+    </div>
+  </footer>
+
+<div class="reservation-modal" id="reservationModal" onclick="if(event.target===this)closeReservationModal()" style="position:fixed;inset:0;z-index:9600;background:rgba(10,8,6,.94);display:none;align-items:center;justify-content:center;padding:16px">
+  <div class="reservation-box" style="background:var(--night-mid);border:1px solid rgba(184,147,90,.25);max-width:580px;width:100%;padding:28px 24px;position:relative;max-height:90vh;overflow-y:auto">
+    <button type="button" class="reservation-close" onclick="closeReservationModal()" style="position:absolute;top:12px;right:12px;width:40px;height:40px;border:1px solid rgba(184,147,90,.3);background:transparent;color:var(--sand);font-size:1.5rem;line-height:1;cursor:pointer">&times;</button>
+    <h2 class="reservation-title" style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;line-height:1.2;color:var(--cream);margin-bottom:6px">Demande de réservation</h2>
+    <p class="reservation-subtitle" style="color:var(--text-muted);line-height:1.5;margin-bottom:20px;font-size:.9rem">Complétez le formulaire pour envoyer votre demande de réservation.</p>
+    
+    <div class="reservation-villa-info" style="background:rgba(184,147,90,.08);border:1px solid rgba(184,147,90,.2);padding:14px 16px;margin-bottom:20px">
+      <div class="reservation-villa-name" id="resVillaName" style="font-size:1rem;color:var(--gold);margin-bottom:4px"></div>
+      <div class="reservation-villa-price" id="resVillaPrice" style="font-size:.85rem;color:var(--sand)"></div>
+    </div>
+    
+    <form id="reservationForm" class="reservation-form" style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+      <input type="hidden" id="resVillaSlug">
+      <input type="hidden" id="resVillaPriceValue">
+      
+      <div class="reservation-field">
+        <label for="resFirstName" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Prénom</label>
+        <input type="text" id="resFirstName" required style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+      </div>
+      <div class="reservation-field">
+        <label for="resLastName" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Nom</label>
+        <input type="text" id="resLastName" required style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+      </div>
+      <div class="reservation-field">
+        <label for="resPhone" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Téléphone</label>
+        <input type="tel" id="resPhone" required style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+      </div>
+      <div class="reservation-field">
+        <label for="resEmail" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Email</label>
+        <input type="email" id="resEmail" required style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+      </div>
+      <div class="reservation-field">
+        <label for="resStartDate" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Date d'arrivée</label>
+        <input type="date" id="resStartDate" required style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+      </div>
+      <div class="reservation-field">
+        <label for="resEndDate" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Date de départ</label>
+        <input type="date" id="resEndDate" required style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+      </div>
+      <div class="reservation-field">
+        <label for="resGuests" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Nombre de personnes</label>
+        <input type="number" id="resGuests" min="1" required style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+      </div>
+      <div class="reservation-field">
+        <label for="resChef" style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Option chef cuisinier</label>
+        <select id="resChef" style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+          <option value="Non">Non</option>
+          <option value="Oui">Oui</option>
+        </select>
+      </div>
+      <div class="reservation-actions" style="display:flex;gap:10px;margin-top:20px;grid-column:1/-1">
+        <button type="button" class="btn-secondary" onclick="closeReservationModal()" style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,147,90,.4);color:var(--sand);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;padding:12px 20px;transition:.3s;cursor:pointer;background:transparent;flex:1">Annuler</button>
+        <button type="submit" class="btn-primary" style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--night);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:12px 20px;transition:.3s;cursor:pointer;border:0;flex:1">Envoyer ma demande</button>
+      </div>
+    </form>
+    <p class="reservation-note" style="font-size:.7rem;color:var(--text-muted);margin-top:14px;line-height:1.4">Votre demande sera envoyée à l'équipe Baobab Horizon pour validation. Vous recevrez une réponse par WhatsApp.</p>
+  </div>
+</div>
+
+
+  <script>
+    var LEAD_WHATSAPP_NUMBER = '221780140942';
+    var leadData = { context: 'Demande générale', amount: 0, category: 'Renseignement général' };
+    function formatLeadAmount(n) { return Number(n).toLocaleString('fr-FR') + ' FCFA'; }
+    function normalizeLeadText(v) { return (v || '').replace(/\s+/g, ' ').trim(); }
+    function normalizeLeadCategory(v) { var allowed = ['Location vacances', 'Location longue durée', 'Achat immobilier', 'Local commercial', 'Renseignement général']; return allowed.indexOf(v) >= 0 ? v : 'Renseignement général'; }
+    function isRentalLeadCategory(v) { return v === 'Location vacances' || v === 'Location longue durée'; }
+    function parseLeadAmount(text) { var clean = (text || '').replace(/\u00a0/g, ' '); var match = clean.match(/(\d[\d\s]{2,})/); return match ? parseInt(match[1].replace(/\s+/g, ''), 10) || 0 : 0; }
+    function setLeadMinDates() { var today = new Date().toISOString().split('T')[0]; var start = document.getElementById('leadStartDate'); var end = document.getElementById('leadEndDate'); if (start) start.min = today; if (end) end.min = today; }
+    function updateLeadDuration() { var start = document.getElementById('leadStartDate').value; var end = document.getElementById('leadEndDate').value; var nights = document.getElementById('leadNights'); nights.value = ''; if (!start || !end) return; var startDate = new Date(start + 'T00:00:00'); var endDate = new Date(end + 'T00:00:00'); var diff = Math.round((endDate - startDate) / 86400000); if (diff > 0) { nights.value = String(diff); } }
+    function updateLeadRentalFields() { var category = document.getElementById('leadProjectType').value; document.querySelectorAll('.lead-rental-only').forEach(function (el) { el.classList.toggle('lead-hidden', !isRentalLeadCategory(category)); }); document.getElementById('leadNote').textContent = isRentalLeadCategory(category) ? "Les dates, le nombre de jours, le nombre de personnes et l'option chef seront inclus dans le message WhatsApp." : "Aucune donnée n'est stockée sur le site. Le formulaire sert uniquement à préparer votre message WhatsApp."; }
+    function openLeadModal(context, amount, category) { leadData.context = normalizeLeadText(context) || 'Demande générale'; leadData.amount = parseInt(amount, 10) || 0; leadData.category = normalizeLeadCategory(category); document.getElementById('leadContext').textContent = leadData.context; document.getElementById('leadPrice').textContent = leadData.amount ? formatLeadAmount(leadData.amount) : 'À confirmer'; document.getElementById('leadFirstName').value = ''; document.getElementById('leadLastName').value = ''; document.getElementById('leadPhone').value = ''; document.getElementById('leadEmail').value = ''; document.getElementById('leadAddress').value = ''; document.getElementById('leadProjectType').value = leadData.category; document.getElementById('leadPaymentMethod').value = 'Wave'; document.getElementById('leadStartDate').value = ''; document.getElementById('leadEndDate').value = ''; document.getElementById('leadNights').value = ''; document.getElementById('leadGuests').value = ''; document.getElementById('leadChef').value = 'Oui'; document.getElementById('leadMessage').value = ''; updateLeadRentalFields(); setLeadMinDates(); document.getElementById('leadModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeLeadModal() { document.getElementById('leadModal').classList.remove('open'); document.body.style.overflow = ''; }
+    function detectLeadCategory(link, context) { var block = link.closest('.vcard,.rental-card,.property-card,.ld,.long-stay,.comm,.commercial,.quick-card,.contact-card,.map-copy,.cta'); var haystack = normalizeLeadText((link.textContent || '') + ' ' + (link.getAttribute('href') || '') + ' ' + (context || '')).toLowerCase(); if (block && block.matches('.vcard,.rental-card')) return 'Location vacances'; if (block && block.matches('.ld,.long-stay')) return 'Location longue durée'; if (block && block.matches('.comm,.commercial')) return 'Local commercial'; if (block && block.matches('.property-card')) return 'Achat immobilier'; if (/vente|acheter|terrain|dossier/.test(haystack)) return 'Achat immobilier'; if (/magasin|commercial|local/.test(haystack)) return 'Local commercial'; if (/location|villa|vacances|sejour|conditions/.test(haystack)) return 'Location vacances'; return 'Renseignement général'; }
+    function detectLeadContext(link) { var block = link.closest('.vcard,.rental-card,.property-card,.ld,.long-stay,.comm,.commercial,.quick-card,.contact-card,.map-copy,.cta,.contact-section,.hero'); var context = 'Demande générale'; var amount = 0; if (block) { var title = block.querySelector('.vname,.card-title,.ld-title,.comm-title,.cta-title,.section-title,.contact-label,.hero-title'); if (title) context = normalizeLeadText(title.innerText || title.textContent); var priceNode = block.querySelector('.price-a,.price,.ld-pa,.comm-price,.price-box .price'); if (priceNode) amount = parseLeadAmount(priceNode.textContent); } if (context === 'Demande générale') { var href = link.getAttribute('href') || ''; var queryMatch = href.match(/[?&]text=([^&]+)/); if (queryMatch) { context = normalizeLeadText(decodeURIComponent(queryMatch[1]).replace(/Bonjour,?/gi, '')); } } return { context: context, amount: amount, category: detectLeadCategory(link, context) }; }
+    function submitLeadWhatsApp() { var firstName = normalizeLeadText(document.getElementById('leadFirstName').value); var lastName = normalizeLeadText(document.getElementById('leadLastName').value); var phone = normalizeLeadText(document.getElementById('leadPhone').value); var email = normalizeLeadText(document.getElementById('leadEmail').value); var address = normalizeLeadText(document.getElementById('leadAddress').value); var projectType = document.getElementById('leadProjectType').value; var paymentMethod = document.getElementById('leadPaymentMethod').value; var startDate = document.getElementById('leadStartDate').value; var endDate = document.getElementById('leadEndDate').value; var nights = document.getElementById('leadNights').value; var guests = normalizeLeadText(document.getElementById('leadGuests').value); var chef = document.getElementById('leadChef').value; var message = normalizeLeadText(document.getElementById('leadMessage').value); if (!firstName || !lastName || !phone || !email || !address) { alert('Veuillez remplir le prénom, le nom, le numéro de téléphone, l\'adresse email et l\'adresse.'); return; } if (isRentalLeadCategory(projectType)) { if (!startDate || !endDate) { alert('Veuillez sélectionner vos dates via le calendrier.'); return; } if (!nights || parseInt(nights, 10) < 1) { alert('La date de départ doit être après la date d\'arrivée.'); return; } if (!guests || parseInt(guests, 10) < 1) { alert('Veuillez indiquer le nombre de personnes.'); return; } } var lines = ['Bonjour Baobab Horizon, je souhaite continuer ma demande via WhatsApp.', '', 'Bien concerné: ' + leadData.context, 'Type de demande: ' + projectType]; if (leadData.amount) { lines.push('Budget indicatif: ' + formatLeadAmount(leadData.amount)); } if (isRentalLeadCategory(projectType)) { lines.push('Date d\'arrivée: ' + startDate, 'Date de départ: ' + endDate, 'Nombre de jours: ' + nights, 'Nombre de personnes: ' + guests, 'Option chef cuisinier: ' + chef); } lines.push('Méthode de paiement souhaitée: ' + paymentMethod, '', 'Prénom: ' + firstName, 'Nom: ' + lastName, 'Téléphone: ' + phone, 'Email: ' + email, 'Adresse: ' + address); if (message) { lines.push('', 'Informations complémentaires: ' + message); } window.open('https://wa.me/' + LEAD_WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank'); closeLeadModal(); }
+    (function () { setLeadMinDates(); var projectField = document.getElementById('leadProjectType'); if (projectField) { projectField.addEventListener('change', updateLeadRentalFields); } var startField = document.getElementById('leadStartDate'); var endField = document.getElementById('leadEndDate'); if (startField) startField.addEventListener('change', function () { if (startField.value) { endField.min = startField.value; } updateLeadDuration(); }); if (endField) endField.addEventListener('change', updateLeadDuration); document.querySelectorAll('a[href*="wa.me/' + LEAD_WHATSAPP_NUMBER + '"]').forEach(function (link) { link.addEventListener('click', function (event) { event.preventDefault(); var info = detectLeadContext(link); openLeadModal(info.context, info.amount, info.category); }); }); updateLeadRentalFields(); })();
+  </script>
+  <script>
+    const menuBtn = document.querySelector('.nav-menu-btn');
+    if (menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        const nav = menuBtn.closest('nav');
+        const isOpen = nav.classList.toggle('nav-open');
+        menuBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+      });
+    }
+
+    /* ── GALLERIES ── */
+    const G = {};
+    function loadGalleryData(data) {
+      for (const [k, v] of Object.entries(data)) {
+        G[k] = { cur: 0, name: v.name, imgs: v.images || [] };
+        const img = document.getElementById(k + '-img');
+        const cnt = document.getElementById(k + '-cnt');
+        if (img && G[k].imgs.length) {
+          img.src = G[k].imgs[0];
+          if (cnt) cnt.textContent = '1 / ' + G[k].imgs.length;
+        }
+      }
+    }
+    fetch('data/properties.json')
+      .then(r => r.json())
+      .then(loadGalleryData)
+      .catch(() => fetch('Location/data/properties.json').then(r => r.json()).then(loadGalleryData).catch(() => { }));
+    function chg(k, d) {
+      const g = G[k]; if (!g || !g.imgs || !g.imgs.length) return;
+      g.cur = (g.cur + d + g.imgs.length) % g.imgs.length;
+      document.getElementById(k + '-img').src = g.imgs[g.cur];
+      document.getElementById(k + '-cnt').textContent = (g.cur + 1) + ' / ' + g.imgs.length;
+    }
+
+    /* ── MODAL ── */
+    let mKey = '', mIdx = 0;
+    function openModal(k, i) { const g = G[k]; if (!g || !g.imgs || !g.imgs.length) return; mKey = k; mIdx = i == null ? g.cur : i; document.getElementById('modal-img').src = g.imgs[mIdx]; document.getElementById('modal-cap').textContent = g.name + ' · ' + (mIdx + 1) + ' / ' + g.imgs.length; document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+    function modalNav(d) { const g = G[mKey]; mIdx = (mIdx + d + g.imgs.length) % g.imgs.length; document.getElementById('modal-img').src = g.imgs[mIdx]; document.getElementById('modal-cap').textContent = g.name + ' · ' + (mIdx + 1) + ' / ' + g.imgs.length; }
+    document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+    document.addEventListener('keydown', e => { if (!document.getElementById('modal').classList.contains('open')) return; if (e.key === 'Escape') closeModal(); if (e.key === 'ArrowRight') modalNav(1); if (e.key === 'ArrowLeft') modalNav(-1); });
+
+    /* ── FILTER ── */
+    function filterVillas(type, btn) {
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cards = document.querySelectorAll('.vcard');
+      const ld = document.getElementById('ld-block');
+      let n = 0;
+      cards.forEach(c => { const show = type === 'all' || c.dataset.type === type; c.style.display = show ? 'grid' : 'none'; if (show) n++; });
+      if (ld) ld.style.display = (type === 'all' || type === 'longue') ? 'grid' : 'none';
+      document.getElementById('vcnt').textContent = n + (n > 1 ? ' propriétés' : ' propriété');
+    }
+
+    /* ── SCROLL REVEAL ── */
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); } else { e.target.classList.remove('vis'); } }); }, { threshold: .08 });
+    document.querySelectorAll('.vcard,.story-media,.story-copy,.review-card,.support').forEach(c => obs.observe(c));
+
+    /* ── RESERVATION MODAL ── */
+    var reservationData = { villa: '', villaSlug: '', price: 0, availability: { blocked_dates: [], reservations: [] } };
+    function loadVillaAvailability(slug) {
+      return fetch('api/availability.php?action=get')
+        .then(function(r) { return r.json().catch(function() { return {}; }); })
+        .then(function(data) {
+          reservationData.availability = data[slug] || { blocked_dates: [], reservations: [] };
+        });
+    }
+    function isDateRangeAvailable(start, end, availability) {
+      var blocked = availability.blocked_dates || [];
+      var reserved = availability.reservations || [];
+      var startDate = new Date(start);
+      var endDate = new Date(end);
+      function isDateInRange(dateStr, rangeStart, rangeEnd) {
+        var d = new Date(dateStr);
+        return d >= rangeStart && d <= rangeEnd;
+      }
+      for (var i = 0; i < blocked.length; i++) {
+        if (isDateInRange(blocked[i], startDate, endDate)) {
+          return false;
+        }
+      }
+      for (var j = 0; j < reserved.length; j++) {
+        var res = reserved[j];
+        var resStart = new Date(res.start);
+        var resEnd = new Date(res.end);
+        if (startDate <= resEnd && endDate >= resStart) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function openReservationModal(slug, name, price) {
+      reservationData.villa = name;
+      reservationData.villaSlug = slug;
+      reservationData.price = parseInt(price, 10) || 0;
+      loadVillaAvailability(slug);
+      document.getElementById('resVillaName').textContent = name;
+      document.getElementById('resVillaPrice').textContent = price ? 'Prix : ' + Number(price).toLocaleString('fr-FR') + ' FCFA / nuit' : 'Prix sur demande';
+      document.getElementById('resVillaSlug').value = slug;
+      document.getElementById('resVillaPriceValue').value = price;
+      document.getElementById('resFirstName').value = '';
+      document.getElementById('resLastName').value = '';
+      document.getElementById('resPhone').value = '';
+      document.getElementById('resEmail').value = '';
+      document.getElementById('resStartDate').value = '';
+      document.getElementById('resEndDate').value = '';
+      document.getElementById('resGuests').value = '';
+      document.getElementById('resChef').value = 'Non';
+      setReservationMinDates();
+      document.getElementById('reservationModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeReservationModal() {
+      document.getElementById('reservationModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function setReservationMinDates() {
+      var today = new Date().toISOString().split('T')[0];
+      var start = document.getElementById('resStartDate');
+      var end = document.getElementById('resEndDate');
+      if (start) start.min = today;
+      if (end) end.min = today;
+    }
+    document.getElementById('reservationForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      var villa = document.getElementById('resVillaSlug').value;
+      var firstName = document.getElementById('resFirstName').value.trim();
+      var lastName = document.getElementById('resLastName').value.trim();
+      var phone = document.getElementById('resPhone').value.trim();
+      var email = document.getElementById('resEmail').value.trim();
+      var startDate = document.getElementById('resStartDate').value;
+      var endDate = document.getElementById('resEndDate').value;
+      var guests = document.getElementById('resGuests').value;
+      var chef = document.getElementById('resChef').value;
+      var contactMethod = 'whatsapp';
+      if (!villa || !firstName || !lastName || !phone || !email || !startDate || !endDate || !guests) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+      if (!isDateRangeAvailable(startDate, endDate, reservationData.availability)) {
+        alert('Les dates sélectionnées ne sont pas disponibles. Veuillez choisir d\'autres dates.');
+        return;
+      }
+      var formData = new FormData();
+      formData.append('action', 'create_request');
+      formData.append('villa', villa);
+      formData.append('start', startDate);
+      formData.append('end', endDate);
+      formData.append('guests', guests);
+      formData.append('chef', chef);
+      formData.append('contact_method', contactMethod);
+      formData.append('first_name', firstName);
+      formData.append('last_name', lastName);
+      formData.append('phone', phone);
+      formData.append('email', email);
+      fetch('api/reservations.php', { method: 'POST', body: formData })
+        .then(r => r.json())
+        .then(data => {
+          if (data.success) {
+            var villaName = document.getElementById('resVillaName').textContent;
+            var nights = Math.round((new Date(endDate) - new Date(startDate)) / 86400000);
+            var message = 'Bonjour Baobab Horizon,\n\nJe souhaite réserver la villa : ' + villaName + '\n\nDates du séjour : ' + startDate + ' au ' + endDate + ' (' + nights + ' nuits)\nNombre de personnes : ' + guests + '\nOption chef cuisinier : ' + chef + '\n\nMes coordonnées :\nPrénom : ' + firstName + '\nNom : ' + lastName + '\nTéléphone : ' + phone + '\nEmail : ' + email + '\n\nMerci de confirmer ma demande.';
+            var whatsappUrl = 'https://wa.me/221780140942?text=' + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+            alert('Votre demande a été enregistrée et WhatsApp s\'ouvrira avec vos informations pré-remplies.');
+            closeReservationModal();
+          } else {
+            alert('Erreur : ' + (data.error || 'Une erreur est survenue'));
+          }
+        })
+        .catch(err => { alert('Erreur de connexion au serveur.'); });
+    });
+    var startField = document.getElementById('resStartDate');
+    var endField = document.getElementById('resEndDate');
+    if (startField) startField.addEventListener('change', function() { if (startField.value) endField.min = startField.value; });
+    setReservationMinDates();
+
+    /* ══════════════════════════════════════
+       PAGE TRANSITION — RIDEAU DORÉ
+       ══════════════════════════════════════ */
+    (function () {
+      const curtain = document.getElementById('curtain');
+      const ct = curtain.querySelector('.ct');
+      const cb = curtain.querySelector('.cb');
+      const cl = curtain.querySelector('.cl');
+      const logo = document.getElementById('clogo');
+      const DUR = 2580;
+
+      function setClosed() {
+        ct.style.transition = 'none'; cb.style.transition = 'none';cl.style.transition='none';logo.style.transition='none';
+        ct.style.transform = 'scaleY(1)'; cb.style.transform = 'scaleY(1)';
+        cl.style.opacity = '1';
+        logo.style.opacity = '1'; logo.style.transform = 'translate(-50%,-50%) scale(1)';
+        curtain.style.pointerEvents = 'none';
+      }
+
+      function openPage() {
+        setClosed();
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            ct.style.transition = 'transform 2.5s cubic-bezier(.77,0,.18,1)';
+            cb.style.transition = 'transform 2.5s cubic-bezier(.77,0,.18,1)';
+            cl.style.transition = 'opacity 1.5s ease';
+            logo.style.transition = 'opacity 1.5s ease, transform 2s ease';
+            ct.style.transform = 'scaleY(0)';
+            cb.style.transform = 'scaleY(0)';
+            cl.style.opacity = '0';
+            logo.style.opacity = '0';
+            logo.style.transform = 'translate(-50%,-50%) scale(.88)';
+            setTimeout(() => { curtain.style.pointerEvents = 'none'; }, 1500);
+          });
+        });
+      }
+
+      function closePage(href) {
+        curtain.style.pointerEvents = 'all';
+        ct.style.transition = 'transform .58s cubic-bezier(.77,0,.18,1)';
+        cb.style.transition = 'transform .58s cubic-bezier(.77,0,.18,1)';
+        cl.style.transition = 'opacity .25s ease .18s';
+        logo.style.transition = 'opacity .3s ease .22s, transform .4s ease .22s';
+        ct.style.transform = 'scaleY(1)';
+        cb.style.transform = 'scaleY(1)';
+        cl.style.opacity = '1';
+        logo.style.opacity = '1';
+        logo.style.transform = 'translate(-50%,-50%) scale(1)';
+        setTimeout(() => { window.location.href = href; }, DUR + 60);
+      }
+
+      /* Intercepter liens internes */
+      function intercept() {
+        document.querySelectorAll('a[href]').forEach(a => {
+          const h = a.getAttribute('href');
+          if (!h || h.startsWith('#') || h.startsWith('mailto:') || h.startsWith('tel:') || h.startsWith('http') || a.target === '_blank') return;
+          a.addEventListener('click', e => { e.preventDefault(); closePage(h); });
+        });
+      }
+
+      /* Init : rideau fermé → s'ouvre */
+      setClosed();
+      window.addEventListener('DOMContentLoaded', () => { intercept(); openPage(); });
+      window.addEventListener('pageshow', e => { if (e.persisted) openPage(); });
+    })();
+  </script>
+
+  <script src="admin/panel.js"></script>
+</body>
+
+</html>
+
+
+

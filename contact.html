@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC9Q62DRJ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RC9Q62DRJ9');
+  </script>
+  <script src="cookies.js" defer></script>
+  <script src="js/i18n.js?v=6"></script>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contactez Baobab Horizon pour vos projets de vente, achat, location de villas ou locaux commerciaux sur la Petite Côte du Sénégal.">
+  <title>Contact — Baobab Horizon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=22">
+<style>
+:root {
+  --sand: #0F1A17 !important;
+  --cream: #0F1A17 !important;
+  --night: #F8F4EC !important;
+  --night-mid: #EDE3D2 !important;
+  --night-soft: #e2d6c3 !important;
+}
+/* Hero text adjustments */
+.hero-title, .hero-title em, .hero-sub {
+  color: #FFFFFF !important;
+}
+.footer-social{display:flex;gap:10px;margin-top:20px}.footer-social a{width:36px;height:36px;border:1px solid rgba(184,147,90,.25);display:flex;align-items:center;justify-content:center;color:var(--text-muted);text-decoration:none;transition:border-color .3s,color .3s}.footer-social a:hover{border-color:var(--gold);color:var(--gold)}.footer-social svg{width:17px;height:17px;fill:currentColor;display:block}
+.nav-logo, .footer-logo, .f-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 105px !important;
+  height: 105px !important;
+  min-width: 105px !important;
+  min-height: 105px !important;
+  aspect-ratio: 1/1 !important;
+  border-radius: 50% !important;
+  background: #ffffff !important;
+  padding: 3px !important;
+  border: none !important;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.35) !important;
+  overflow: hidden !important;
+}
+.nav-logo img, .footer-logo img, .f-logo img {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  border-radius: 50% !important;
+  display: block !important;
+  background: transparent !important;
+  padding: 0 !important;
+  border: none !important;
+}
+@media(max-width:1024px) {
+  .nav-logo, .footer-logo, .f-logo {
+    width: 82px !important;
+    height: 82px !important;
+    min-width: 82px !important;
+    min-height: 82px !important;
+    padding: 2px !important;
+  }
+}
+nav .nav-logo {
+  color: #FFFFFF !important;
+}
+/* Section titles colors */
+.section-title, .section-title em {
+  color: #0F1A17 !important;
+}
+.quick .section-title, .quick .section-title em {
+  color: #0F1A17 !important;
+}
+.map-panel .section-title, .map-panel .section-title em {
+  color: #0F1A17 !important;
+}
+/* Button text colors */
+.btn-primary {
+  background: #db6f27 !important;
+  color: #FFFFFF !important;
+}
+.btn-primary:hover {
+  background: #b55a1d !important;
+  color: #FFFFFF !important;
+}
+.btn-secondary {
+  color: #0F1A17 !important;
+}
+.btn-secondary:hover {
+  color: var(--gold) !important;
+}
+
+.form-actions button[type="submit"], .form-actions .btn-primary {
+  background: #db6f27 !important;
+  color: #FFFFFF !important;
+  border: 0 !important;
+  padding: 14px 28px !important;
+  font-size: 0.65rem !important;
+  letter-spacing: 0.2em !important;
+  text-transform: uppercase !important;
+  font-family: inherit !important;
+  cursor: pointer !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 10px !important;
+  transition: background 0.3s ease !important;
+}
+.form-actions button[type="submit"]:hover, .form-actions .btn-primary:hover {
+  background: #b55a1d !important;
+  color: #FFFFFF !important;
+}
+
+/* NAVIGATION HEADER STYLING - Identique à l'Accueil (index.html) */
+nav {
+  background: rgba(15, 26, 23, 0.96) !important;
+  border-bottom: 1px solid rgba(214, 175, 92, 0.2) !important;
+}
+@media (max-width: 1024px) {
+  nav .nav-links, nav.nav-open .nav-links {
+    background: #1a1612 !important;
+    border: 1px solid rgba(184, 147, 90, 0.25) !important;
+  }
+}
+@media (min-width: 1025px) {
+  nav .nav-links {
+    background: transparent !important;
+  }
+}
+nav .nav-links a {
+  color: #F8F4EC !important;
+  opacity: 0.8 !important;
+}
+nav .nav-links a:hover, nav .nav-links a.active {
+  color: #D6AF5C !important;
+  opacity: 1 !important;
+}
+nav .nav-cta {
+  background: #db6f27 !important;
+  color: #FFFFFF !important;
+}
+nav .nav-cta:hover {
+  background: #b55a1d !important;
+  color: #FFFFFF !important;
+}
+nav .nav-menu-btn {
+  color: #F8F4EC !important;
+}
+.bha-lang-switcher, 
+.bha-lang-switcher span, 
+.bha-lang-switcher .bha-lang-btn {
+  color: #FFFFFF !important;
+  opacity: 0.95 !important;
+}
+.bha-lang-switcher .bha-lang-btn:hover {
+  color: #D6AF5C !important;
+  opacity: 1 !important;
+}
+.bha-lang-switcher .bha-lang-btn.active {
+  color: #D6AF5C !important;
+  opacity: 1 !important;
+  font-weight: 700 !important;
+  border-bottom: 2px solid #D6AF5C !important;
+}
+</style>
+  <style>
+    /* ── UNIFIED CLEAR HERO & REMOVE BLACK GLOW ── */
+    .hero {
+      position: relative !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      min-height: 650px !important;
+      display: flex !important;
+      align-items: flex-end !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+    .hero-bg, .hero-bg-image {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 1 !important;
+      filter: none !important;
+    }
+    .hero-bg img, .hero-bg-image img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      filter: none !important;
+    }
+    .hero::after, .hero::before, .hero-ov, .hero-overlay, #curtain, #clogo {
+      display: none !important;
+      background: transparent !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
+    .hero-title, .hero-h1 {
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.58) !important;
+    }
+    .hero-sub {
+      text-shadow: 0 6px 22px rgba(0, 0, 0, 0.48) !important;
+    }
+    .eyebrow, .hero-eye {
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.52) !important;
+    }
+  </style>
+</head>
+<body><div id="curtain"><div class="ct"></div><div class="cl"></div><div class="cb"></div></div><div id="clogo">Baobab <span>Horizon</span></div>
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="LOGO.jpg" alt="Baobab Horizon">
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" data-i18n="nav.accueil">Accueil</a></li>
+    <li><a href="ventes.html" data-i18n="nav.acheter">Acheter</a></li>
+    <li><a href="vacances.html" data-i18n="nav.louer">Louer</a></li>
+    <li><a href="location-voiture.html" data-i18n="nav.car_rental">Location de voiture</a></li>
+    <li><a href="contact.html" class="active" data-i18n="nav.contact">Contact</a></li>
+  </ul>
+  <div class="nav-actions">
+    <a href="https://wa.me/221780140942" class="nav-cta" target="_blank" data-i18n="nav.contact_us">Nous contacter</a>
+    <button class="nav-menu-btn" type="button" onclick="window.bhaToggleMobileMenu(this, event)" aria-expanded="false" aria-label="Ouvrir le menu" data-i18n="nav.menu">Menu</button>
+  </div>
+</nav>
+<section class="hero"><div class="hero-bg" id="heroBg" style="background-image: url('accueil.png');"></div><div class="hero-content"><p class="eyebrow" data-i18n="contact.eyebrow">Parlons de votre projet</p><h1 class="hero-title" data-i18n="contact.title">Contact<br><em>direct</em></h1><p class="hero-sub" data-i18n="contact.sub">Achat, vente, location de villas ou locaux commerciaux : notre équipe vous répond rapidement.</p></div></section>
+<section class="contact-section"><div><p class="eyebrow" data-i18n="footer.col_contact">Coordonnées</p><h2 class="section-title" data-i18n="contact.form_title">Une demande, une visite ou un <em>projet</em></h2><p class="text">Envoyez-nous vos critères, vos dates ou votre budget. Nous vous orientons vers les biens adaptés et organisons la suite par WhatsApp, téléphone ou email.</p><div class="contact-cards"><div class="contact-card"><div class="contact-label">Téléphone principal</div><div class="contact-value">+221 77 801 40 94</div><a class="contact-link" href="tel:+221778014094">Appeler maintenant</a></div><div class="contact-card"><div class="contact-label">Deuxième contact</div><div class="contact-value">+221 77 337 18 13</div><a class="contact-link" href="tel:+221773371813">Appeler maintenant</a></div><div class="contact-card"><div class="contact-label">Email</div><div class="contact-value">Baobab Horizon</div><a class="contact-link" href="mailto:baobhorizon@gmail.com">baobhorizon@gmail.com</a></div></div></div>
+<div class="form-panel"><form id="contactForm"><div class="form-grid"><div class="field"><label for="name">Nom</label><input id="name" name="name" type="text" placeholder="Votre nom" required style="background:#FFFFFF !important; color:#11231E !important; border:1px solid rgba(184,147,90,.4) !important;"></div><div class="field"><label for="phone">Téléphone</label><input id="phone" name="phone" type="tel" placeholder="Votre numéro" required style="background:#FFFFFF !important; color:#11231E !important; border:1px solid rgba(184,147,90,.4) !important;"></div><div class="field"><label for="email">Email</label><input id="email" name="email" type="email" placeholder="votre@email.com" style="background:#FFFFFF !important; color:#11231E !important; border:1px solid rgba(184,147,90,.4) !important;"></div><div class="field"><label for="type">Projet</label><select id="type" name="type" style="background:#FFFFFF !important; color:#11231E !important; border:1px solid rgba(184,147,90,.4) !important;"><option style="background:#FFFFFF !important; color:#11231E !important;">Location vacances</option><option style="background:#FFFFFF !important; color:#11231E !important;">Location longue durée</option><option style="background:#FFFFFF !important; color:#11231E !important;">Achat immobilier</option><option style="background:#FFFFFF !important; color:#11231E !important;">Vente d'un bien</option><option style="background:#FFFFFF !important; color:#11231E !important;">Local commercial</option><option style="background:#FFFFFF !important; color:#11231E !important;">Autre demande</option></select></div><div class="field full"><label for="message">Message</label><textarea id="message" name="message" placeholder="Décrivez votre besoin, vos dates, votre budget ou la zone recherchée." required style="background:#FFFFFF !important; color:#11231E !important; border:1px solid rgba(184,147,90,.4) !important;"></textarea></div></div><div class="form-actions"><button type="submit" class="btn-primary" data-i18n="contact.submit_btn">Envoyer via WhatsApp</button><a class="btn-secondary" href="mailto:baobhorizon@gmail.com">Envoyer par email</a></div><p class="form-note">Le formulaire prépare automatiquement un message WhatsApp avec vos informations. Aucune donnée n'est stockée sur le site.</p></form></div></section>
+<section class="quick"><p class="eyebrow" data-i18n="intro.eyebrow">Accès rapide</p><h2 class="section-title">Choisissez le canal le plus <em>simple</em></h2>
+<div class="villa-contact-capsules" style="margin: 40px auto 0;">
+  <!-- Capsule WhatsApp -->
+  <a href="https://wa.me/221780140942" class="villa-contact-capsule" target="_blank" style="background-color: #DD5600 !important; color: #ffffff !important; border-color: rgba(255,255,255,0.08) !important;">
+    <svg viewBox="0 0 24 24" class="contact-icon" style="fill: currentColor; width: 20px; height: 20px; flex-shrink: 0;"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+    <span>WhatsApp (Écrire)</span>
+  </a>
+
+  <!-- Capsule Téléphone -->
+  <a href="tel:+221778014094" class="villa-contact-capsule" style="background-color: #FFA366 !important; color: #0F1A17 !important; border-color: rgba(255,255,255,0.08) !important;">
+    <svg viewBox="0 0 24 24" class="contact-icon" style="fill: none; stroke: currentColor; stroke-width: 2; width: 20px; height: 20px; flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    <span>Appeler</span>
+  </a>
+
+  <!-- Capsule Email -->
+  <a href="mailto:baobhorizon@gmail.com" class="villa-contact-capsule" style="background-color: #EDE3D2 !important; color: #0F1A17 !important; border-color: rgba(255,255,255,0.08) !important;">
+    <svg viewBox="0 0 24 24" class="contact-icon" style="fill: none; stroke: currentColor; stroke-width: 2; width: 20px; height: 20px; flex-shrink: 0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+    <span>Email</span>
+  </a>
+</div>
+</section>
+<section class="map-panel"><div class="map-copy"><p class="eyebrow">Zone d'intervention</p><h2 class="section-title">Petite Côte du <em>Sénégal</em></h2><p class="text">Nous accompagnons les projets immobiliers autour de Nguérigne, Somone, Ngaparou et Saly.</p><div class="map-zones"><span class="map-zone">Nguérigne</span><span class="map-zone">Somone</span><span class="map-zone">Ngaparou</span><span class="map-zone">Saly</span></div><div class="cta-btns"><a class="btn-primary" target="_blank" href="https://wa.me/221780140942?text=Bonjour%2C%20je%20souhaite%20%C3%A9changer%20avec%20Baobab%20Horizon." data-i18n="cta.whatsapp">WhatsApp direct</a><a class="btn-secondary" href="vacances.html">Voir les locations</a></div></div><div class="map-visual"><iframe class="google-map" src="https://www.google.com/maps?q=Saly%2C%20Ngaparou%2C%20Somone%2C%20Ngu%C3%A9rigne%2C%20S%C3%A9n%C3%A9gal&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte Google Maps de la Petite Côte du Sénégal"></iframe></div></section>
+
+  <section class="sponsors-bar" aria-label="Ils nous font confiance">
+    <p class="sponsors-label" data-i18n="sponsors.label">Ils nous font confiance</p>
+    <div class="sponsors-track-wrap">
+      <div class="sponsors-track">
+        <div class="sponsors-group"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+      </div>
+    </div>
+  </section>
+
+<style>
+  /* Hero section - Exact match with ventes.html size & layout */
+  .hero {
+    position: relative !important;
+    min-height: 86vh !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding-top: 100px !important;
+    overflow: hidden !important;
+    background: #0f0d0a !important;
+  }
+  .hero-bg {
+    position: absolute !important;
+    inset: 0 !important;
+    background: url('accueil.png') center center / cover no-repeat;
+    transform: scale(1) !important;
+    filter: none !important;
+    opacity: 1 !important;
+  }
+  .hero::after,
+  .hero::before,
+  .hero-ov {
+    display: none !important;
+    background: transparent !important;
+  }
+  .hero-content {
+    position: relative !important;
+    z-index: 1 !important;
+    padding: 0 60px !important;
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .eyebrow {
+    font-size: .65rem !important;
+    letter-spacing: .35em !important;
+    text-transform: uppercase !important;
+    color: #f0d4a4 !important;
+    margin-bottom: 20px !important;
+    text-shadow: 0 3px 16px rgba(0,0,0,.52) !important;
+  }
+  .hero-title {
+    font-family: var(--font-display), 'Lora', Georgia, serif !important;
+    font-size: clamp(3.5rem,8vw,7rem) !important;
+    font-weight: 300 !important;
+    line-height: 1 !important;
+    color: #FFFFFF !important;
+    text-shadow: 0 10px 30px rgba(0,0,0,.58) !important;
+  }
+  .hero-title em {
+    font-style: italic !important;
+    color: #D6AF5C !important;
+  }
+  .hero-sub {
+    margin-top: 20px !important;
+    font-size: .8rem !important;
+    letter-spacing: .15em !important;
+    text-transform: uppercase !important;
+    color: rgba(250,247,242,.92) !important;
+    max-width: 560px !important;
+    text-shadow: 0 6px 22px rgba(0,0,0,.48) !important;
+  }
+  .sponsors-bar {
+    background: #1a2d28 !important;
+    border-top: 1px solid rgba(214, 175, 92, 0.12) !important;
+    border-bottom: 1px solid rgba(214, 175, 92, 0.12) !important;
+    padding: 36px 0 32px !important;
+    overflow: hidden !important;
+  }
+  .sponsors-label {
+    text-align: center !important;
+    font-size: .58rem !important;
+    letter-spacing: .28em !important;
+    text-transform: uppercase !important;
+    color: rgba(248, 244, 236, 0.6) !important;
+    margin-bottom: 24px !important;
+  }
+  .sponsors-track-wrap {
+    overflow: hidden !important;
+    -webkit-mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent) !important;
+    mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent) !important;
+  }
+  .sponsors-track {
+    display: flex !important;
+    width: max-content !important;
+    animation: sponsorsScroll 35s linear infinite !important;
+    will-change: transform !important;
+  }
+  .sponsors-group {
+    display: flex !important;
+    align-items: center !important;
+    gap: 72px !important;
+    flex-shrink: 0 !important;
+    padding-right: 72px !important;
+  }
+  .sponsor-item {
+    font-size: 1.05rem !important;
+    font-weight: 500 !important;
+    letter-spacing: .06em !important;
+    white-space: nowrap !important;
+    opacity: .88 !important;
+  }
+  .sponsor-item.canal { color: #ffffff !important; font-weight: 700 !important; font-size: 1.2rem !important; }
+  .sponsor-item.canal sup { font-size: .55em !important; color: #D6AF5C !important; vertical-align: super !important; }
+  .sponsor-item.ff { color: #F8F4EC !important; font-style: italic !important; font-family: var(--font-display) !important; font-size: 1.3rem !important; }
+  .sponsor-item.netflix { color: #e50914 !important; font-weight: 700 !important; }
+  .sponsor-item.sir { color: #4a9fd4 !important; font-weight: 600 !important; }
+  .sponsor-item.sar { color: #D6AF5C !important; font-weight: 600 !important; letter-spacing: .15em !important; }
+  @keyframes sponsorsScroll { 0% { transform: translateX(0); } 100% { transform: translateX(-25%); } }
+
+  /* ── FOOTER PLEINE LARGEUR (100% HORIZONTAL) ── */
+  /* ── FOOTER HARMONISÉ IDENTIQUE À L'ACCUEIL ── */
+  footer {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 80px 60px 40px !important;
+    background: #0B1613 !important;
+    border-top: 1px solid rgba(184, 147, 90, 0.12) !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+  }
+  .footer-top, .ft {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 60px 0 !important;
+    display: grid !important;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr !important;
+    gap: 60px !important;
+    box-sizing: border-box !important;
+    align-items: start !important;
+  }
+  .footer-tagline, .f-tag {
+    font-size: .78rem !important;
+    line-height: 1.65 !important;
+    color: rgba(248, 244, 236, 0.65) !important;
+    margin-top: 18px !important;
+    margin-bottom: 22px !important;
+    max-width: 320px !important;
+  }
+  .footer-social, .f-soc {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    gap: 12px !important;
+    margin-top: 16px !important;
+    padding: 0 !important;
+  }
+  .footer-social a, .f-soc a, .f-sl {
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px !important;
+    min-height: 38px !important;
+    border: 1px solid rgba(214, 175, 92, 0.25) !important;
+    border-radius: 4px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    color: rgba(248, 244, 236, 0.65) !important;
+    text-decoration: none !important;
+    transition: all 0.25s ease !important;
+    background: transparent !important;
+    cursor: pointer !important;
+  }
+  .footer-social a:hover, .f-soc a:hover, .f-sl:hover {
+    border-color: #D6AF5C !important;
+    color: #D6AF5C !important;
+    background: rgba(214, 175, 92, 0.12) !important;
+  }
+  .footer-social svg, .f-soc svg, .f-sl svg {
+    width: 17px !important;
+    height: 17px !important;
+    min-width: 17px !important;
+    min-height: 17px !important;
+    fill: currentColor !important;
+    display: block !important;
+  }
+  .footer-col-title {
+    font-size: .64rem !important;
+    letter-spacing: .24em !important;
+    text-transform: uppercase !important;
+    color: #D6AF5C !important;
+    margin-bottom: 26px !important;
+    font-weight: 500 !important;
+  }
+  .footer-links {
+    list-style: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+  .footer-links a {
+    font-size: .74rem !important;
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    color: rgba(248, 244, 236, 0.65) !important;
+    text-decoration: none !important;
+    transition: color 0.25s ease !important;
+  }
+  .footer-links a:hover {
+    color: #D6AF5C !important;
+  }
+  .footer-bottom, .f-bot {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-top: 32px !important;
+    border-top: 1px solid rgba(184, 147, 90, 0.1) !important;
+    box-sizing: border-box !important;
+    font-size: .62rem !important;
+    letter-spacing: .12em !important;
+    text-transform: uppercase !important;
+    color: rgba(248, 244, 236, 0.45) !important;
+  }
+  @media (max-width: 1024px) {
+    footer {
+      padding: 60px 32px 32px !important;
+    }
+    .footer-top, .ft {
+      grid-template-columns: 1fr 1fr !important;
+      gap: 36px !important;
+    }
+  }
+  @media (max-width: 640px) {
+    footer {
+      padding: 50px 20px 30px !important;
+    }
+    .footer-top, .ft {
+      grid-template-columns: 1fr !important;
+      gap: 32px !important;
+    }
+    .footer-bottom, .f-bot {
+      flex-direction: column !important;
+      gap: 14px !important;
+      text-align: left !important;
+      align-items: flex-start !important;
+    }
+  }
+
+  /* ── FORMULAIRE CONTACT : FOND BLANC POUR TOUS LES CHAMPS ── */
+  .form-panel input,
+  .form-panel select,
+  .form-panel textarea,
+  .form-panel input:focus,
+  .form-panel select:focus,
+  .form-panel textarea:focus {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #11231E !important;
+    border: 1px solid rgba(184, 147, 90, 0.45) !important;
+    border-radius: 3px !important;
+  }
+  .form-panel input::placeholder,
+  .form-panel textarea::placeholder {
+    color: #7A8B87 !important;
+    opacity: 0.9 !important;
+  }
+  .form-panel select option {
+    background-color: #FFFFFF !important;
+    background: #FFFFFF !important;
+    color: #11231E !important;
+  }
+  /* ── COMPTE PRIVILÈGE CLIENT ── */
+  .nav-account-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 6px !important;
+    padding: 8px 14px !important;
+    background: rgba(214, 175, 92, 0.12) !important;
+    border: 1px solid rgba(214, 175, 92, 0.4) !important;
+    color: #D6AF5C !important;
+    font-family: 'Poppins', 'Jost', sans-serif !important;
+    font-size: 0.72rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.08em !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: all 0.25s ease !important;
+    line-height: 1 !important;
+    text-decoration: none !important;
+    height: auto !important;
+    box-sizing: border-box !important;
+  }
+  .nav-account-btn svg {
+    flex-shrink: 0 !important;
+  }
+  .nav-account-btn:hover {
+    background: rgba(214, 175, 92, 0.25) !important;
+    border-color: #D6AF5C !important;
+    color: #FFFFFF !important;
+    box-shadow: 0 4px 15px rgba(214, 175, 92, 0.25) !important;
+  }
+  .nav-account-btn.registered {
+    background: #D6AF5C !important;
+    color: #0F1A17 !important;
+    border-color: #D6AF5C !important;
+  }
+  @media (max-width: 1024px) {
+    .nav-account-btn {
+      padding: 6px 10px !important;
+      font-size: 0.65rem !important;
+    }
+  }
+  @media (max-width: 640px) {
+    .nav-account-btn {
+      padding: 6px 8px !important;
+      font-size: 0.58rem !important;
+    }
+  }
+
+  /* ── MULTI-AGENT WA POPOVER & ANIMATIONS (EXACT ACCUEIL) ── */
+  @keyframes bhaWaPulse {
+    0% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.75), 0 8px 24px rgba(0, 0, 0, 0.35);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 0 16px rgba(37, 211, 102, 0), 0 12px 28px rgba(0, 0, 0, 0.45);
+      transform: scale(1.05);
+    }
+    100% {
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(0, 0, 0, 0.35);
+      transform: scale(1);
+    }
+  }
+  @keyframes bhaWaIconWiggle {
+    0%, 100% { transform: rotate(0deg) scale(1); }
+    15% { transform: rotate(-14deg) scale(1.15); }
+    30% { transform: rotate(14deg) scale(1.15); }
+    45% { transform: rotate(-8deg) scale(1.1); }
+    60% { transform: rotate(8deg) scale(1.1); }
+    75% { transform: rotate(0deg) scale(1); }
+  }
+  .bha-wa-widget { position: fixed !important; bottom: 24px !important; right: 24px !important; z-index: 99999 !important; }
+  .bha-wa-btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    padding: 13px 22px !important;
+    background: #25D366 !important;
+    color: #fff !important;
+    font-weight: 600 !important;
+    font-size: 0.84rem !important;
+    border-radius: 50px !important;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.35) !important;
+    cursor: pointer !important;
+    border: none !important;
+    text-decoration: none !important;
+    animation: bhaWaPulse 2.4s infinite ease-in-out !important;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  }
+  .bha-wa-btn:hover {
+    background: #20ba59 !important;
+    transform: scale(1.08) translateY(-2px) !important;
+    animation-play-state: paused !important;
+    box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45) !important;
+    color: #ffffff !important;
+  }
+  .bha-wa-btn svg, .bha-wa-btn .wa-icon {
+    width: 22px !important;
+    height: 22px !important;
+    fill: currentColor !important;
+    display: inline-block !important;
+    animation: bhaWaIconWiggle 3.2s infinite ease-in-out !important;
+  }
+  .bha-wa-popover { position: absolute !important; bottom: 64px !important; right: 0 !important; width: 300px !important; background: #162420 !important; border: 1px solid #D6AF5C !important; border-radius: 8px !important; padding: 16px !important; box-shadow: 0 12px 35px rgba(0,0,0,0.7) !important; display: none; box-sizing: border-box !important; }
+  .bha-wa-popover.open { display: block !important; }
+  .bha-agent-card { display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 10px 12px !important; background: #0b1412 !important; border-radius: 4px !important; margin-top: 8px !important; border: 1px solid rgba(214,175,92,0.2) !important; }
+
+  /* Villa contact capsules stacked overlapping style */
+  .villa-contact-capsules {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    max-width: 480px !important;
+    margin: 40px auto 0 !important;
+    position: relative !important;
+  }
+  .villa-contact-capsule {
+    width: 100% !important;
+    height: 74px !important;
+    border-radius: 37px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-family: 'Jost', sans-serif !important;
+    font-size: 0.8rem !important;
+    letter-spacing: 0.22em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.22) !important;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    margin-bottom: -20px !important; /* Vertically overlapping */
+    position: relative !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    gap: 16px !important;
+    box-sizing: border-box !important;
+  }
+  .villa-contact-capsule:nth-child(1) { z-index: 3 !important; }
+  .villa-contact-capsule:nth-child(2) { z-index: 2 !important; }
+  .villa-contact-capsule:nth-child(3) { z-index: 1 !important; }
+
+  .villa-contact-capsule svg.contact-icon {
+    width: 20px !important;
+    height: 20px !important;
+    transition: transform 0.3s ease !important;
+  }
+  .villa-contact-capsule:hover {
+    transform: translateY(-8px) scale(1.025) !important;
+    z-index: 10 !important;
+    box-shadow: 0 18px 40px rgba(0,0,0,0.38) !important;
+  }
+  .villa-contact-capsule:hover svg.contact-icon {
+    transform: scale(1.2) rotate(5deg) !important;
+  }
+
+  @media (max-width: 768px) {
+    .villa-contact-capsule {
+      height: 68px !important;
+      border-radius: 34px !important;
+      font-size: 0.75rem !important;
+      margin-bottom: -16px !important;
+    }
+  }
+</style>
+<!-- Sponsors bar moved above -->
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo f-logo"><img src="LOGO.jpg" alt="Baobab Horizon" style="height: 70px; width: auto;"></a>
+        <p class="footer-tagline" data-i18n="footer.tagline">Votre partenaire immobilier de prestige sur la Petite Côte du Sénégal. Ventes, locations et séjours sur mesure.</p>
+        <div class="footer-social">
+          <a href="https://www.tiktok.com/@baobab_horizon" target="_blank" rel="noopener"
+            aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+            </svg></a>
+          <a href="https://www.instagram.com/baobab_horizon" target="_blank" rel="noopener"
+            aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z" />
+            </svg></a>
+        </div>
+      </div>
+      <div>
+        <h4 class="footer-col-title" data-i18n="footer.col_nav">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" data-i18n="nav.accueil">Accueil</a></li>
+          <li><a href="ventes.html" data-i18n="nav.acheter">Acheter</a></li>
+          <li><a href="vacances.html" data-i18n="nav.louer">Louer</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title" data-i18n="footer.col_zones">Zones</h4>
+        <ul class="footer-links">
+          <li><a href="ventes.html">Nguerigne</a></li>
+          <li><a href="ventes.html">Somone</a></li>
+          <li><a href="ventes.html">Ngaparou</a></li>
+          <li><a href="ventes.html">Saly</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="footer-col-title" data-i18n="footer.col_contact">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+221778014094">+221 77 801 40 94</a></li>
+          <li><a href="tel:+221773371813">+221 77 337 18 13</a></li>
+          <li><a href="https://wa.me/221780140942" target="_blank">WhatsApp</a></li>
+          <li><a href="mailto:baobhorizon@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Baobab Horizon · Tous droits réservés</span>
+      <span><a href="mentions-legales.html" style="color:inherit;text-decoration:none;" data-i18n="footer.legals">Mentions légales</a> · <a href="politique-de-confidentialite.html" style="color:inherit;text-decoration:none;" data-i18n="footer.privacy">Confidentialité</a></span>
+    </div>
+  </footer>
+<script>
+// Transitions désactivées
+// Logo transition disabled
+const imageObserver=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('window-open')}else{entry.target.classList.remove('window-open')}})},{threshold:.08});document.querySelectorAll('.map-visual').forEach(el=>imageObserver.observe(el));
+
+
+document.getElementById('contactForm').addEventListener('submit',function(event){event.preventDefault();const name=document.getElementById('name').value.trim();const phone=document.getElementById('phone').value.trim();const email=document.getElementById('email').value.trim();const type=document.getElementById('type').value;const message=document.getElementById('message').value.trim();const text=`Bonjour, je souhaite contacter Baobab Horizon.%0A%0ANom: ${encodeURIComponent(name)}%0ATéléphone: ${encodeURIComponent(phone)}%0AEmail: ${encodeURIComponent(email||'Non renseigné')}%0AProjet: ${encodeURIComponent(type)}%0AMessage: ${encodeURIComponent(message)}`;window.open(`https://wa.me/221780140942?text=${text}`,'_blank');});
+</script>
+
+  <!-- WHATSAPP FLOATING WIDGET MULTI-AGENT -->
+  <div class="bha-wa-widget" style="position:fixed !important; bottom:24px !important; right:24px !important; z-index:999999 !important;">
+    <div class="bha-wa-popover" id="bhaWaPopover">
+      <div style="font-size:.82rem;font-weight:600;color:#D6AF5C;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D6AF5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Contactez votre agent immobilier
+      </div>
+      <div class="bha-agent-card">
+        <div>
+          <div style="font-size:.85rem;font-weight:600;color:#fff">Dani</div>
+          <div style="font-size:.68rem;color:#8A9B97">Associé - Co-fondateur</div>
+        </div>
+        <a href="https://wa.me/221780140942?text=Bonjour%20Dani,%20je%20souhaite%20des%20informations" target="_blank" style="padding:4px 9px;background:#25D366;color:#fff;font-size:.7rem;border-radius:3px;font-weight:600;text-decoration:none">WhatsApp</a>
+      </div>
+      <div class="bha-agent-card">
+        <div>
+          <div style="font-size:.85rem;font-weight:600;color:#fff">Mactar</div>
+          <div style="font-size:.68rem;color:#8A9B97">Associé - Co-fondateur</div>
+        </div>
+        <a href="https://wa.me/221773371813?text=Bonjour%20Mactar,%20je%20souhaite%20des%20informations" target="_blank" style="padding:4px 9px;background:#25D366;color:#fff;font-size:.7rem;border-radius:3px;font-weight:600;text-decoration:none">WhatsApp</a>
+      </div>
+    </div>
+    <button type="button" class="bha-wa-btn" onclick="document.getElementById('bhaWaPopover').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" class="wa-icon"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+      <span>Contactez votre agent</span>
+    </button>
+  </div>
+
+  <script>
+    // Hero 5-photo slideshow (2.5s)
+    (function(){
+      const isMobile = window.innerWidth <= 768;
+      const photos = isMobile 
+        ? ['accueil.jpg', 'Mob1.jpeg', 'Mob2.jpeg', 'Mob3.jpeg', 'Mob4.jpeg']
+        : ['accueil.png', 'Accueil1.jpg', 'Accueil2.jpg', 'Accueil3.jpg', 'Accueil4.jpg'];
+      photos.forEach(src => { const img = new Image(); img.src = src; });
+      let idx = 0;
+      const heroBg = document.getElementById('heroBg');
+      if (heroBg) {
+        heroBg.style.backgroundImage = `url('${photos[0]}')`;
+        setInterval(() => {
+          idx = (idx + 1) % photos.length;
+          heroBg.style.backgroundImage = `url('${photos[idx]}')`;
+        }, 2500);
+      }
+    })();
+  </script>
+<script src="js/decorations.js?v=5" defer></script>
+</body>
+</html>

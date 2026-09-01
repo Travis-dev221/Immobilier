@@ -1,0 +1,22 @@
+{
+  "guede": {
+    "blocked_dates": [],
+    "reservations": []
+  },
+  "casa": {
+    "blocked_dates": [],
+    "reservations": []
+  },
+  "palm": {
+    "blocked_dates": [],
+    "reservations": []
+  },
+  "torino": {
+    "blocked_dates": [],
+    "reservations": []
+  },
+  "vhouse": {
+    "blocked_dates": [],
+    "reservations": []
+  }
+}

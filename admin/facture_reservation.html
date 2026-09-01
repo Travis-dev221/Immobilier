@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Facture de Réservation — Baobab Horizon</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', Arial, sans-serif;
+      background: #ece8e1;
+      color: #111111;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+      min-height: 100vh;
+    }
+    
+    /* Action bar (screen only) */
+    .action-bar {
+      background: #0F1A17;
+      padding: 12px 30px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(214,175,92,0.3);
+    }
+    .action-bar .logo {
+      color: #F8F4EC;
+      font-size: 1rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      font-weight: 600;
+      flex: 1;
+    }
+    .action-bar .logo span { color: #D6AF5C; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 18px;
+      border: 1px solid #D6AF5C;
+      background: #D6AF5C;
+      color: #0F1A17;
+      font-family: 'Poppins', sans-serif;
+      font-size: .75rem;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      cursor: pointer;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all .2s;
+    }
+    .btn:hover { background: #e5be6b; }
+    .btn.ghost { background: transparent; color: #F8F4EC; border-color: rgba(214,175,92,.4); }
+    .btn.ghost:hover { background: rgba(214,175,92,.15); border-color: #D6AF5C; }
+    .btn.green { background: #25D366; border-color: #25D366; color: #fff; }
+    .btn.green:hover { background: #20ba59; }
+
+    /* Invoice Paper Container (A4 Proportions) */
+    .invoice-wrapper {
+      max-width: 860px;
+      margin: 30px auto 50px;
+      background: #ffffff;
+      display: flex;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.18);
+      min-height: 1180px;
+      position: relative;
+    }
+    
+    /* Left African Motif Stripe - Motif d'origine */
+    .motif-sidebar {
+      width: 65px;
+      flex-shrink: 0;
+      background-color: #833118;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='65' height='80' viewBox='0 0 65 80'%3E%3Cpolygon points='0,0 35,40 0,80' fill='%23F2C314'/%3E%3Cpolygon points='65,0 30,40 65,80' fill='%23111111'/%3E%3C/svg%3E");
+      background-size: 100% 80px;
+      background-repeat: repeat-y;
+      border-right: 1px solid #e0e0e0;
+    }
+    
+    .invoice-content {
+      flex: 1;
+      padding: 36px 44px 40px 38px;
+      display: flex;
+      flex-direction: column;
+      background: #ffffff;
+    }
+    
+    /* Top Header */
+    .header-area {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 24px;
+      gap: 20px;
+    }
+    
+    .header-left {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      max-width: 58%;
+    }
+    .logo-box {
+      width: 110px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+    .logo-box img {
+      width: 100%;
+      height: auto;
+      max-height: 110px;
+      object-fit: contain;
+      display: block;
+    }
+    .company-box {
+      font-size: 0.76rem;
+      line-height: 1.45;
+      color: #222222;
+    }
+    .company-name {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 2px;
+    }
+    .company-line {
+      margin-bottom: 1px;
+    }
+    
+    .header-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      min-width: 200px;
+    }
+    .date-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.8rem;
+      margin-bottom: 14px;
+      color: #111111;
+    }
+    .date-label {
+      font-weight: 600;
+      color: #333333;
+    }
+    .date-val {
+      font-weight: 600;
+      color: #000000;
+    }
+    
+    .invoiced-to-box {
+      border-left: 2px solid #222222;
+      padding-left: 14px;
+      text-align: left;
+      width: 100%;
+      font-size: 0.76rem;
+      line-height: 1.45;
+      color: #222222;
+    }
+    .invoiced-to-title {
+      font-weight: 700;
+      font-size: 0.82rem;
+      color: #000000;
+      margin-bottom: 4px;
+    }
+    .client-name {
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 2px;
+      text-transform: uppercase;
+    }
+    
+    /* Table with Orange Header */
+    .inv-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      margin-bottom: 26px;
+    }
+    .inv-table thead th {
+      background: #DE6116;
+      color: #ffffff;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-align: left;
+      border: 1px solid #DE6116;
+      letter-spacing: 0.02em;
+    }
+    .inv-table thead th.th-qty {
+      width: 12%;
+      text-align: left;
+    }
+    .inv-table thead th.th-desc {
+      width: 50%;
+    }
+    .inv-table thead th.th-unit {
+      width: 18%;
+      text-align: left;
+    }
+    .inv-table thead th.th-discount {
+      width: 20%;
+      text-align: right;
+      background: #E88F3C;
+      border-color: #E88F3C;
+      font-size: 0.72rem;
+      line-height: 1.15;
+      padding: 6px 12px;
+    }
+    
+    .inv-table tbody td {
+      padding: 16px 14px;
+      font-size: 0.82rem;
+      vertical-align: top;
+      background: #FFFFFF;
+      border-bottom: 1px solid #ECECEC;
+      color: #111111;
+      line-height: 1.5;
+    }
+    .inv-table tbody td.td-qty {
+      font-weight: 600;
+    }
+    .inv-table tbody td.td-desc .desc-title {
+      font-weight: 600;
+      color: #000000;
+      margin-bottom: 3px;
+    }
+    .inv-table tbody td.td-desc .desc-sub {
+      font-size: 0.75rem;
+      color: #333333;
+      margin-bottom: 2px;
+    }
+    .inv-table tbody td.td-unit {
+      color: #111111;
+    }
+    .inv-table tbody td.td-total {
+      text-align: right;
+      font-weight: 700;
+      color: #000000;
+    }
+    
+    /* Summary / Totals Breakdown (Right-aligned) */
+    .summary-wrap {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 26px;
+    }
+    .summary-box {
+      width: 380px;
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+    .sum-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+    .sum-row.sum-provisional {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #000000;
+      margin-bottom: 8px;
+    }
+    .sum-row.sum-provisional .sum-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+    .sum-lbl {
+      color: #111111;
+    }
+    .sum-val {
+      color: #111111;
+      text-align: right;
+    }
+    .sum-divider {
+      border-bottom: 1px solid #D8D8D8;
+      margin: 8px 0 10px;
+    }
+    .sum-row.sum-due {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #000000;
+    }
+    .sum-row.sum-due .sum-val {
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    /* Conditions & Notes (Clean typography on white) */
+    .conditions-area {
+      margin-top: 5px;
+      font-size: 0.76rem;
+      line-height: 1.5;
+      color: #222222;
+    }
+    .cond-block {
+      margin-bottom: 15px;
+    }
+    .cond-title {
+      font-weight: 700;
+      color: #000000;
+      margin-bottom: 3px;
+      font-size: 0.8rem;
+    }
+    .cond-text {
+      color: #333333;
+    }
+    .cond-divider {
+      border-bottom: 1px solid #E0E0E0;
+      margin: 18px 0 14px;
+    }
+    .terms-block .cond-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      margin-bottom: 2px;
+    }
+    .terms-block .cond-text {
+      font-size: 0.72rem;
+      color: #444444;
+    }
+    
+    #loadingMsg, #errorMsg {
+      text-align: center; padding: 60px; font-size: 1rem; width: 100%;
+    }
+    #errorMsg { color: #c45c5c; }
+    
+    @media print {
+      body { background: #ffffff; padding: 0; }
+      .action-bar { display: none !important; }
+      .invoice-wrapper {
+        margin: 0 auto;
+        box-shadow: none;
+        border: none;
+        width: 100%;
+        max-width: 100%;
+        min-height: auto;
+      }
+      .motif-sidebar { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .inv-table thead th { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+</head>
+<body>
+
+<!-- ACTION BAR -->
+<div class="action-bar" id="actionBar" style="display:none;">
+  <div class="logo">Baobab <span>Horizon</span> — Facturation</div>
+  <a href="index.html" class="btn ghost">← Retour admin</a>
+  <button type="button" class="btn" style="background:#D6AF5C;color:#0F1A17;font-weight:700;" onclick="downloadPDF()">📥 Télécharger PDF</button>
+  <button type="button" class="btn green" id="sendWABtn" style="display:none;" onclick="shareWhatsAppPDF()">💬 Envoyer PDF via WhatsApp</button>
+  <button type="button" class="btn ghost" onclick="window.print()">🖨️ Imprimer</button>
+</div>
+
+<!-- INVOICE WRAPPER -->
+<div id="loadingMsg">⏳ Chargement de la facture…</div>
+<div id="errorMsg" style="display:none;"></div>
+
+<div class="invoice-wrapper" id="invoiceBox" style="display:none;">
+  <!-- African Motif Border -->
+  <div class="motif-sidebar"></div>
+
+  <!-- Invoice Body -->
+  <div class="invoice-content">
+    
+    <!-- Header -->
+    <div class="header-area">
+      <div class="header-left">
+        <div class="logo-box">
+          <img src="../LOGO.jpg" alt="Baobab Horizon Real Estate">
+        </div>
+        <div class="company-box">
+          <div class="company-name">Daniel Mariat</div>
+          <div class="company-line">Business type: real estate agent</div>
+          <div class="company-line">Address: Saly , 23000 , M'bour -Thiès region . Senegal</div>
+          <div class="company-line">Phone: +221 78 014 09 42</div>
+          <div class="company-line">Ninea: 012032819</div>
+          <div class="company-line">Rc: 41120919</div>
+        </div>
+      </div>
+
+      <div class="header-right">
+        <div class="date-row">
+          <span class="date-label">Date</span>
+          <span class="date-val" id="invDate">Aug 23, 2026</span>
+        </div>
+        <div class="invoiced-to-box">
+          <div class="invoiced-to-title">Invoiced to</div>
+          <div class="client-name" id="toName">TORRES ZEVALLOS Roberto</div>
+          <div class="client-detail" id="toNationality">Nationality: Non renseigné</div>
+          <div class="client-detail" id="toNie">NIE: Non renseigné</div>
+          <div class="client-detail" id="toBirth">Born on: Non renseigné</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <table class="inv-table">
+      <thead>
+        <tr>
+          <th class="th-qty">Quantity</th>
+          <th class="th-desc">Description</th>
+          <th class="th-unit">Unit price</th>
+          <th class="th-discount">Price with<br><span style="font-size:0.65rem;opacity:0.95;">discount</span></th>
+        </tr>
+      </thead>
+      <tbody id="itemsBody">
+        <!-- populated by js -->
+      </tbody>
+    </table>
+
+    <!-- Totals Summary Breakdown -->
+    <div class="summary-wrap">
+      <div class="summary-box">
+        <div class="sum-row sum-provisional">
+          <span class="sum-lbl">Provisional total</span>
+          <span class="sum-val" id="provisionalTotal">0 cfa</span>
+        </div>
+        <div class="sum-row">
+          <span class="sum-lbl">Deposit (50%)</span>
+          <span class="sum-val" id="depositVal">0 cfa</span>
+        </div>
+        <div class="sum-row">
+          <span class="sum-lbl">Rental balance (50%)</span>
+          <span class="sum-val" id="balanceVal">0 cfa</span>
+        </div>
+        <div class="sum-row" id="elecRow">
+          <span class="sum-lbl" id="elecDepositLbl">Electricity deposit</span>
+          <span class="sum-val" id="elecDepositVal">0 cfa</span>
+        </div>
+        <div class="sum-divider"></div>
+        <div class="sum-row sum-due">
+          <span class="sum-lbl">Total balance due on arrival</span>
+          <span class="sum-val" id="totalDueArrival">0 cfa</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Conditions and Notes -->
+    <div class="conditions-area">
+      <div class="cond-block">
+        <div class="cond-title">Electricity at the client's expense</div>
+        <div class="cond-text">
+          An electricity deposit of 15,000 cfa/24h is due on arrival, in addition to the balance. At the end of the stay: if actual consumption is below the deposit, the difference is refunded to the client; if it is higher, the client pays the difference recorded.
+        </div>
+      </div>
+
+      <div class="cond-block" id="chefBlock">
+        <div class="cond-title">Private chef service</div>
+        <div class="cond-text" id="chefText">
+          Private chef included for the entire stay, with a weekly day off on Sunday. Grocery shopping for the chef is at the client's expense.
+        </div>
+      </div>
+
+      <div class="cond-block">
+        <div class="cond-title">Payment method</div>
+        <div class="cond-text" id="payMethodText">
+          Wave: +221 78 014 09 42
+        </div>
+      </div>
+
+      <div class="cond-divider"></div>
+
+      <div class="cond-block terms-block">
+        <div class="cond-title">Terms</div>
+        <div class="cond-text">
+          Payments are considered firm and non-refundable, as the selected dates are reserved and blocked for other clients.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+const urlParams = new URLSearchParams(window.location.search);
+const accessKey = urlParams.get('key');
+
+function fmt(n) {
+  return new Intl.NumberFormat('en-US').format(Math.round(n || 0)) + ' cfa';
+}
+function fmtDateEn(d) {
+  if (!d) return '';
+  const dt = new Date(d);
+  if (isNaN(dt.getTime())) return d;
+  return dt.toLocaleDateString('en-US', { month: 'short', day: '2-digit', year: 'numeric' });
+}
+function cleanRef(id) {
+  if (!id) return '—';
+  const raw = String(id).replace(/^RES-/i, '').split('.')[0];
+  return 'BH-' + raw.slice(0, 8).toUpperCase();
+}
+
+let _phone = '';
+let _invNum = '';
+
+async function load() {
+  if (!accessKey) {
+    show('error', 'Clé de réservation manquante dans l\'URL.');
+    return;
+  }
+
+  try {
+    const resData = await fetch('../api/reservations.php?action=get_by_key&key=' + encodeURIComponent(accessKey) + '&_t=' + Date.now()).then(r => r.json());
+
+    if (!resData.success) throw new Error(resData.error || 'Réservation introuvable.');
+
+    const r = resData.reservation;
+    _phone = r.phone || '';
+    _invNum = r.invoice_number || cleanRef(r.id);
+
+    // Header Date
+    document.getElementById('invDate').textContent = fmtDateEn(r.validated_at || r.created_at || new Date());
+
+    // Client Invoiced to
+    const fullName = ((r.first_name || '') + ' ' + (r.last_name || '')).trim() || 'Client';
+    document.getElementById('toName').textContent = fullName;
+    
+    const pi = r.personal_info || {};
+    if (pi.nationality) {
+      document.getElementById('toNationality').textContent = 'Nationality: ' + pi.nationality;
+      document.getElementById('toNationality').style.display = 'block';
+    } else {
+      document.getElementById('toNationality').style.display = 'none';
+    }
+    
+    if (pi.id_number) {
+      document.getElementById('toNie').textContent = 'NIE / ID: ' + pi.id_number;
+      document.getElementById('toNie').style.display = 'block';
+    } else {
+      document.getElementById('toNie').style.display = 'none';
+    }
+    
+    if (pi.birth_date) {
+      document.getElementById('toBirth').textContent = 'Born on: ' + fmtDateEn(pi.birth_date);
+      document.getElementById('toBirth').style.display = 'block';
+    } else {
+      document.getElementById('toBirth').style.display = 'none';
+    }
+
+    // Calculations
+    const basePrice = parseFloat(r.base_price) || 0;
+    const nights = parseInt(r.nights) || 1;
+    const totalAmount = parseFloat(r.total_amount) || (basePrice * nights);
+    const unitPrice = nights > 0 ? (totalAmount / nights) : basePrice;
+
+    const startDateStr = fmtDateEn(r.start || r.start_date);
+    const endDateStr = fmtDateEn(r.end || r.end_date);
+    const villaTitle = (r.villa_name || r.villa || 'Villa') + ' rental - beachfront';
+
+    const hasChef = r.chef && r.chef.toLowerCase() !== 'non';
+
+    // Populate Table
+    const tbody = document.getElementById('itemsBody');
+    tbody.innerHTML = `
+      <tr>
+        <td class="td-qty">${nights}</td>
+        <td class="td-desc">
+          <div class="desc-title">${villaTitle}</div>
+          <div class="desc-sub">Stay from ${startDateStr} to ${endDateStr} (${nights} nights)</div>
+          ${hasChef ? `<div class="desc-sub">Private chef included (weekly day off on Sunday)</div>` : ''}
+        </td>
+        <td class="td-unit">${fmt(unitPrice)}</td>
+        <td class="td-total">${fmt(totalAmount)}</td>
+      </tr>
+    `;
+
+    // Totals Breakdown
+    const deposit50 = Math.round(totalAmount * 0.5);
+    const balance50 = totalAmount - deposit50;
+    const elecPerNight = 15000;
+    const elecDeposit = nights * elecPerNight;
+    const totalDueOnArrival = balance50 + elecDeposit;
+
+    document.getElementById('provisionalTotal').textContent = fmt(totalAmount);
+    document.getElementById('depositVal').textContent = fmt(deposit50);
+    document.getElementById('balanceVal').textContent = fmt(balance50);
+    document.getElementById('elecDepositLbl').textContent = `Electricity deposit (${nights} nights)`;
+    document.getElementById('elecDepositVal').textContent = fmt(elecDeposit);
+    document.getElementById('totalDueArrival').textContent = fmt(totalDueOnArrival);
+
+    // Chef text in notes
+    if (hasChef) {
+      document.getElementById('chefBlock').style.display = 'block';
+      document.getElementById('chefText').textContent = `Private chef included for the entire stay (${nights} days), with a weekly day off on Sunday. Grocery shopping for the chef is at the client's expense.`;
+    } else {
+      document.getElementById('chefBlock').style.display = 'none';
+    }
+
+    // Payment method
+    const pm = pi.payment_method || 'Wave';
+    const pmNames = { wave: 'Wave: +221 78 014 09 42', orange_money: 'Orange Money: +221 77 337 18 13', bank_transfer: 'Virement bancaire' };
+    document.getElementById('payMethodText').textContent = pmNames[pm] || (pm + ': +221 78 014 09 42');
+
+    // Show WhatsApp action button
+    const sendBtn = document.getElementById('sendWABtn');
+    if (sendBtn) {
+      sendBtn.style.display = 'inline-flex';
+    }
+
+    show('invoice');
+    document.getElementById('actionBar').style.display = 'flex';
+
+  } catch (err) {
+    show('error', 'Erreur : ' + err.message);
+  }
+}
+
+function getPdfOptions() {
+  return {
+    margin:       [0, 0, 0, 0],
+    filename:     'Facture_' + (_invNum || 'Baobab_Horizon') + '.pdf',
+    image:        { type: 'jpeg', quality: 0.98 },
+    html2canvas:  { scale: 2, useCORS: true, letterRendering: true, scrollY: 0 },
+    jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+  };
+}
+
+async function downloadPDF() {
+  const element = document.getElementById('invoiceBox');
+  if (!element) return;
+  const opt = getPdfOptions();
+  html2pdf().set(opt).from(element).save();
+}
+
+async function shareWhatsAppPDF() {
+  const element = document.getElementById('invoiceBox');
+  if (!element) return;
+  
+  const btn = document.getElementById('sendWABtn');
+  const oldText = btn ? btn.innerHTML : '';
+  if (btn) {
+    btn.innerHTML = '⏳ Création du PDF…';
+    btn.disabled = true;
+  }
+  
+  const opt = getPdfOptions();
+  
+  try {
+    const pdfBlob = await html2pdf().set(opt).from(element).output('blob');
+    const pdfFile = new File([pdfBlob], opt.filename, { type: 'application/pdf' });
+
+    // 1. Sur Mobile (iOS Safari / Android Chrome) : partage natif avec fichier PDF directement dans WhatsApp
+    if (navigator.canShare && navigator.canShare({ files: [pdfFile] })) {
+      await navigator.share({
+        title: 'Facture ' + _invNum + ' — Baobab Horizon',
+        text: `Bonjour, veuillez trouver ci-joint votre facture officielle de réservation Baobab Horizon (N° ${_invNum}).`,
+        files: [pdfFile]
+      });
+      return;
+    }
+
+    // 2. Sur Ordinateur : Télécharge automatiquement le PDF + ouvre WhatsApp avec le message
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(pdfBlob);
+    a.download = opt.filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
+    const waPhone = _phone ? _phone.replace(/\D/g, '').replace(/^0/, '221') : '221780140942';
+    const waText = `Bonjour,\n\nVeuillez trouver ci-joint votre facture officielle de réservation Baobab Horizon (N° ${_invNum}).\n\n(Le fichier PDF "${opt.filename}" a été téléchargé sur votre appareil, vous pouvez le glisser dans WhatsApp).`;
+    window.open('https://wa.me/' + waPhone + '?text=' + encodeURIComponent(waText), '_blank');
+
+  } catch (e) {
+    console.error('Erreur génération PDF:', e);
+    // Secours
+    downloadPDF();
+  } finally {
+    if (btn) {
+      btn.innerHTML = oldText;
+      btn.disabled = false;
+    }
+  }
+}
+
+function show(what, msg = '') {
+  document.getElementById('loadingMsg').style.display = 'none';
+  document.getElementById('errorMsg').style.display = 'none';
+  document.getElementById('invoiceBox').style.display = 'none';
+  if (what === 'invoice') document.getElementById('invoiceBox').style.display = 'flex';
+  else if (what === 'error') { document.getElementById('errorMsg').style.display = 'block'; document.getElementById('errorMsg').textContent = msg; }
+}
+
+load();
+</script>
+</body>
+</html>

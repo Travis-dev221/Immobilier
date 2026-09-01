@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="52" height="40" viewBox="0 0 52 40" shape-rendering="geometricPrecision">
+  <!-- Terracotta Orange Base -->
+  <rect width="52" height="40" fill="#D35A1E"/>
+  
+  <!-- Black top inverted triangle -->
+  <polygon points="0,0 52,0 26,20" fill="#140702"/>
+  
+  <!-- Black bottom triangle -->
+  <polygon points="0,40 52,40 26,20" fill="#140702"/>
+  
+  <!-- Main Golden Diamond -->
+  <polygon points="26,4 52,20 26,36 0,20" fill="#F4B726"/>
+  
+  <!-- Inner Gold Sun Accent -->
+  <polygon points="26,10 42,20 26,30 10,20" fill="#F8C838"/>
+</svg>

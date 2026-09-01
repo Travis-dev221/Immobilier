@@ -1,0 +1,15 @@
+# Configuration pour LiteSpeed et Apache : forcer l'exécution PHP
+<IfModule mod_mime.c>
+  AddType application/x-httpd-php .php
+  AddHandler application/x-httpd-php .php
+</IfModule>
+
+# Pour LiteSpeed : utiliser le handler PHP par défaut
+<IfModule mod_lsapi.c>
+  AddHandler application/x-httpd-lsapi .php
+</IfModule>
+
+# S'assurer que les fichiers PHP sont exécutés et non téléchargés
+<FilesMatch "\.php$">
+  SetHandler application/x-httpd-php
+</FilesMatch>

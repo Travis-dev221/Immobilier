@@ -1,0 +1,53 @@
+{
+    "guede": {
+        "blocked_dates": [],
+        "reservations": [
+            {
+                "id": "RES-6a64de8e165112.28082493",
+                "start": "2026-07-31",
+                "end": "2026-08-08",
+                "start_date": "2026-07-31",
+                "end_date": "2026-08-08",
+                "guest_name": "Amady Dia",
+                "access_key": "3a4a4bfe660f7327fbd96bd9eae0c3d0"
+            }
+        ]
+    },
+    "casa": {
+        "blocked_dates": [],
+        "reservations": []
+    },
+    "palm": {
+        "blocked_dates": [
+            "2026-07-19"
+        ],
+        "reservations": [
+            {
+                "id": "RES-6a64fe9db42495.46033936",
+                "start": "2026-07-26",
+                "end": "2026-07-31",
+                "start_date": "2026-07-26",
+                "end_date": "2026-07-31",
+                "guest_name": "Amady Dia",
+                "access_key": "ad96074b4d247576f6bb270168a9078b"
+            },
+            {
+                "id": "RES-6a652ad4e8db74.01630771",
+                "start": "2026-08-09",
+                "end": "2026-08-28",
+                "start_date": "2026-08-09",
+                "end_date": "2026-08-28",
+                "guest_name": "Amady Dia",
+                "access_key": "d353db0cb7e57859e91d69b6cf69311b"
+            }
+        ]
+    },
+    "torino": {
+        "blocked_dates": [],
+        "reservations": []
+    },
+    "vhouse": {
+        "blocked_dates": [],
+        "reservations": []
+    }
+}

@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin — Baobab Horizon</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#b8935a;--gold-light:#d4ab72;--night:#0f0d0a;--night-mid:#1a1612;--night-soft:#2a2520;--cream:#faf7f2;--sand:#e8dcc8;--muted:#8a7d6a;--danger:#c45c5c;--ok:#5a9e6f}
+body{font-family:'Jost',sans-serif;background:var(--night);color:var(--sand);min-height:100vh}
+a{color:var(--gold-light)}
+.wrap{max-width:1100px;margin:0 auto;padding:32px 20px 60px}
+.hdr{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:32px;flex-wrap:wrap}
+.logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--cream);letter-spacing:.15em;text-transform:uppercase}
+.logo span{color:var(--gold)}
+.card{background:var(--night-mid);border:1px solid rgba(184,147,90,.2);padding:28px}
+.eyebrow{font-size:.62rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:var(--cream);margin-bottom:8px}
+.sub{color:var(--muted);line-height:1.6;margin-bottom:22px}
+label{display:block;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+input[type=password],input[type=text],select{width:100%;padding:12px 14px;background:var(--night-soft);border:1px solid rgba(184,147,90,.25);color:var(--cream);font:inherit}
+input:focus,select:focus{outline:none;border-color:var(--gold)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 18px;border:1px solid var(--gold);background:var(--gold);color:var(--night);font:inherit;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .2s}
+.btn:hover{background:var(--gold-light);border-color:var(--gold-light)}
+.btn-ghost{background:transparent;color:var(--sand)}
+.btn-ghost:hover{background:rgba(184,147,90,.12);color:var(--cream)}
+.btn-danger{background:transparent;border-color:var(--danger);color:var(--danger)}
+.btn-danger:hover{background:rgba(196,92,92,.15)}
+.btn-sm{padding:8px 12px;font-size:.7rem}
+.row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.msg{margin-top:14px;padding:10px 12px;font-size:.85rem}
+.msg.err{background:rgba(196,92,92,.12);border:1px solid rgba(196,92,92,.35);color:#f0b0b0}
+.msg.ok{background:rgba(90,158,111,.12);border:1px solid rgba(90,158,111,.35);color:#b8e0c4}
+.hidden{display:none!important}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin-bottom:24px}
+.toolbar .field{flex:1;min-width:220px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.photo{position:relative;background:var(--night-soft);border:1px solid rgba(184,147,90,.18);aspect-ratio:4/3;overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.photo .actions{position:absolute;inset:auto 0 0 0;display:flex;gap:6px;padding:8px;background:linear-gradient(transparent,rgba(0,0,0,.75))}
+.photo .idx{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.55);color:var(--cream);font-size:.65rem;padding:4px 8px}
+.drop{border:2px dashed rgba(184,147,90,.35);padding:28px;text-align:center;color:var(--muted);cursor:pointer;transition:border-color .2s,background .2s;margin-bottom:20px}
+.drop:hover,.drop.drag{border-color:var(--gold);background:rgba(184,147,90,.06)}
+.drop input{display:none}
+.url-add{display:flex;gap:10px;margin-bottom:20px}
+.url-add input{flex:1}
+.status-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--ok);margin-right:6px}
+@media(max-width:640px){.hdr{align-items:flex-start}.url-add{flex-direction:column}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hdr">
+    <div class="logo">Baobab <span>Admin</span></div>
+    <div class="row" id="hdrActions">
+      <a href="../index.html" class="btn btn-ghost btn-sm">Voir le site</a>
+      <button type="button" class="btn btn-ghost btn-sm hidden" id="logoutBtn">Déconnexion</button>
+    </div>
+  </div>
+
+  <div id="loginView" class="card">
+    <p class="eyebrow">Espace administration</p>
+    <h1 class="title">Gérer les photos</h1>
+    <p class="sub">Connectez-vous pour modifier les galeries des villas sur la page d'accueil.</p>
+    <form id="loginForm">
+      <label for="password">Mot de passe</label>
+      <input type="password" id="password" required autocomplete="current-password" placeholder="Mot de passe admin">
+      <div class="row" style="margin-top:16px">
+        <button type="submit" class="btn">Se connecter</button>
+      </div>
+      <div id="loginMsg" class="msg err hidden"></div>
+    </form>
+    <p class="sub" style="margin-top:24px;margin-bottom:0;font-size:.82rem">Nécessite un hébergement <strong>PHP</strong> (OVH, Hostinger, etc.). Modifiez le mot de passe dans <code>data/admin.secret.php</code>.</p>
+  </div>
+
+  <div id="adminView" class="hidden">
+    <div class="card" style="margin-bottom:20px">
+      <p class="eyebrow"><span class="status-dot"></span>Connecté</p>
+      <h1 class="title">Galerie photos</h1>
+      <p class="sub">Choisissez une villa, ajoutez ou supprimez des photos, réorganisez l'ordre, puis enregistrez.</p>
+      <div class="toolbar">
+        <div class="field">
+          <label for="villaSelect">Villa</label>
+          <select id="villaSelect"></select>
+        </div>
+        <button type="button" class="btn" id="saveBtn">Enregistrer</button>
+      </div>
+      <div id="saveMsg" class="msg hidden"></div>
+    </div>
+
+    <div class="card">
+      <div class="drop" id="dropZone">
+        <input type="file" id="fileInput" accept="image/jpeg,image/png,image/webp" multiple>
+        <p><strong>Glissez vos photos ici</strong> ou cliquez pour choisir</p>
+        <p style="font-size:.8rem;margin-top:8px">JPG, PNG, WEBP — max 8 Mo par fichier</p>
+      </div>
+
+      <div class="url-add">
+        <input type="text" id="urlInput" placeholder="Ou coller une URL d'image (https://...)">
+        <button type="button" class="btn btn-ghost" id="addUrlBtn">Ajouter URL</button>
+      </div>
+
+      <div class="grid" id="photoGrid"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const API = '../api';
+let data = {};
+let currentKey = '';
+let dirty = false;
+
+async function api(path, options = {}) {
+  const res = await fetch(API + path, { credentials: 'same-origin', ...options });
+  const json = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(json.error || 'Erreur serveur');
+  return json;
+}
+
+function showMsg(el, text, ok) {
+  el.textContent = text;
+  el.className = 'msg ' + (ok ? 'ok' : 'err');
+  el.classList.remove('hidden');
+}
+
+async function checkSession() {
+  try {
+    const { logged_in } = await api('/login.php');
+    if (logged_in) showAdmin();
+  } catch (_) {}
+}
+
+document.getElementById('loginForm').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const msg = document.getElementById('loginMsg');
+  msg.classList.add('hidden');
+  try {
+    await api('/login.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ password: document.getElementById('password').value })
+    });
+    showAdmin();
+  } catch (err) {
+    showMsg(msg, err.message, false);
+  }
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  await api('/logout.php', { method: 'POST' });
+  location.reload();
+});
+
+async function showAdmin() {
+  document.getElementById('loginView').classList.add('hidden');
+  document.getElementById('adminView').classList.remove('hidden');
+  document.getElementById('logoutBtn').classList.remove('hidden');
+  data = await api('/properties.php');
+  const select = document.getElementById('villaSelect');
+  select.innerHTML = Object.entries(data).map(([k, v]) =>
+    `<option value="${k}">${v.name}</option>`
+  ).join('');
+  currentKey = select.value;
+  select.addEventListener('change', () => { currentKey = select.value; renderPhotos(); });
+  renderPhotos();
+}
+
+function renderPhotos() {
+  const grid = document.getElementById('photoGrid');
+  const imgs = data[currentKey]?.images || [];
+  grid.innerHTML = imgs.map((url, i) => `
+    <div class="photo" data-idx="${i}">
+      <span class="idx">${i + 1}</span>
+      <img src="${url.startsWith('http') ? url : '../' + url}" alt="Photo ${i + 1}" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22><rect fill=%22%232a2520%22 width=%22400%22 height=%22300%22/><text x=%2250%25%22 y=%2250%25%22 fill=%22%238a7d6a%22 text-anchor=%22middle%22 dy=%22.3em%22 font-size=%2220%22>Image introuvable</text></svg>'">
+      <div class="actions">
+        <button type="button" class="btn btn-ghost btn-sm" data-act="up" ${i === 0 ? 'disabled' : ''}>&#8593;</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-act="down" ${i === imgs.length - 1 ? 'disabled' : ''}>&#8595;</button>
+        <button type="button" class="btn btn-danger btn-sm" data-act="del">Suppr.</button>
+      </div>
+    </div>
+  `).join('');
+
+  grid.querySelectorAll('button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.photo');
+      const idx = +card.dataset.idx;
+      const act = btn.dataset.act;
+      const list = data[currentKey].images;
+      if (act === 'up' && idx > 0) { [list[idx - 1], list[idx]] = [list[idx], list[idx - 1]]; dirty = true; renderPhotos(); }
+      if (act === 'down' && idx < list.length - 1) { [list[idx + 1], list[idx]] = [list[idx], list[idx + 1]]; dirty = true; renderPhotos(); }
+      if (act === 'del') {
+        if (!confirm('Supprimer cette photo ?')) return;
+        const url = list[idx];
+        list.splice(idx, 1);
+        dirty = true;
+        renderPhotos();
+        if (url.startsWith('images/')) {
+          api('/delete-image.php', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url }) }).catch(() => {});
+        }
+      }
+    });
+  });
+}
+
+async function uploadFiles(files) {
+  const msg = document.getElementById('saveMsg');
+  for (const file of files) {
+    const fd = new FormData();
+    fd.append('villa', currentKey);
+    fd.append('photo', file);
+    try {
+      const res = await fetch(API + '/upload.php', { method: 'POST', credentials: 'same-origin', body: fd });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || 'Upload échoué');
+      data[currentKey].images.push(json.url);
+      dirty = true;
+    } catch (err) {
+      showMsg(msg, err.message, false);
+      return;
+    }
+  }
+  renderPhotos();
+  showMsg(msg, files.length + ' photo(s) ajoutée(s). N\'oubliez pas d\'enregistrer.', true);
+}
+
+const dropZone = document.getElementById('dropZone');
+const fileInput = document.getElementById('fileInput');
+dropZone.addEventListener('click', () => fileInput.click());
+fileInput.addEventListener('change', () => { if (fileInput.files.length) uploadFiles(fileInput.files); fileInput.value = ''; });
+dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('drag'); });
+dropZone.addEventListener('dragleave', () => dropZone.classList.remove('drag'));
+dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('drag'); if (e.dataTransfer.files.length) uploadFiles(e.dataTransfer.files); });
+
+document.getElementById('addUrlBtn').addEventListener('click', () => {
+  const input = document.getElementById('urlInput');
+  const url = input.value.trim();
+  if (!url) return;
+  data[currentKey].images.push(url);
+  input.value = '';
+  dirty = true;
+  renderPhotos();
+});
+
+document.getElementById('saveBtn').addEventListener('click', async () => {
+  const msg = document.getElementById('saveMsg');
+  try {
+    await api('/properties.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+    dirty = false;
+    showMsg(msg, 'Galerie enregistrée avec succès.', true);
+  } catch (err) {
+    showMsg(msg, err.message, false);
+  }
+});
+
+window.addEventListener('beforeunload', e => { if (dirty) { e.preventDefault(); e.returnValue = ''; } });
+checkSession();
+</script>
+</body>
+</html>

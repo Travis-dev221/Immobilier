@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <link rel="icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="../favicon.png">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Admin — Baobab Horizon</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#b8935a;--glight:#d4ab72;--night:#0f0d0a;--nmid:#1a1612;--nsoft:#2a2520;--cream:#faf7f2;--sand:#e8dcc8;--muted:#8a7d6a;--danger:#c45c5c;--ok:#5a9e6f}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--night);color:var(--sand);min-height:100vh}
+a{color:var(--glight);text-decoration:none}
+a:hover{color:var(--cream)}
+.wrap{max-width:1000px;margin:0 auto;padding:28px 18px 80px}
+.hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:12px}
+.logo{font-family:Georgia,serif;font-size:1.3rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cream)}
+.logo span{color:var(--gold)}
+.nav{display:flex;gap:4px;margin-bottom:24px;flex-wrap:wrap}
+.nav a{font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;padding:8px 16px;border:1px solid rgba(184,147,90,.25);color:var(--muted)}
+.nav a:hover{border-color:var(--gold);color:var(--gold)}
+.nav a.on{border-color:var(--gold);background:rgba(184,147,90,.1);color:var(--gold)}
+.card{background:var(--nmid);border:1px solid rgba(184,147,90,.18);padding:24px;margin-bottom:18px}
+.card-title{font-family:Georgia,serif;font-size:1.4rem;font-weight:400;color:var(--cream);margin-bottom:16px}
+.msg{padding:10px 14px;font-size:.84rem;margin-bottom:16px;border-radius:1px}
+.msg.ok{background:rgba(90,158,111,.12);border:1px solid rgba(90,158,111,.35);color:#b8e0c4}
+.msg.err{background:rgba(196,92,92,.12);border:1px solid rgba(196,92,92,.35);color:#f0b0b0}
+.fg{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+.lbl{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+input[type=text],input[type=number],input[type=password],input[type=url],input[type=date],select,textarea{
+  width:100%;padding:10px 12px;background:var(--nsoft);border:1px solid rgba(184,147,90,.22);
+  color:var(--cream);font:inherit;font-size:.88rem}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--gold)}
+textarea{min-height:90px;resize:vertical}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:10px 18px;border:1px solid var(--gold);background:var(--gold);color:var(--night);font:inherit;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.btn:hover{background:var(--glight)}
+.btn-g{background:transparent;color:var(--sand);border-color:rgba(184,147,90,.4)}
+.btn-g:hover{background:rgba(184,147,90,.1);color:var(--cream)}
+.btn-d{background:transparent;border-color:var(--danger);color:var(--danger)}
+.btn-d:hover{background:rgba(196,92,92,.1)}
+.btn-sm{padding:6px 10px;font-size:.65rem}
+.bien-list{display:flex;flex-direction:column;gap:3px}
+.bien-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 14px;background:var(--nsoft);border:1px solid rgba(184,147,90,.12);flex-wrap:wrap}
+.bien-name{font-size:.92rem;color:var(--cream)}
+.bien-meta{font-size:.65rem;color:var(--muted);margin-top:2px}
+.badge{font-size:.52rem;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border-radius:2px}
+.bv{background:rgba(90,158,111,.18);color:#7fcf9a}
+.bs{background:rgba(184,147,90,.18);color:var(--glight)}
+.bt{background:rgba(138,125,106,.18);color:var(--sand)}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:12px;margin-top:16px}
+.pcard{position:relative;aspect-ratio:4/3;background:var(--nsoft);border:1px solid rgba(184,147,90,.15);overflow:hidden}
+.pcard img{width:100%;height:100%;object-fit:cover;display:block}
+.pcard-n{position:absolute;top:5px;left:5px;background:rgba(0,0,0,.65);color:#fff;font-size:.55rem;padding:2px 6px}
+.pcard-bar{position:absolute;bottom:0;left:0;right:0;display:flex;gap:3px;padding:5px;background:rgba(0,0,0,.8)}
+.sep{height:1px;background:rgba(184,147,90,.12);margin:20px 0}
+small{font-size:.65rem;color:var(--muted)}
+.hidden{display:none}
+@media(max-width:600px){.grid2,.grid3{grid-template-columns:1fr}.bien-row{flex-direction:column;align-items:flex-start}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<div class="hdr">
+  <div class="logo">Baobab <span>Horizon</span> · Admin</div>
+  <div style="display:flex;gap:10px;align-items:center">
+    <a href="index.html" class="btn btn-g btn-sm" target="_blank">← Voir le site</a>
+    <button id="logoutBtn" class="btn btn-g btn-sm hidden">Déconnexion</button>
+  </div>
+</div>
+
+<div id="msg" class="msg hidden"></div>
+
+<!-- LOGIN -->
+<div id="loginSection" class="card" style="max-width:420px">
+  <div class="card-title">Connexion</div>
+  <div class="fg">
+    <label class="lbl">Mot de passe</label>
+    <input type="password" id="passwordInput" placeholder="Mot de passe admin">
+  </div>
+  <button type="button" class="btn" onclick="login()">Se connecter</button>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel" class="hidden">
+<div class="nav">
+  <a href="#" onclick="showPage('list')" class="on" id="navList">Mes biens</a>
+  <a href="#" onclick="showPage('new')" id="navNew">+ Nouveau bien</a>
+  <a href="#" onclick="showPage('calendar')" id="navCalendar">Calendrier</a>
+  <a href="#" onclick="showPage('reservations')" id="navReservations">Réservations</a>
+</div>
+
+<!-- LIST PAGE -->
+<div id="listPage" class="page">
+  <div class="card" style="background:rgba(184,147,90,.06);border-color:rgba(184,147,90,.3);margin-bottom:12px;padding:16px 20px">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px">
+      <div style="font-size:.82rem;color:var(--sand)">
+        ✅ Les modifications sont <strong>instantanément visibles sur le site</strong> après enregistrement.
+      </div>
+      <a href="index.html" target="_blank" class="btn btn-g btn-sm">🌐 Voir le site</a>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-title">Mes biens (<span id="bienCount">0</span>)</div>
+    <div id="bienList" class="bien-list"></div>
+  </div>
+</div>
+
+<!-- EDIT/NEW PAGE -->
+<div id="editPage" class="page hidden">
+  <div class="card">
+    <div class="card-title" id="editTitle">Modifier le bien</div>
+    <form id="propertyForm">
+      <input type="hidden" id="editKey">
+      <input type="hidden" id="oldKey">
+      
+      <div class="sep" style="margin-top:0"></div>
+      <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Informations générales</p>
+      
+      <div class="grid2">
+        <div class="fg">
+          <label class="lbl">Type de bien</label>
+          <select id="propType">
+            <option value="vacances">🏖 Location vacances</option>
+            <option value="vente">🏠 Villa à vendre</option>
+            <option value="terrain">🌿 Terrain à vendre</option>
+          </select>
+        </div>
+        <div class="fg">
+          <label class="lbl">Clé technique (unique, minuscules-tirets)</label>
+          <input type="text" id="propKey" placeholder="Ex: villa-ocean" pattern="[a-z0-9_-]+">
+          <small>Ne pas modifier la clé d'un bien existant</small>
+        </div>
+      </div>
+      
+      <div class="fg">
+        <label class="lbl">Nom du bien</label>
+        <input type="text" id="propName" placeholder="Ex: Villa Guédé Home" required>
+      </div>
+      <div class="fg">
+        <label class="lbl">Zone / Localisation</label>
+        <input type="text" id="propZone" placeholder="Ex: Nguerigne · Petite Côte · 300m plage">
+      </div>
+      <div class="fg">
+        <label class="lbl">Description complète</label>
+        <textarea id="propDesc" placeholder="Décrivez le bien : emplacement, prestations, points forts..."></textarea>
+      </div>
+      
+      <div class="sep"></div>
+      <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Prix</p>
+      
+      <div class="grid3">
+        <div class="fg">
+          <label class="lbl">Montant (0 = Sur demande)</label>
+          <input type="number" id="propPrice" min="0">
+        </div>
+        <div class="fg">
+          <label class="lbl">Unité de prix</label>
+          <input type="text" id="propPriceUnit" placeholder="FCFA · nuit">
+        </div>
+        <div class="fg">
+          <label class="lbl">Note prix (optionnel)</label>
+          <input type="text" id="propPriceNote" placeholder="Ex: Visite sur RDV">
+        </div>
+      </div>
+      
+      <div class="sep"></div>
+      <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Caractéristiques</p>
+      
+      <div class="grid3">
+        <div class="fg">
+          <label class="lbl">Chambres (0 = masqué)</label>
+          <input type="number" id="propBedrooms" min="0">
+        </div>
+        <div class="fg">
+          <label class="lbl">Salles de bain (0 = masqué)</label>
+          <input type="number" id="propBathrooms" min="0">
+        </div>
+        <div class="fg">
+          <label class="lbl">Personnes max (0 = masqué)</label>
+          <input type="number" id="propPersons" min="0">
+        </div>
+      </div>
+      <div class="grid2">
+        <div class="fg">
+          <label class="lbl">Surface (valeur)</label>
+          <input type="text" id="propArea" placeholder="Ex: 1 200">
+        </div>
+        <div class="fg">
+          <label class="lbl">Surface (label)</label>
+          <input type="text" id="propAreaLabel" placeholder="Ex: m² hab.">
+        </div>
+      </div>
+      
+      <div class="sep"></div>
+      <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:16px">Équipements / Tags</p>
+      <div class="fg">
+        <label class="lbl">Tags séparés par virgule</label>
+        <input type="text" id="propTags" placeholder="Piscine, Pool house, Chef, Climatisation, Jacuzzi...">
+      </div>
+      
+      <div class="sep"></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button type="button" class="btn" onclick="saveProperty()">💾 Enregistrer</button>
+        <button type="button" class="btn btn-g" onclick="showPage('list')">Annuler</button>
+        <button type="button" class="btn btn-g hidden" id="editPhotosBtn" onclick="showPhotos()">📷 Gérer les photos</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- PHOTOS PAGE -->
+<div id="photosPage" class="page hidden">
+  <div class="card">
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:20px">
+      <div class="card-title" style="margin:0">Photos · <span id="photoPropName"></span></div>
+      <button type="button" class="btn btn-g btn-sm" onclick="backToEdit()">← Modifier le bien</button>
+    </div>
+    
+    <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Ajouter une URL d'image</p>
+    <div style="display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap">
+      <div class="fg" style="flex:1;min-width:200px;margin:0">
+        <input type="url" id="newImageUrl" placeholder="https://...">
+      </div>
+      <button type="button" class="btn btn-g" onclick="addImageUrl()">Ajouter</button>
+    </div>
+    
+    <div class="sep"></div>
+    
+    <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Photos actuelles (<span id="photoCount">0</span>)</p>
+    <div id="photoGrid" class="pgrid"></div>
+  </div>
+</div>
+
+<!-- CALENDAR PAGE -->
+<div id="calendarPage" class="page hidden">
+  <div class="card">
+    <div class="card-title">Calendrier des disponibilités</div>
+    <p style="color:var(--muted);margin-bottom:20px">Gérez les dates bloquées pour chaque villa.</p>
+    
+    <div class="fg">
+      <label class="lbl">Sélectionner une villa</label>
+      <select id="villaSelect" onchange="loadCalendar()">
+        <option value="">-- Choisir une villa --</option>
+      </select>
+    </div>
+    
+    <div id="calendarContainer" style="display:none;margin-top:20px">
+      <div class="fg">
+        <label class="lbl">Bloquer une date</label>
+        <input type="date" id="blockDateInput">
+      </div>
+      <button type="button" class="btn" id="blockDateBtn">Bloquer cette date</button>
+      
+      <div class="sep"></div>
+      
+      <div class="fg">
+        <label class="lbl">Bloquer une période</label>
+        <div class="grid2">
+          <input type="date" id="blockStart" placeholder="Date de début">
+          <input type="date" id="blockEnd" placeholder="Date de fin">
+        </div>
+      </div>
+      <button type="button" class="btn" id="blockRangeBtn">Bloquer la période</button>
+      
+      <div class="sep"></div>
+      
+      <p style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:12px">Dates bloquées</p>
+      <div id="blockedDatesList"></div>
+    </div>
+  </div>
+</div>
+
+<!-- RESERVATIONS PAGE -->
+<div id="reservationsPage" class="page hidden">
+  <div class="card">
+    <div class="card-title">Demandes de réservation</div>
+    <p style="color:var(--muted);margin-bottom:20px">Validez ou refusez les demandes de réservation.</p>
+    <div id="requestsList"></div>
+  </div>
+  
+  <div class="card" style="margin-top:20px">
+    <div class="card-title">Réservations validées</div>
+    <p style="color:var(--muted);margin-bottom:20px">Historique des réservations confirmées.</p>
+    <div id="validatedList"></div>
+  </div>
+</div>
+
+</div>
+</div>
+
+<script>
+const PASSWORD = 'Baobab2026';
+let data = {};
+let currentEditKey = null;
+let isLoggedIn = false;
+
+// Check login status
+function checkAuth() {
+  const auth = localStorage.getItem('adminAuth');
+  if (auth === PASSWORD) {
+    isLoggedIn = true;
+    showAdminPanel();
+  }
+}
+
+function login() {
+  const pwd = document.getElementById('passwordInput').value;
+  if (pwd === PASSWORD) {
+    localStorage.setItem('adminAuth', PASSWORD);
+    isLoggedIn = true;
+    showAdminPanel();
+    showMessage('Connexion réussie', 'ok');
+  } else {
+    showMessage('Mot de passe incorrect', 'err');
+  }
+}
+
+function logout() {
+  localStorage.removeItem('adminAuth');
+  isLoggedIn = false;
+  document.getElementById('loginSection').classList.remove('hidden');
+  document.getElementById('adminPanel').classList.add('hidden');
+  document.getElementById('logoutBtn').classList.add('hidden');
+  showMessage('Déconnexion réussie', 'ok');
+}
+
+function showAdminPanel() {
+  document.getElementById('loginSection').classList.add('hidden');
+  document.getElementById('adminPanel').classList.remove('hidden');
+  document.getElementById('logoutBtn').classList.remove('hidden');
+  loadData();
+}
+
+function showMessage(text, type) {
+  const msg = document.getElementById('msg');
+  msg.textContent = text;
+  msg.className = 'msg ' + type;
+  msg.classList.remove('hidden');
+  setTimeout(() => msg.classList.add('hidden'), 3000);
+}
+
+// Load data from JSON file
+async function loadData() {
+  try {
+    const response = await fetch('data/properties.json');
+    data = await response.json();
+    renderBienList();
+    updateVillaSelect();
+  } catch (e) {
+    console.error('Error loading data:', e);
+    showMessage('Erreur de chargement des données', 'err');
+  }
+}
+
+// Save data to JSON file via API
+async function saveData() {
+  try {
+    const response = await fetch('api/save_data.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + PASSWORD },
+      body: JSON.stringify(data)
+    });
+    const result = await response.json();
+    if (result.success) {
+      showMessage('Données enregistrées', 'ok');
+      return true;
+    } else {
+      showMessage('Erreur: ' + result.error, 'err');
+      return false;
+    }
+  } catch (e) {
+    console.error('Error saving data:', e);
+    showMessage('Erreur de sauvegarde', 'err');
+    return false;
+  }
+}
+
+// Render property list
+function renderBienList() {
+  const list = document.getElementById('bienList');
+  document.getElementById('bienCount').textContent = Object.keys(data).length;
+  
+  if (Object.keys(data).length === 0) {
+    list.innerHTML = '<p style="color:var(--muted)">Aucun bien. <a href="#" onclick="showPage(\'new\')">Créez le premier →</a></p>';
+    return;
+  }
+  
+  list.innerHTML = Object.entries(data).map(([k, v]) => {
+    const bc = v.type === 'vacances' ? 'bv' : (v.type === 'vente' ? 'bs' : 'bt');
+    const prix = v.price ? Number(v.price).toLocaleString('fr-FR') + ' ' + (v.priceUnit || '') : 'Sur demande';
+    return `
+      <div class="bien-row">
+        <div>
+          <div class="bien-name">${v.name}</div>
+          <div class="bien-meta">
+            <span class="badge ${bc}">${v.type}</span>
+            &nbsp;${v.zone || ''}
+            &nbsp;·&nbsp;${prix}
+            &nbsp;·&nbsp;${(v.images || []).length} photo(s)
+          </div>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <button type="button" class="btn btn-g btn-sm" onclick="editProperty('${k}')">Modifier</button>
+          <button type="button" class="btn btn-g btn-sm" onclick="showPhotos('${k}')">Photos</button>
+          <button type="button" class="btn btn-d btn-sm" onclick="deleteProperty('${k}')">Supprimer</button>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Show page
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+  document.querySelectorAll('.nav a').forEach(a => a.classList.remove('on'));
+  
+  if (page === 'list') {
+    document.getElementById('listPage').classList.remove('hidden');
+    document.getElementById('navList').classList.add('on');
+    renderBienList();
+  } else if (page === 'new') {
+    document.getElementById('editPage').classList.remove('hidden');
+    document.getElementById('navNew').classList.add('on');
+    document.getElementById('editTitle').textContent = 'Nouveau bien';
+    document.getElementById('editPhotosBtn').classList.add('hidden');
+    clearForm();
+  } else if (page === 'calendar') {
+    document.getElementById('calendarPage').classList.remove('hidden');
+    document.getElementById('navCalendar').classList.add('on');
+  } else if (page === 'reservations') {
+    document.getElementById('reservationsPage').classList.remove('hidden');
+    document.getElementById('navReservations').classList.add('on');
+    loadReservations();
+  }
+}
+
+// Clear form
+function clearForm() {
+  document.getElementById('propertyForm').reset();
+  document.getElementById('editKey').value = '';
+  document.getElementById('oldKey').value = '';
+  currentEditKey = null;
+}
+
+// Edit property
+function editProperty(key) {
+  currentEditKey = key;
+  const v = data[key];
+  
+  document.getElementById('editTitle').textContent = 'Modifier : ' + v.name;
+  document.getElementById('editKey').value = key;
+  document.getElementById('oldKey').value = key;
+  document.getElementById('propType').value = v.type || 'vacances';
+  document.getElementById('propKey').value = key;
+  document.getElementById('propName').value = v.name || '';
+  document.getElementById('propZone').value = v.zone || '';
+  document.getElementById('propDesc').value = v.description || '';
+  document.getElementById('propPrice').value = v.price || 0;
+  document.getElementById('propPriceUnit').value = v.priceUnit || '';
+  document.getElementById('propPriceNote').value = v.priceNote || '';
+  document.getElementById('propBedrooms').value = v.bedrooms || 0;
+  document.getElementById('propBathrooms').value = v.bathrooms || 0;
+  document.getElementById('propPersons').value = v.persons || 0;
+  document.getElementById('propArea').value = v.area || '';
+  document.getElementById('propAreaLabel').value = v.areaLabel || '';
+  document.getElementById('propTags').value = (v.tags || []).join(', ');
+  document.getElementById('editPhotosBtn').classList.remove('hidden');
+  
+  showPage('edit');
+  document.getElementById('navEdit')?.classList.add('on');
+}
+
+// Save property
+async function saveProperty() {
+  const key = document.getElementById('propKey').value.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '');
+  const oldKey = document.getElementById('oldKey').value;
+  const name = document.getElementById('propName').value.trim();
+  
+  if (!key || !name) {
+    showMessage('Clé et nom requis', 'err');
+    return;
+  }
+  
+  const tags = document.getElementById('propTags').value.split(',').map(t => t.trim()).filter(t => t);
+  
+  const propData = {
+    type: document.getElementById('propType').value,
+    name: name,
+    zone: document.getElementById('propZone').value.trim(),
+    description: document.getElementById('propDesc').value.trim(),
+    price: parseInt(document.getElementById('propPrice').value) || 0,
+    priceUnit: document.getElementById('propPriceUnit').value.trim(),
+    priceNote: document.getElementById('propPriceNote').value.trim(),
+    bedrooms: parseInt(document.getElementById('propBedrooms').value) || 0,
+    bathrooms: parseInt(document.getElementById('propBathrooms').value) || 0,
+    persons: parseInt(document.getElementById('propPersons').value) || 0,
+    area: document.getElementById('propArea').value.trim(),
+    areaLabel: document.getElementById('propAreaLabel').value.trim(),
+    tags: tags,
+    images: data[oldKey]?.images || []
+  };
+  
+  // Remove old key if changed
+  if (oldKey && oldKey !== key && data[oldKey]) {
+    delete data[oldKey];
+  }
+  
+  data[key] = propData;
+  
+  if (await saveData()) {
+    showPage('list');
+  }
+}
+
+// Delete property
+async function deleteProperty(key) {
+  if (!confirm('Supprimer ' + data[key].name + ' ?')) return;
+  
+  delete data[key];
+  if (await saveData()) {
+    renderBienList();
+    showMessage('Bien supprimé', 'ok');
+  }
+}
+
+// Show photos
+function showPhotos(key) {
+  if (key) currentEditKey = key;
+  const v = data[currentEditKey];
+  
+  document.getElementById('photoPropName').textContent = v.name;
+  document.getElementById('photoCount').textContent = (v.images || []).length;
+  
+  renderPhotoGrid();
+  
+  document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+  document.getElementById('photosPage').classList.remove('hidden');
+}
+
+function backToEdit() {
+  editProperty(currentEditKey);
+}
+
+function renderPhotoGrid() {
+  const v = data[currentEditKey];
+  const grid = document.getElementById('photoGrid');
+  const images = v.images || [];
+  
+  if (images.length === 0) {
+    grid.innerHTML = '<p style="color:var(--muted)">Aucune photo.</p>';
+    return;
+  }
+  
+  grid.innerHTML = images.map((url, i) => `
+    <div class="pcard">
+      <span class="pcard-n">${i + 1}</span>
+      <img src="${url}" alt="Photo ${i + 1}" onerror="this.style.opacity='.3'">
+      <div class="pcard-bar">
+        ${i > 0 ? `<button type="button" class="btn btn-g btn-sm" onclick="movePhoto(${i}, -1)">↑</button>` : ''}
+        ${i < images.length - 1 ? `<button type="button" class="btn btn-g btn-sm" onclick="movePhoto(${i}, 1)">↓</button>` : ''}
+        <button type="button" class="btn btn-d btn-sm" onclick="deletePhoto(${i})">✕</button>
+      </div>
+    </div>
+  `).join('');
+}
+
+async function addImageUrl() {
+  const url = document.getElementById('newImageUrl').value.trim();
+  if (!url) return;
+  
+  if (!data[currentEditKey].images) data[currentEditKey].images = [];
+  data[currentEditKey].images.push(url);
+  
+  document.getElementById('newImageUrl').value = '';
+  
+  if (await saveData()) {
+    document.getElementById('photoCount').textContent = data[currentEditKey].images.length;
+    renderPhotoGrid();
+  }
+}
+
+async function deletePhoto(idx) {
+  if (!confirm('Supprimer cette photo ?')) return;
+  
+  data[currentEditKey].images.splice(idx, 1);
+  
+  if (await saveData()) {
+    document.getElementById('photoCount').textContent = data[currentEditKey].images.length;
+    renderPhotoGrid();
+  }
+}
+
+async function movePhoto(idx, dir) {
+  const images = data[currentEditKey].images;
+  const newIdx = idx + dir;
+  
+  if (newIdx < 0 || newIdx >= images.length) return;
+  
+  [images[idx], images[newIdx]] = [images[newIdx], images[idx]];
+  
+  if (await saveData()) {
+    renderPhotoGrid();
+  }
+}
+
+// Calendar functions
+function updateVillaSelect() {
+  const select = document.getElementById('villaSelect');
+  select.innerHTML = '<option value="">-- Choisir une villa --</option>';
+  
+  Object.entries(data).forEach(([k, v]) => {
+    if (v.type === 'vacances') {
+      select.innerHTML += `<option value="${k}">${v.name}</option>`;
+    }
+  });
+}
+
+async function loadCalendar() {
+  const villa = document.getElementById('villaSelect').value;
+  const container = document.getElementById('calendarContainer');
+  
+  if (!villa) {
+    container.style.display = 'none';
+    return;
+  }
+  
+  container.style.display = 'block';
+  
+  try {
+    const response = await fetch('api/availability.php?action=get', {
+      headers: { 'Authorization': 'Bearer ' + PASSWORD }
+    });
+    const availData = await response.json();
+    const blocked = availData[villa]?.blocked_dates || [];
+    
+    const list = document.getElementById('blockedDatesList');
+    
+    if (blocked.length === 0) {
+      list.innerHTML = '<p style="color:var(--muted)">Aucune date bloquée.</p>';
+    } else {
+      list.innerHTML = blocked.map(date => `
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px;background:var(--nsoft);margin-bottom:8px;border:1px solid rgba(184,147,90,.12)">
+          <span>${date}</span>
+          <button type="button" class="btn btn-d btn-sm" onclick="unblockDate('${date}')">Débloquer</button>
+        </div>
+      `).join('');
+    }
+  } catch (e) {
+    console.error('Error loading availability:', e);
+  }
+}
+
+async function blockDate() {
+  const villa = document.getElementById('villaSelect').value;
+  const date = document.getElementById('blockDateInput').value;
+  
+  if (!villa || !date) {
+    alert('Veuillez sélectionner une villa et une date.');
+    return;
+  }
+  
+  try {
+    const response = await fetch('api/availability.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + PASSWORD },
+      body: `action=block&villa=${villa}&date=${date}`
+    });
+    const result = await response.json();
+    
+    if (result.success) {
+      document.getElementById('blockDateInput').value = '';
+      loadCalendar();
+      showMessage('Date bloquée', 'ok');
+    } else {
+      showMessage('Erreur: ' + (result.error || 'Échec du blocage'), 'err');
+    }
+  } catch (e) {
+    console.error('Error blocking date:', e);
+    showMessage('Erreur', 'err');
+  }
+}
+
+async function unblockDate(date) {
+  const villa = document.getElementById('villaSelect').value;
+  
+  try {
+    const response = await fetch('api/availability.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + PASSWORD },
+      body: `action=unblock&villa=${villa}&date=${date}`
+    });
+    const result = await response.json();
+    
+    if (result.success) {
+      loadCalendar();
+      showMessage('Date débloquée', 'ok');
+    } else {
+      showMessage('Erreur: ' + (result.error || 'Échec du déblocage'), 'err');
+    }
+  } catch (e) {
+    console.error('Error unblocking date:', e);
+    showMessage('Erreur', 'err');
+  }
+}
+
+async function blockRange() {
+  const villa = document.getElementById('villaSelect').value;
+  const start = document.getElementById('blockStart').value;
+  const end = document.getElementById('blockEnd').value;
+  
+  if (!villa || !start || !end) {
+    alert('Veuillez remplir tous les champs.');
+    return;
+  }
+  
+  try {
+    const response = await fetch('api/availability.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + PASSWORD },
+      body: `action=block_range&villa=${villa}&start=${start}&end=${end}`
+    });
+    const result = await response.json();
+    
+    if (result.success) {
+      document.getElementById('blockStart').value = '';
+      document.getElementById('blockEnd').value = '';
+      loadCalendar();
+      showMessage('Période bloquée', 'ok');
+    } else {
+      showMessage('Erreur: ' + (result.error || 'Échec du blocage'), 'err');
+    }
+  } catch (e) {
+    console.error('Error blocking range:', e);
+    showMessage('Erreur', 'err');
+  }
+}
+
+// Reservations functions
+async function loadReservations() {
+  try {
+    const response = await fetch('api/reservations.php?action=list', {
+      headers: { 'Authorization': 'Bearer ' + PASSWORD }
+    });
+    const data = await response.json();
+    
+    const requestsList = document.getElementById('requestsList');
+    const validatedList = document.getElementById('validatedList');
+    
+    // Pending requests
+    if (data.requests.length === 0) {
+      requestsList.innerHTML = '<p style="color:var(--muted)">Aucune demande en attente.</p>';
+    } else {
+      requestsList.innerHTML = data.requests.map(req => `
+        <div style="background:var(--nsoft);border:1px solid rgba(184,147,90,.15);padding:20px;margin-bottom:16px">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;margin-bottom:16px">
+            <div>
+              <div style="font-size:1.1rem;color:var(--cream);margin-bottom:4px">${req.villa_name}</div>
+              <div style="font-size:.8rem;color:var(--muted)">Demande #${req.id}</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:1.2rem;color:var(--gold)">${Number(req.total_amount).toLocaleString('fr-FR')} FCFA</div>
+              <div style="font-size:.7rem;color:var(--muted)">${req.nights} nuits · ${req.guests} personnes</div>
+            </div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:16px;font-size:.85rem;color:var(--sand)">
+            <div><strong>Dates:</strong> ${req.start} → ${req.end}</div>
+            <div><strong>Client:</strong> ${req.first_name} ${req.last_name}</div>
+            <div><strong>Téléphone:</strong> ${req.phone}</div>
+            <div><strong>Email:</strong> ${req.email}</div>
+            <div><strong>Chef:</strong> ${req.chef}</div>
+            <div><strong>Contact:</strong> ${req.contact_method}</div>
+          </div>
+          <div style="display:flex;gap:10px">
+            <button type="button" class="btn" onclick="validateRequest('${req.id}')">Valider</button>
+            <button type="button" class="btn btn-d" onclick="rejectRequest('${req.id}')">Refuser</button>
+          </div>
+        </div>
+      `).join('');
+    }
+    
+    // Validated reservations
+    if (data.validated.length === 0) {
+      validatedList.innerHTML = '<p style="color:var(--muted)">Aucune réservation validée.</p>';
+    } else {
+      validatedList.innerHTML = data.validated.map(req => `
+        <div style="background:rgba(90,158,111,.08);border:1px solid rgba(90,158,111,.25);padding:16px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px">
+            <div>
+              <div style="font-size:1rem;color:var(--cream)">${req.villa_name}</div>
+              <div style="font-size:.75rem;color:var(--muted)">${req.start} → ${req.end} · ${req.first_name} ${req.last_name}</div>
+            </div>
+            <div style="text-align:right">
+              <div style="font-size:1rem;color:var(--gold)">${Number(req.total_amount).toLocaleString('fr-FR')} FCFA</div>
+              <a href="reservation.php?key=${req.access_key}" target="_blank" style="font-size:.7rem;color:var(--glight);text-decoration:underline">Lien réservation</a>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+  } catch (e) {
+    console.error('Error loading reservations:', e);
+  }
+}
+
+async function validateRequest(requestId) {
+  if (!confirm('Valider cette réservation ?')) return;
+  
+  try {
+    const response = await fetch('api/reservations.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + PASSWORD },
+      body: `action=validate&request_id=${encodeURIComponent(requestId)}`
+    });
+    const result = await response.json();
+    
+    if (result.success) {
+      const link = result.reservation_url || ('reservation.php?key=' + result.access_key);
+      let msg = 'Réservation validée !\n\nLien privé client :\n' + link;
+      if (result.notification && result.notification.url) {
+        if (confirm(msg + '\n\nOuvrir WhatsApp pour notifier le client ?')) {
+          window.open(result.notification.url, '_blank');
+        } else {
+          alert(msg);
+        }
+      } else {
+        alert(msg + '\n\nUn email a été envoyé au client (si le serveur le permet).');
+      }
+      loadReservations();
+    } else {
+      showMessage('Erreur: ' + (result.error || 'Échec de la validation'), 'err');
+    }
+  } catch (e) {
+    console.error('Error validating request:', e);
+    showMessage('Erreur réseau', 'err');
+  }
+}
+
+async function rejectRequest(requestId) {
+  if (!confirm('Refuser cette demande ?')) return;
+  
+  try {
+    const response = await fetch('api/reservations.php', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Authorization': 'Bearer ' + PASSWORD },
+      body: `action=reject&request_id=${requestId}`
+    });
+    const result = await response.json();
+    
+    if (result.success) {
+      loadReservations();
+      showMessage('Demande refusée', 'ok');
+    }
+  } catch (e) {
+    console.error('Error rejecting request:', e);
+  }
+}
+
+// Event listeners
+document.getElementById('logoutBtn').addEventListener('click', logout);
+document.getElementById('passwordInput').addEventListener('keypress', (e) => {
+  if (e.key === 'Enter') login();
+});
+document.getElementById('blockDateBtn').addEventListener('click', blockDate);
+document.getElementById('blockRangeBtn').addEventListener('click', blockRange);
+
+// Init
+checkAuth();
+</script>
+</body>
+</html>

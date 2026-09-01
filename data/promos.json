@@ -1,0 +1,25 @@
+{
+  "promos": [
+    {
+      "code": "BIENVENUE2026",
+      "discount_percent": 2,
+      "description": "Offre spéciale de bienvenue",
+      "is_active": true,
+      "valid_until": "2026-12-31"
+    },
+    {
+      "code": "VIP5",
+      "discount_percent": 5,
+      "description": "Offre Privilège VIP 5%",
+      "is_active": true,
+      "valid_until": "2026-12-31"
+    },
+    {
+      "code": "SEJOUR10",
+      "discount_percent": 10,
+      "description": "Offre spéciale long séjour 10%",
+      "is_active": true,
+      "valid_until": "2026-12-31"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+    "standard": {
+        "id": "standard",
+        "name": "Chambre Standard",
+        "price": 88000,
+        "priceUnit": "FCFA · nuit",
+        "capacity": 2,
+        "status": "Disponible",
+        "description": "Une chambre confortable et élégante équipée de tout le confort moderne pour votre séjour.",
+        "specs": ["Lit Queen Size", "Climatisation", "Wi-Fi gratuit", "Télévision", "Mini-bar"],
+        "image": "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=1200&q=80"
+    },
+    "deluxe": {
+        "id": "deluxe",
+        "name": "Chambre Deluxe",
+        "price": 120000,
+        "priceUnit": "FCFA · nuit",
+        "capacity": 2,
+        "status": "Disponible",
+        "description": "Chambre spacieuse avec vue panoramique, lit King Size et équipements haut de gamme.",
+        "specs": ["Lit King Size", "Climatisation", "Télévision écran plat", "Wi-Fi gratuit", "Salle de bain privée", "Mini-bar", "Service en chambre"],
+        "image": "https://images.unsplash.com/photo-1618773928121-c32242e63f39?w=1200&q=80"
+    },
+    "executive": {
+        "id": "executive",
+        "name": "Suite Executive",
+        "price": 150000,
+        "priceUnit": "FCFA · nuit",
+        "capacity": 3,
+        "status": "Disponible",
+        "description": "Suite luxueuse comprenant un espace salon séparé, idéale pour les séjours d'affaires ou de loisir.",
+        "specs": ["Lit King Size", "Salon séparé", "Climatisation", "Wi-Fi gratuit", "Salle de bain de luxe", "Mini-bar", "Machine Nespresso"],
+        "image": "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=1200&q=80"
+    },
+    "presidential": {
+        "id": "presidential",
+        "name": "Suite Présidentielle",
+        "price": 250000,
+        "priceUnit": "FCFA · nuit",
+        "capacity": 4,
+        "status": "Disponible",
+        "description": "L'incarnation ultime du luxe. Deux chambres, salon majestueux, terrasse privée et service de majordome.",
+        "specs": ["2 lits King Size", "Salon spacieux", "Terrasse privée", "Majordome 24/7", "Jacuzzi", "Wi-Fi gratuit", "Cuisine équipée"],
+        "image": "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80"
+    }
+}

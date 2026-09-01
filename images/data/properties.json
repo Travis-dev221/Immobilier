@@ -1,0 +1,164 @@
+{
+  "guede": {
+    "type": "vacances",
+    "name": "Villa Guédé Home",
+    "zone": "Nguerigne · Petite Côte",
+    "price": 440000,
+    "priceUnit": "FCFA · nuit",
+    "description": "Grande villa familiale avec pool house et espaces généreux, idéale pour les groupes qui recherchent calme, confort et intimité.",
+    "bedrooms": 7,
+    "persons": 14,
+    "bathrooms": 3,
+    "area": "1 200",
+    "areaLabel": "m² hab.",
+    "tags": ["Piscine", "Pool house", "3 suites", "Climatisation"],
+    "images": [
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=80",
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&q=80",
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=1200&q=80"
+    ]
+  },
+  "casa": {
+    "type": "vacances",
+    "name": "Villa Casa",
+    "zone": "Nguerigne · Petite Côte",
+    "price": 330000,
+    "priceUnit": "FCFA · nuit",
+    "description": "Villa conviviale pour un séjour en famille ou entre amis avec chef disponible sur demande.",
+    "bedrooms": 6,
+    "persons": 12,
+    "bathrooms": 4,
+    "area": "220",
+    "areaLabel": "m²",
+    "tags": ["Piscine privée", "Chef", "Plages proches"],
+    "images": [
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85?w=1200&q=80",
+      "https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=1200&q=80",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=1200&q=80"
+    ]
+  },
+  "palm": {
+    "type": "vacances",
+    "name": "Villa Palm Évasion",
+    "zone": "Nguerigne · 50m plage",
+    "price": 400000,
+    "priceUnit": "FCFA · nuit · hors électricité",
+    "description": "Une adresse complète proche de la mer avec prestations haut de gamme et nombreux équipements loisirs.",
+    "bedrooms": 8,
+    "persons": 16,
+    "bathrooms": 5,
+    "area": "50m",
+    "areaLabel": "Plage",
+    "tags": ["Jacuzzi", "Sauna", "Sport", "Cinéma"],
+    "images": [
+      "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=1200&q=80",
+      "https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80",
+      "https://images.unsplash.com/photo-1540518614846-7eded433c457?w=1200&q=80",
+      "https://images.unsplash.com/photo-1602343168117-bb8ffe3e2e9f?w=1200&q=80",
+      "https://images.unsplash.com/photo-1615460549969-36fa19521a4f?w=1200&q=80",
+      "https://images.unsplash.com/photo-1534430480872-3498386e7856?w=1200&q=80"
+    ]
+  },
+  "torino": {
+    "type": "vacances",
+    "name": "Villa Torino",
+    "zone": "Somone · 300m plage",
+    "price": 340000,
+    "priceUnit": "FCFA · nuit",
+    "description": "Villa située entre plage et lagon, parfaite pour profiter de La Somone dans un cadre calme.",
+    "bedrooms": 6,
+    "persons": 12,
+    "bathrooms": 3,
+    "area": "500m",
+    "areaLabel": "Lagon",
+    "tags": ["Piscine", "Chef", "Ménage"],
+    "images": [
+      "https://images.unsplash.com/photo-1523217582562-09d0def993a6?w=1200&q=80",
+      "https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1200&q=80",
+      "https://images.unsplash.com/photo-1510798831971-661eb04b3739?w=1200&q=80",
+      "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600210491369-e753d80a41f3?w=1200&q=80",
+      "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&q=80"
+    ]
+  },
+  "vhouse": {
+    "type": "vacances",
+    "name": "V-House",
+    "zone": "Nguérigne · Famille",
+    "price": 340000,
+    "priceUnit": "FCFA · nuit",
+    "description": "Adresse familiale avec personnel de maison inclus et accès au Parc Exotique à proximité.",
+    "bedrooms": 5,
+    "persons": 10,
+    "bathrooms": 3,
+    "area": "Parc",
+    "areaLabel": "Inclus",
+    "tags": ["Personnel", "Chef privé", "Verdure"],
+    "images": [
+      "https://images.unsplash.com/photo-1585032226651-759b368d7246?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=1200&q=80",
+      "https://images.unsplash.com/photo-1600566752734-a1b4de0c2ad5?w=1200&q=80",
+      "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1200&q=80",
+      "https://images.unsplash.com/photo-1598928506311-c55ded91a20c?w=1200&q=80",
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=1200&q=80"
+    ]
+  },
+  "villa-familiale": {
+    "type": "vente",
+    "name": "Villa familiale avec piscine",
+    "zone": "Nguerigne · Résidentiel",
+    "price": 0,
+    "priceUnit": "Sur demande",
+    "priceNote": "Prix et dossier complet",
+    "description": "Une propriété généreuse pensée pour une résidence principale, une maison familiale ou un investissement premium sur la Petite Côte.",
+    "bedrooms": 7,
+    "persons": 0,
+    "bathrooms": 4,
+    "area": "2 000",
+    "areaLabel": "m² terrain",
+    "tags": ["Piscine", "Pool house", "Suites", "Résidentiel"],
+    "images": [
+      "https://images.unsplash.com/photo-1613977257363-707ba9348227?w=1200&q=80"
+    ]
+  },
+  "villa-somone": {
+    "type": "vente",
+    "name": "Villa moderne proche plage",
+    "zone": "Somone · Proche lagon",
+    "price": 0,
+    "priceUnit": "Sur demande",
+    "priceNote": "Visite sur rendez-vous",
+    "description": "Un bien idéal pour combiner usage personnel et potentiel locatif, dans une zone recherchée de La Somone.",
+    "bedrooms": 6,
+    "persons": 12,
+    "bathrooms": 3,
+    "area": "300m",
+    "areaLabel": "Plage",
+    "tags": ["Piscine", "Lagon", "Calme", "Investissement"],
+    "images": [
+      "https://images.unsplash.com/photo-1600047509807-ba8f99d2cdde?w=1200&q=80"
+    ]
+  },
+  "terrain-ngaparou": {
+    "type": "terrain",
+    "name": "Terrain 4 Lots — Ngaparou",
+    "zone": "Ngaparou · 300m plage · 600m Saly Center",
+    "price": 130000,
+    "priceUnit": "FCFA / m²",
+    "priceNote": "",
+    "description": "4 lots de 1 200 m² dans une résidence moderne et sécurisée à Ngaparou, entrée en première ligne sur la route. À 600 m de Saly Center et 300 m de la plage. Idéal pour résidence privée ou investissement rentable. Les lots sont disponibles à la vente séparément ou en totalité.",
+    "bedrooms": 0,
+    "persons": 0,
+    "bathrooms": 0,
+    "area": "1 200 m²",
+    "areaLabel": "Par lot",
+    "tags": ["1ère ligne route", "Viabilisé", "Plage à 300m", "Investissement"],
+    "images": []
+  }
+}

@@ -1,0 +1,492 @@
+{
+    "guede": {
+        "type": "vacances",
+        "section": "location",
+        "in_accueil": true,
+        "in_vacances": true,
+        "in_ventes": false,
+        "name": "Villa Guédé Home",
+        "zone": "Nguerigne · Petite Côte",
+        "price": 440000,
+        "priceUnit": "FCFA · nuit",
+        "priceNote": "",
+        "description": "Grande villa familiale avec pool house et espaces généreux, idéale pour les groupes qui recherchent calme, confort et intimité.",
+        "bedrooms": 7,
+        "persons": 14,
+        "bathrooms": 3,
+        "area": "1 200",
+        "areaLabel": "m² hab.",
+        "tags": [
+            "Piscine",
+            "Pool house",
+            "3 suites",
+            "Climatisation"
+        ],
+        "available": true,
+        "images": [
+            "images/guede/20260725-195555-a71c98d8.jpg",
+            "images/guede/20260725-195541-98330aea.jpg",
+            "images/guede/20260725-195601-402f0f17.jpg",
+            "images/guede/20260725-195608-aa258376.jpg",
+            "images/guede/20260725-195647-504e7af4.jpg",
+            "images/guede/20260725-195652-e4d5a995.jpg",
+            "images/guede/20260725-195701-ce46f38c.jpg",
+            "images/guede/20260725-195723-6c242940.jpg",
+            "images/guede/20260725-195733-5a412061.jpg",
+            "images/guede/20260725-195802-b0aff967.jpg",
+            "images/guede/20260725-195815-50b67b94.jpg",
+            "images/guede/20260725-195833-72586787.jpg",
+            "images/guede/20260725-195851-a1cea4ae.jpg",
+            "images/guede/20260725-195859-83517016.jpg",
+            "images/guede/20260725-195956-a4f817f2.jpg",
+            "images/guede/20260725-200109-e39dfc87.jpg",
+            "images/guede/20260725-200116-c3919bce.jpg",
+            "images/guede/20260725-200006-ed893088.jpg",
+            "images/guede/20260725-200013-4515c318.jpg",
+            "images/guede/20260725-200028-cf434fc0.jpg",
+            "images/guede/20260725-200039-e7f9f955.jpg",
+            "images/guede/20260725-211125-625b208c.jpg"
+        ],
+        "photos": {
+            "exterieur": [
+                "images/guede/20260725-195555-a71c98d8.jpg",
+                "images/guede/20260725-195541-98330aea.jpg",
+                "images/guede/20260725-195601-402f0f17.jpg",
+                "images/guede/20260725-195608-aa258376.jpg"
+            ],
+            "interieur": [
+                "images/guede/20260725-195647-504e7af4.jpg",
+                "images/guede/20260725-195652-e4d5a995.jpg",
+                "images/guede/20260725-195701-ce46f38c.jpg",
+                "images/guede/20260725-195723-6c242940.jpg",
+                "images/guede/20260725-195733-5a412061.jpg",
+                "images/guede/20260725-195802-b0aff967.jpg",
+                "images/guede/20260725-195815-50b67b94.jpg",
+                "images/guede/20260725-195833-72586787.jpg",
+                "images/guede/20260725-195851-a1cea4ae.jpg",
+                "images/guede/20260725-195859-83517016.jpg",
+                "images/guede/20260725-195956-a4f817f2.jpg",
+                "images/guede/20260725-200109-e39dfc87.jpg",
+                "images/guede/20260725-200116-c3919bce.jpg"
+            ],
+            "chambres": [
+                "images/guede/20260725-200006-ed893088.jpg",
+                "images/guede/20260725-200013-4515c318.jpg",
+                "images/guede/20260725-200028-cf434fc0.jpg",
+                "images/guede/20260725-200039-e7f9f955.jpg",
+                "images/guede/20260725-211125-625b208c.jpg"
+            ]
+        }
+    },
+    "casa": {
+        "type": "vacances",
+        "section": "location",
+        "in_accueil": true,
+        "in_vacances": true,
+        "in_ventes": false,
+        "name": "Villa Casa",
+        "zone": "Nguerigne · Petite Côte",
+        "price": 330000,
+        "priceUnit": "FCFA · nuit",
+        "priceNote": "",
+        "description": "Villa conviviale pour un séjour en famille ou entre amis avec chef disponible sur demande.",
+        "bedrooms": 6,
+        "persons": 12,
+        "bathrooms": 4,
+        "area": "220",
+        "areaLabel": "m²",
+        "tags": [
+            "Piscine privée",
+            "Chef",
+            "Plages proches"
+        ],
+        "available": true,
+        "images": [
+            "images/casa/20260725-200541-9ce70a1d.jpg",
+            "images/casa/20260725-200550-1d144f20.jpg",
+            "images/casa/20260725-200600-cfbfbe46.jpg",
+            "images/casa/20260725-200607-8b3397df.jpg",
+            "images/casa/20260725-200622-ccb80ecd.jpg",
+            "images/casa/20260725-200629-b879fe46.jpg",
+            "images/casa/20260725-200634-10295c97.jpg",
+            "images/casa/20260725-200638-ead6a662.jpg",
+            "images/casa/20260725-200652-2396f915.jpg",
+            "images/casa/20260725-200713-93978d0f.jpg",
+            "images/casa/20260725-200723-edc34719.jpg",
+            "images/casa/20260725-200729-e075ea9f.jpg",
+            "images/casa/20260725-200735-5c1363c1.jpg"
+        ],
+        "photos": {
+            "exterieur": [
+                "images/casa/20260725-200541-9ce70a1d.jpg",
+                "images/casa/20260725-200550-1d144f20.jpg"
+            ],
+            "interieur": [
+                "images/casa/20260725-200600-cfbfbe46.jpg",
+                "images/casa/20260725-200607-8b3397df.jpg",
+                "images/casa/20260725-200622-ccb80ecd.jpg",
+                "images/casa/20260725-200629-b879fe46.jpg",
+                "images/casa/20260725-200634-10295c97.jpg",
+                "images/casa/20260725-200638-ead6a662.jpg",
+                "images/casa/20260725-200652-2396f915.jpg"
+            ],
+            "chambres": [
+                "images/casa/20260725-200713-93978d0f.jpg",
+                "images/casa/20260725-200723-edc34719.jpg",
+                "images/casa/20260725-200729-e075ea9f.jpg",
+                "images/casa/20260725-200735-5c1363c1.jpg"
+            ]
+        }
+    },
+    "palm": {
+        "type": "vacances",
+        "section": "location",
+        "in_accueil": true,
+        "in_vacances": true,
+        "in_ventes": false,
+        "name": "Villa Palm Évasion",
+        "zone": "Nguerigne · 50m plage",
+        "price": 400000,
+        "priceUnit": "FCFA · nuit · hors électricité",
+        "priceNote": "",
+        "description": "Une adresse complète proche de la mer avec prestations haut de gamme et nombreux équipements loisirs.",
+        "bedrooms": 8,
+        "persons": 16,
+        "bathrooms": 5,
+        "area": "50m",
+        "areaLabel": "Plage",
+        "tags": [
+            "Jacuzzi",
+            "Sauna",
+            "Sport",
+            "Cinéma"
+        ],
+        "available": true,
+        "images": [
+            "images/palm/20260725-201123-336c498a.jpg",
+            "images/palm/20260725-201132-d8b7fee3.jpg",
+            "images/palm/20260725-201145-38f461c0.jpg",
+            "images/palm/20260725-201152-4240817a.jpg",
+            "images/palm/20260725-201205-5454937e.jpg",
+            "images/palm/20260725-201215-d4224471.jpg",
+            "images/palm/20260725-201220-1925422e.jpg",
+            "images/palm/20260725-201229-22286900.jpg",
+            "images/palm/20260725-201235-bb5ea2a8.jpg",
+            "images/palm/20260725-201301-a050eddd.jpg",
+            "images/palm/20260725-201308-51f856b5.jpg",
+            "images/palm/20260725-201315-2be160d6.jpg",
+            "images/palm/20260725-201321-28fe9a4d.jpg",
+            "images/palm/20260725-201335-7355fae5.jpg",
+            "images/palm/20260725-201339-1584f74a.jpg",
+            "images/palm/20260725-201346-5dc7fac4.jpg",
+            "images/palm/20260725-201354-0cadd99a.jpg",
+            "images/palm/20260725-201400-c74a2822.jpg"
+        ],
+        "photos": {
+            "exterieur": [
+                "images/palm/20260725-201123-336c498a.jpg",
+                "images/palm/20260725-201132-d8b7fee3.jpg"
+            ],
+            "interieur": [
+                "images/palm/20260725-201145-38f461c0.jpg",
+                "images/palm/20260725-201152-4240817a.jpg",
+                "images/palm/20260725-201205-5454937e.jpg",
+                "images/palm/20260725-201215-d4224471.jpg",
+                "images/palm/20260725-201220-1925422e.jpg",
+                "images/palm/20260725-201229-22286900.jpg",
+                "images/palm/20260725-201235-bb5ea2a8.jpg",
+                "images/palm/20260725-201301-a050eddd.jpg",
+                "images/palm/20260725-201308-51f856b5.jpg",
+                "images/palm/20260725-201315-2be160d6.jpg",
+                "images/palm/20260725-201321-28fe9a4d.jpg"
+            ],
+            "chambres": [
+                "images/palm/20260725-201335-7355fae5.jpg",
+                "images/palm/20260725-201339-1584f74a.jpg",
+                "images/palm/20260725-201346-5dc7fac4.jpg",
+                "images/palm/20260725-201354-0cadd99a.jpg",
+                "images/palm/20260725-201400-c74a2822.jpg"
+            ]
+        }
+    },
+    "torino": {
+        "type": "vacances",
+        "section": "location",
+        "in_accueil": true,
+        "in_vacances": true,
+        "in_ventes": false,
+        "name": "Villa Torino",
+        "zone": "Somone · 300m plage",
+        "price": 340000,
+        "priceUnit": "FCFA · nuit",
+        "priceNote": "",
+        "description": "Villa située entre plage et lagon, parfaite pour profiter de La Somone dans un cadre calme.",
+        "bedrooms": 6,
+        "persons": 12,
+        "bathrooms": 3,
+        "area": "500m",
+        "areaLabel": "Lagon",
+        "tags": [
+            "Piscine",
+            "Chef",
+            "Ménage"
+        ],
+        "available": true,
+        "images": [
+            "images/torino/20260725-202032-c9d9af4c.jpg",
+            "images/torino/20260725-202033-f0b105c1.jpg",
+            "images/torino/20260725-202037-0fb7b7cb.jpg",
+            "images/torino/20260725-202041-8ffeb6ba.jpg",
+            "images/torino/20260725-202058-ca450493.jpg",
+            "images/torino/20260725-202136-85f07c6e.jpg",
+            "images/torino/20260725-202145-9713896c.jpg",
+            "images/torino/20260725-202156-93aab54e.jpg",
+            "images/torino/20260725-202131-e72581a7.jpg",
+            "images/torino/20260725-202206-712bf74a.jpg",
+            "images/torino/20260725-202213-8794fa28.jpg",
+            "images/torino/20260725-202221-0852d068.jpg",
+            "images/torino/20260725-202225-24a3bc43.jpg",
+            "images/torino/20260725-202235-3132cbb3.jpg",
+            "images/torino/20260725-202249-a89a6873.jpg",
+            "images/torino/20260725-202300-8f86e9d5.jpg",
+            "images/torino/20260725-202307-35627693.jpg"
+        ],
+        "photos": {
+            "exterieur": [
+                "images/torino/20260725-202032-c9d9af4c.jpg",
+                "images/torino/20260725-202033-f0b105c1.jpg",
+                "images/torino/20260725-202037-0fb7b7cb.jpg",
+                "images/torino/20260725-202041-8ffeb6ba.jpg",
+                "images/torino/20260725-202058-ca450493.jpg"
+            ],
+            "interieur": [
+                "images/torino/20260725-202136-85f07c6e.jpg",
+                "images/torino/20260725-202145-9713896c.jpg",
+                "images/torino/20260725-202156-93aab54e.jpg",
+                "images/torino/20260725-202131-e72581a7.jpg",
+                "images/torino/20260725-202206-712bf74a.jpg",
+                "images/torino/20260725-202213-8794fa28.jpg"
+            ],
+            "chambres": [
+                "images/torino/20260725-202221-0852d068.jpg",
+                "images/torino/20260725-202225-24a3bc43.jpg",
+                "images/torino/20260725-202235-3132cbb3.jpg",
+                "images/torino/20260725-202249-a89a6873.jpg",
+                "images/torino/20260725-202300-8f86e9d5.jpg",
+                "images/torino/20260725-202307-35627693.jpg"
+            ]
+        }
+    },
+    "vhouse": {
+        "type": "vacances",
+        "name": "V-House",
+        "zone": "Nguérigne · Famille",
+        "price": 340000,
+        "priceUnit": "FCFA · nuit",
+        "description": "Adresse familiale avec personnel de maison inclus et accès au Parc Exotique à proximité.",
+        "bedrooms": 5,
+        "persons": 10,
+        "bathrooms": 3,
+        "area": "Parc",
+        "areaLabel": "Inclus",
+        "tags": [
+            "Personnel",
+            "Chef privé",
+            "Verdure"
+        ],
+        "images": [
+            "images/vhouse/20260725-205756-e3373566.jpg",
+            "images/vhouse/20260725-205804-849d29f6.jpg",
+            "images/vhouse/20260725-205810-414daeb5.jpg",
+            "images/vhouse/20260725-205818-77f6324f.jpg",
+            "images/vhouse/20260725-205826-3fe92d70.jpg",
+            "images/vhouse/20260725-205834-108a2fd1.jpg",
+            "images/vhouse/20260725-205843-6163fb73.jpg",
+            "images/vhouse/20260725-205850-4addc4d9.jpg",
+            "images/vhouse/20260725-205859-b7277dbe.jpg",
+            "images/vhouse/20260725-205905-8b5fac95.jpg",
+            "images/vhouse/20260725-210055-06560ae2.jpg",
+            "images/vhouse/20260725-205920-811c335c.jpg",
+            "images/vhouse/20260725-205934-0cbf50f9.jpg",
+            "images/vhouse/20260725-205945-a797fa9f.jpg",
+            "images/vhouse/20260725-205957-d7d68b94.jpg"
+        ],
+        "photos": {
+            "exterieur": [
+                "images/vhouse/20260725-205756-e3373566.jpg",
+                "images/vhouse/20260725-205804-849d29f6.jpg",
+                "images/vhouse/20260725-205810-414daeb5.jpg",
+                "images/vhouse/20260725-205818-77f6324f.jpg",
+                "images/vhouse/20260725-205826-3fe92d70.jpg",
+                "images/vhouse/20260725-205834-108a2fd1.jpg"
+            ],
+            "interieur": [
+                "images/vhouse/20260725-205843-6163fb73.jpg",
+                "images/vhouse/20260725-205850-4addc4d9.jpg",
+                "images/vhouse/20260725-205859-b7277dbe.jpg",
+                "images/vhouse/20260725-205905-8b5fac95.jpg",
+                "images/vhouse/20260725-210055-06560ae2.jpg"
+            ],
+            "chambres": [
+                "images/vhouse/20260725-205920-811c335c.jpg",
+                "images/vhouse/20260725-205934-0cbf50f9.jpg",
+                "images/vhouse/20260725-205945-a797fa9f.jpg",
+                "images/vhouse/20260725-205957-d7d68b94.jpg"
+            ]
+        },
+        "section": "location",
+        "available": true
+    },
+    "villa-familiale": {
+        "type": "vacances",
+        "section": "location",
+        "in_accueil": true,
+        "in_vacances": true,
+        "in_ventes": false,
+        "name": "Villa Damanet – 3 chambres",
+        "zone": "Nguerigne · Résidentiel",
+        "price": 0,
+        "priceUnit": "Sur demande",
+        "priceNote": "Prix et dossier complet",
+        "description": "Villa Damanet – 3 chambres\n\nVilla située à Nguerigne, implantée sur un terrain de 1 845 m², idéale pour une résidence principale, secondaire ou un investissement locatif.\n\nLa propriété comprend 2 chambres dans la maison principale ainsi qu’un bungalow indépendant, offrant une 3e chambre parfaite pour recevoir ou pour un usage locatif.\n\nÀ l’extérieur, la villa dispose d’une piscine 10 x 4, d’un pool house, de beaux espaces aménageables et d’un environnement calme et résidentiel.\n\n📄 Statut juridique : Attribution avec permis de construire\n\n💰 Prix : 345 000 € FAI\n💰 Équivalent : 226 304 000 FCFA",
+        "bedrooms": 3,
+        "persons": 0,
+        "bathrooms": 4,
+        "area": "1845",
+        "areaLabel": "1845",
+        "tags": [
+            "Piscine",
+            "Pool house",
+            "Suites",
+            "Résidentiel"
+        ],
+        "available": true,
+        "images": [
+            "images/villa-familiale/20260725-210622-50cfed9a.jpg",
+            "images/villa-familiale/20260725-210636-e12ae052.jpg",
+            "images/villa-familiale/20260725-210643-a08039b5.jpg",
+            "images/villa-familiale/20260725-210658-91014a37.jpg",
+            "images/villa-familiale/20260725-210921-c4329001.jpg",
+            "images/villa-familiale/20260725-210707-25acf099.jpg",
+            "images/villa-familiale/20260725-210714-03c0978f.jpg",
+            "images/villa-familiale/20260725-210722-6d3b6745.jpg",
+            "images/villa-familiale/20260725-210730-83695b56.jpg",
+            "images/villa-familiale/20260725-210736-d8f9dc5f.jpg",
+            "images/villa-familiale/20260725-210808-f5cde6c0.jpg",
+            "images/villa-familiale/20260725-210822-43742b60.jpg",
+            "images/villa-familiale/20260725-210843-8a6f0104.jpg",
+            "images/villa-familiale/20260725-210901-4b94a03f.jpg",
+            "images/villa-familiale/20260725-210936-cddd4e30.jpg",
+            "images/villa-familiale/20260725-210944-69480ccc.jpg",
+            "images/villa-familiale/20260725-210949-a6e4bc6a.jpg"
+        ],
+        "photos": {
+            "exterieur": [
+                "images/villa-familiale/20260725-210622-50cfed9a.jpg",
+                "images/villa-familiale/20260725-210636-e12ae052.jpg",
+                "images/villa-familiale/20260725-210643-a08039b5.jpg",
+                "images/villa-familiale/20260725-210658-91014a37.jpg",
+                "images/villa-familiale/20260725-210921-c4329001.jpg"
+            ],
+            "interieur": [
+                "images/villa-familiale/20260725-210707-25acf099.jpg",
+                "images/villa-familiale/20260725-210714-03c0978f.jpg",
+                "images/villa-familiale/20260725-210722-6d3b6745.jpg",
+                "images/villa-familiale/20260725-210730-83695b56.jpg",
+                "images/villa-familiale/20260725-210736-d8f9dc5f.jpg",
+                "images/villa-familiale/20260725-210808-f5cde6c0.jpg",
+                "images/villa-familiale/20260725-210822-43742b60.jpg",
+                "images/villa-familiale/20260725-210843-8a6f0104.jpg",
+                "images/villa-familiale/20260725-210901-4b94a03f.jpg"
+            ],
+            "chambres": [
+                "images/villa-familiale/20260725-210936-cddd4e30.jpg",
+                "images/villa-familiale/20260725-210944-69480ccc.jpg",
+                "images/villa-familiale/20260725-210949-a6e4bc6a.jpg"
+            ]
+        }
+    },
+    "terrain-ngaparou": {
+        "type": "vacances",
+        "section": "location",
+        "in_accueil": false,
+        "in_vacances": false,
+        "in_ventes": false,
+        "name": "Terrain 4 Lots — Ngaparou",
+        "zone": "Ngaparou · 300m plage · 600m Saly Center",
+        "price": 130000,
+        "priceUnit": "FCFA / m²",
+        "priceNote": "",
+        "description": "4 lots de 1 200 m² dans une résidence moderne et sécurisée à Ngaparou, entrée en première ligne sur la route. À 600 m de Saly Center et 300 m de la plage. Idéal pour résidence privée ou investissement rentable. Les lots sont disponibles à la vente séparément ou en totalité.",
+        "bedrooms": 0,
+        "persons": 0,
+        "bathrooms": 0,
+        "area": "1 200 m²",
+        "areaLabel": "Par lot",
+        "tags": [
+            "1ère ligne route",
+            "Viabilisé",
+            "Plage à 300m",
+            "Investissement"
+        ],
+        "available": true,
+        "images": [],
+        "photos": {
+            "exterieur": [],
+            "interieur": [],
+            "chambres": []
+        }
+    },
+    "villa-ngaparou": {
+        "type": "vacances",
+        "section": "location",
+        "in_accueil": true,
+        "in_vacances": true,
+        "in_ventes": false,
+        "name": "Villa pied dans l’eau — Drève des Belges Ngaparou",
+        "zone": "Ngaparou",
+        "price": 0,
+        "priceUnit": "Sur demande",
+        "priceNote": "Visite sur rendez-vous",
+        "description": "Villa pied dans l’eau — Drève des Belges Ngaparou \n\nTerrain 1 500 m² dont 771 m2 en titre foncier + reste domaine maritime\n4 chambres + bungalow indépendant\nAccès direct plage • Pool house • Piscine • 02 chambres pour personnel • groupe électrogène • garage \n Emplacement premium à 200 m de Saly Center et 500 m du Movenpick  resort\nPrix : 1.600.000 €\n      ~ 1.048.000.000 cfa",
+        "bedrooms": 4,
+        "persons": 0,
+        "bathrooms": 3,
+        "area": "1500",
+        "areaLabel": "771",
+        "tags": [
+            "Piscine",
+            "Calme",
+            "Investissement"
+        ],
+        "available": true,
+        "images": [
+            "images/villa-ngaparou/20260725-211808-61fbbe37.jpg",
+            "images/villa-ngaparou/20260725-211851-b3451fed.jpg",
+            "images/villa-ngaparou/20260725-211901-f532afb7.jpg",
+            "images/villa-ngaparou/20260725-211907-fb6dcc8f.jpg",
+            "images/villa-ngaparou/20260725-211807-fab8be60.jpg",
+            "images/villa-ngaparou/20260725-211837-6f3e1342.jpg",
+            "images/villa-ngaparou/20260725-211842-6f086de3.jpg",
+            "images/villa-ngaparou/20260725-211934-d65942f6.jpg",
+            "images/villa-ngaparou/20260725-211940-b95fdaa3.jpg"
+        ],
+        "photos": {
+            "exterieur": [
+                "images/villa-ngaparou/20260725-211808-61fbbe37.jpg",
+                "images/villa-ngaparou/20260725-211851-b3451fed.jpg",
+                "images/villa-ngaparou/20260725-211901-f532afb7.jpg",
+                "images/villa-ngaparou/20260725-211907-fb6dcc8f.jpg"
+            ],
+            "interieur": [
+                "images/villa-ngaparou/20260725-211807-fab8be60.jpg",
+                "images/villa-ngaparou/20260725-211837-6f3e1342.jpg",
+                "images/villa-ngaparou/20260725-211842-6f086de3.jpg"
+            ],
+            "chambres": [
+                "images/villa-ngaparou/20260725-211934-d65942f6.jpg",
+                "images/villa-ngaparou/20260725-211940-b95fdaa3.jpg"
+            ]
+        }
+    }
+}

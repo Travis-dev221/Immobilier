@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Location de Voiture — Baobab Horizon</title>
+  <meta name="description" content="Louez un véhicule de prestige au Sénégal (Petite Côte, Dakar). SUVs, 4x4 et berlines haut de gamme avec ou sans chauffeur.">
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="js/i18n.js?v=6"></script>
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    :root{--gold:#9C6F1C;--gold-light:#D6AF5C;--bg:#0F1A17;--bg-card:#162420;--text:#F8F4EC;--muted:#8A9B97;--accent:#D6AF5C}
+    body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:inherit;text-decoration:none}
+
+    /* HERO CAR */
+    .car-hero {
+      position: relative !important;
+      height: 100vh !important;
+      min-height: 650px !important;
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      align-items: center !important;
+      padding: 140px 24px 80px !important;
+      background: url('images/car_hero.jpg') center center / cover no-repeat !important;
+      box-sizing: border-box !important;
+    }
+    .car-hero-eye {
+      font-size: .75rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 10px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.85);
+    }
+    .car-hero-h1 {
+      font-family: 'Lora',serif;
+      font-size: clamp(2rem, 6vw, 3.5rem) !important;
+      font-weight: 400;
+      margin-bottom: 14px;
+      color: #fff;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.9);
+    }
+    .car-hero-sub {
+      max-width: 600px;
+      margin: 0 auto 24px;
+      color: #ffffff;
+      font-size: .95rem;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.85);
+    }
+
+    /* GRID */
+    .wrap{max-width:1160px;margin:0 auto;padding:40px 20px}
+    .section-h2{font-family:'Lora',serif;font-size:1.8rem;color:var(--gold-light);margin-bottom:24px;text-align:center}
+    .car-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-bottom:48px}
+    
+    .car-card{background:var(--bg-card);border:1px solid rgba(156,111,28,0.25);border-radius:6px;overflow:hidden;transition:transform .3s,box-shadow .3s}
+    .car-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.5);border-color:var(--gold)}
+    .car-img-box{position:relative;aspect-ratio:16/9;background:#0b1412;overflow:hidden}
+    .car-img-box img{width:100%;height:100%;object-fit:cover}
+    .car-badge{position:absolute;top:12px;left:12px;padding:4px 10px;background:rgba(15,26,23,0.85);border:1px solid var(--gold);color:var(--gold-light);font-size:.65rem;text-transform:uppercase;letter-spacing:.1em;border-radius:2px}
+    
+    .car-body{padding:20px}
+    .car-title{font-family:'Lora',serif;font-size:1.3rem;color:#fff;margin-bottom:6px}
+    .car-price{font-size:1.2rem;font-weight:700;color:var(--gold-light);margin-bottom:12px}
+    .car-specs{display:flex;gap:16px;font-size:.78rem;color:var(--muted);margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid rgba(156,111,28,0.15)}
+    .car-desc{font-size:.84rem;color:#d1dedb;margin-bottom:18px;min-height:48px}
+    .car-btn{display:block;width:100%;text-align:center;padding:11px;background:var(--gold);color:var(--bg);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.08em;border-radius:2px;cursor:pointer;border:none;transition:.2s}
+    .car-btn:hover{background:var(--gold-light)}
+
+    /* COCKTAIL BANNER */
+    .cocktail-banner{background:linear-gradient(135deg,rgba(156,111,28,0.2),rgba(15,26,23,0.9));border:1px solid var(--gold);padding:20px;border-radius:6px;margin-bottom:40px;display:flex;align-items:center;gap:16px}
+    .cocktail-icon{font-size:2.2rem}
+    .cocktail-title{font-family:'Lora',serif;font-size:1.15rem;color:var(--gold-light);margin-bottom:4px}
+    .cocktail-desc{font-size:.85rem;color:#e2ece9}
+
+    /* MODAL RESERVATION */
+    .modal-ov{position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:200;display:none;align-items:center;justify-content:center;padding:16px}
+    .modal-ov.open{display:flex}
+    .modal-box{background:var(--bg-card);border:1px solid var(--gold);max-width:540px;width:100%;padding:28px;border-radius:6px;max-height:90vh;overflow-y:auto;position:relative}
+    .modal-close{position:absolute;top:16px;right:16px;background:none;border:none;color:var(--muted);font-size:1.4rem;cursor:pointer}
+    .modal-close:hover{color:#fff}
+    
+    .form-group{margin-bottom:14px}
+    .form-group label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gold-light);margin-bottom:6px}
+    .form-group input,.form-group select,.form-group textarea{width:100%;padding:10px 12px;background:#0b1412;border:1px solid rgba(156,111,28,0.3);color:#fff;font-family:inherit;font-size:.85rem;border-radius:2px}
+    .form-group input:focus,.form-group select:focus{border-color:var(--gold-light);outline:none}
+    
+    /* WHATSAPP WIDGET */
+    @keyframes bhaWaPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.75), 0 8px 24px rgba(0, 0, 0, 0.35);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 16px rgba(37, 211, 102, 0), 0 12px 28px rgba(0, 0, 0, 0.45);
+        transform: scale(1.05);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(0, 0, 0, 0.35);
+        transform: scale(1);
+      }
+    }
+    @keyframes bhaWaIconWiggle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      15% { transform: rotate(-14deg) scale(1.15); }
+      30% { transform: rotate(14deg) scale(1.15); }
+      45% { transform: rotate(-8deg) scale(1.1); }
+      60% { transform: rotate(8deg) scale(1.1); }
+      75% { transform: rotate(0deg) scale(1); }
+    }
+    .wa-widget{position:fixed;bottom:24px;right:24px;z-index:9999}
+    .wa-btn{display:inline-flex;align-items:center;gap:10px;padding:13px 22px;background:#25D366;color:#fff;font-weight:600;font-size:.84rem;border-radius:50px;box-shadow:0 8px 24px rgba(0,0,0,0.35);cursor:pointer;border:none;animation:bhaWaPulse 2.4s infinite ease-in-out;transition:all .3s ease}
+    .wa-btn:hover{transform:scale(1.08) translateY(-2px);background:#20ba59;box-shadow:0 12px 30px rgba(37,211,102,0.45);animation-play-state:paused}
+    .wa-btn svg, .wa-btn .wa-icon{width:22px;height:22px;fill:currentColor;display:inline-block;animation:bhaWaIconWiggle 3.2s infinite ease-in-out}
+    .wa-popover{position:absolute;bottom:64px;right:0;width:300px;background:var(--bg-card);border:1px solid var(--gold);border-radius:8px;padding:16px;box-shadow:0 12px 35px rgba(0,0,0,0.7);display:none}
+    .wa-popover.open{display:block}
+    .agent-card{display:flex;align-items:center;justify-content:space-between;padding:10px;background:#0b1412;border-radius:4px;margin-top:8px;border:1px solid rgba(156,111,28,0.15)}
+    .agent-name{font-size:.85rem;font-weight:600;color:#fff}
+    .agent-role{font-size:.68rem;color:var(--muted)}
+    .agent-link{padding:5px 10px;background:#25D366;color:#fff;font-size:.7rem;border-radius:3px;font-weight:600}
+
+    /* FOOTER */
+    footer{background:#09100e;padding:40px 20px;text-align:center;border-top:1px solid rgba(156,111,28,0.2);color:var(--muted);font-size:.8rem}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo">
+      <img src="LOGO.jpg" alt="Baobab Horizon">
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-i18n="nav.accueil">Accueil</a></li>
+      <li><a href="ventes.html" data-i18n="nav.acheter">Acheter</a></li>
+      <li><a href="vacances.html" data-i18n="nav.louer">Louer</a></li>
+      <li><a href="location-voiture.html" class="active" data-i18n="nav.car_rental">Location de voiture</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/221780140942" class="nav-cta" target="_blank" data-i18n="nav.contact_us">Nous contacter</a>
+      <button class="nav-menu-btn" type="button" onclick="window.bhaToggleMobileMenu(this, event)" aria-expanded="false" aria-label="Ouvrir le menu" data-i18n="nav.menu">Menu</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="car-hero">
+    <p class="car-hero-eye">Mobilité Premium au Sénégal</p>
+    <h1 class="car-hero-h1">Location de Voitures de Prestige</h1>
+    <p class="car-hero-sub">Surtout le confort pour vos déplacements sur la Petite Côte et vers l'aéroport. Véhicules avec ou sans chauffeur.</p>
+  </section>
+
+  <div class="wrap">
+
+    <!-- COCKTAIL ET CHEF OFFRIS -->
+    <div class="cocktail-banner">
+      <div class="cocktail-icon" style="display:flex;align-items:center;gap:6px">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 22h8"/><path d="M12 11v11"/><path d="m19 3-7 8-7-8Z"/><path d="M5 3h14"/></svg>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--gold-light)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></svg>
+      </div>
+      <div>
+        <div class="cocktail-title">Offre Spéciale 1ère Réservation</div>
+        <div class="cocktail-desc">Pour toute première réservation effectuée sur le site, un <strong>cocktail de bienvenue et le service d'un chef cuisinier</strong> vous sont offerts dès votre arrivée !</div>
+      </div>
+    </div>
+
+    <!-- CAR GRID -->
+    <h2 class="section-h2">Notre Flotte de Véhicules</h2>
+    <div class="car-grid" id="carGrid">
+      <!-- Loading via JS -->
+    </div>
+  </div>
+
+  <!-- MODAL RESERVATION -->
+  <div class="modal-ov" id="resModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeResModal()">&times;</button>
+
+      <h3 style="font-family:'Lora',serif;font-size:1.4rem;color:var(--gold-light);margin-bottom:6px" id="modalCarName">Réserver un Véhicule</h3>
+      <p style="font-size:.8rem;color:var(--muted);margin-bottom:18px">Remplissez le formulaire pour valider votre demande.</p>
+
+      <form id="carResForm" onsubmit="submitCarRes(event)">
+        <input type="hidden" id="modalVehicleId">
+
+        <div class="form-group">
+          <label>Choix de l'Offre (Obligatoire) *</label>
+          <select id="resOfferType" required>
+            <option value="Offre Découverte (Cocktail & Chef Offerts)">Offre Découverte (Cocktail & Chef cuisinier offerts)</option>
+            <option value="Offre VIP Chauffeur Privé">Offre VIP (Avec Chauffeur Privé)</option>
+            <option value="Offre Longue Durée">Offre Longue Durée (Tarif Préférentiel)</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Votre Nom complet *</label>
+          <input type="text" id="resName" required placeholder="Ex: Jean Dupont">
+        </div>
+
+        <div class="form-group">
+          <label>Téléphone / WhatsApp *</label>
+          <input type="tel" id="resPhone" required placeholder="Ex: +221 78 014 09 42">
+        </div>
+
+        <div class="form-group">
+          <label>Adresse Email *</label>
+          <input type="email" id="resEmail" required placeholder="Ex: jean.dupont@gmail.com">
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+          <div class="form-group">
+            <label>Date de Début *</label>
+            <input type="date" id="resStart" required>
+          </div>
+          <div class="form-group">
+            <label>Date de Fin *</label>
+            <input type="date" id="resEnd" required>
+          </div>
+        </div>
+
+        <div class="form-group" style="display:flex;align-items:center;gap:10px;margin:12px 0">
+          <input type="checkbox" id="resDriver" style="width:auto">
+          <label for="resDriver" style="margin:0;cursor:pointer;color:#fff">Demander un chauffeur privé</label>
+        </div>
+
+        <div class="form-group" style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+          <input type="checkbox" id="resMarketing" checked style="width:auto">
+          <label for="resMarketing" style="margin:0;cursor:pointer;font-size:.75rem;color:var(--muted)">J'accepte de recevoir les offres et actualités de Baobab Horizon</label>
+        </div>
+
+        <button type="submit" class="car-btn">Confirmer ma demande de réservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- WHATSAPP FLOATING WIDGET MULTI-AGENT -->
+  <div class="wa-widget">
+    <div class="wa-popover" id="waPopover">
+      <div style="font-size:.82rem;font-weight:600;color:var(--gold-light);margin-bottom:8px">💬 Contactez votre agent immobilier</div>
+      
+      <div class="agent-card">
+        <div>
+          <div class="agent-name">Dani</div>
+          <div class="agent-role">Associé - Co-fondateur</div>
+        </div>
+        <a href="https://wa.me/221780140942?text=Bonjour%20Dani,%20je%20souhaite%20des%20informations" target="_blank" class="agent-link">WhatsApp</a>
+      </div>
+
+      <div class="agent-card">
+        <div>
+          <div class="agent-name">Mactar</div>
+          <div class="agent-role">Associé - Co-fondateur</div>
+        </div>
+        <a href="https://wa.me/221773371813?text=Bonjour%20Mactar,%20je%20souhaite%20louer%20une%20voiture" target="_blank" class="agent-link">WhatsApp</a>
+      </div>
+    </div>
+    
+    <button type="button" class="wa-btn" onclick="toggleWaPopover()">
+      <svg viewBox="0 0 24 24" class="wa-icon"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+      <span>Contactez votre agent</span>
+    </button>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Baobab Horizon — Immobilier de Prestige & Location de Voitures au Sénégal.</p>
+  </footer>
+
+  <script>
+    let vehiclesData = [];
+
+    async function loadVehicles() {
+      try {
+        const r = await fetch('api/vehicles.php?available_only=1');
+        vehiclesData = await r.json();
+        if (!Array.isArray(vehiclesData) || vehiclesData.length === 0) throw new Error("Empty list");
+        renderGrid(vehiclesData);
+      } catch (e) {
+        console.warn("Using default vehicles list", e);
+        vehiclesData = [
+          {
+            "id": "veh-1",
+            "name": "Toyota Prado VX 4x4",
+            "category": "SUV 4x4 Luxe",
+            "price_per_day": 65000,
+            "seats": 7,
+            "transmission": "Automatique",
+            "fuel": "Diesel",
+            "available": true,
+            "color": "#9C6F1C",
+            "image": "images/car1.jpg",
+            "description": "SUV de luxe idéal pour les trajets longue distance et découvertes de la Petite Côte. Confort premium, climatisation tri-zone."
+          },
+          {
+            "id": "veh-2",
+            "name": "Hyundai Tucson 2024",
+            "category": "SUV Confort",
+            "price_per_day": 45000,
+            "seats": 5,
+            "transmission": "Automatique",
+            "fuel": "Essence",
+            "available": true,
+            "color": "#5a8a9e",
+            "image": "images/car2.jpg",
+            "description": "Crossover moderne et économique, parfait pour se déplacer en ville et vers la plage."
+          },
+          {
+            "id": "veh-3",
+            "name": "Peugeot 3008 Allure",
+            "category": "Berline Crossover",
+            "price_per_day": 40000,
+            "seats": 5,
+            "transmission": "Automatique",
+            "fuel": "Diesel",
+            "available": true,
+            "color": "#5a9e6f",
+            "image": "images/car3.jpg",
+            "description": "Design raffiné et intérieur i-Cockpit pour un trajet tout confort au Sénégal."
+          }
+        ];
+        renderGrid(vehiclesData);
+      }
+    }
+
+    function renderGrid(list) {
+      const grid = document.getElementById('carGrid');
+      grid.innerHTML = list.map(v => `
+        <div class="car-card" style="border-top: 4px solid ${v.color || '#9C6F1C'}">
+          <div class="car-img-box">
+            <img src="${v.image || 'images/car1.jpg'}" alt="${v.name}">
+            <div class="car-badge">${v.category || 'SUV'}</div>
+          </div>
+          <div class="car-body">
+            <div class="car-title">${v.name}</div>
+            <div class="car-price">${v.price_per_day ? v.price_per_day.toLocaleString() + ' FCFA / jour' : 'Sur demande'}</div>
+            <div class="car-specs">
+              <span>👥 ${v.seats || 5} places</span>
+              <span>⚙️ ${v.transmission || 'Auto'}</span>
+              <span>⛽ ${v.fuel || 'Diesel'}</span>
+            </div>
+            <div class="car-desc">${v.description || 'Véhicule tout confort avec climatisation et assurance complète.'}</div>
+            <button class="car-btn" onclick="openResModal('${v.id}', '${v.name.replace(/'/g, "\\'")}')">Réserver ce véhicule</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openResModal(id, name) {
+      document.getElementById('modalVehicleId').value = id;
+      document.getElementById('modalCarName').textContent = 'Réserver : ' + name;
+      document.getElementById('resModal').classList.add('open');
+    }
+    function closeResModal() {
+      document.getElementById('resModal').classList.remove('open');
+    }
+
+    async function submitCarRes(e) {
+      e.preventDefault();
+      const data = {
+        action: 'book',
+        vehicle_id: document.getElementById('modalVehicleId').value,
+        offer_type: document.getElementById('resOfferType').value,
+        name: document.getElementById('resName').value,
+        phone: document.getElementById('resPhone').value,
+        email: document.getElementById('resEmail').value,
+        start_date: document.getElementById('resStart').value,
+        end_date: document.getElementById('resEnd').value,
+        with_driver: document.getElementById('resDriver').checked,
+        marketing: document.getElementById('resMarketing').checked
+      };
+
+      try {
+        const res = await fetch('api/vehicles.php?action=book', {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'},
+          body: JSON.stringify(data)
+        });
+        const json = await res.json();
+        if (json.ok) {
+          alert('🎉 Votre demande de réservation a été enregistrée avec succès !\nVotre cocktail de bienvenue vous attendra à votre arrivée.');
+          closeResModal();
+        } else {
+          alert(json.error || 'Erreur lors de la réservation.');
+        }
+      } catch (err) {
+        alert('Erreur réseau.');
+      }
+    }
+
+    function toggleWaPopover() {
+      document.getElementById('waPopover').classList.toggle('open');
+    }
+
+    loadVehicles();
+  </script>
+</body>
+</html>

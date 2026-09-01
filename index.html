@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RC9Q62DRJ9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-RC9Q62DRJ9');
+  </script>
+  <script src="cookies.js" defer></script>
+  <script src="js/i18n.js?v=6"></script>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Baobab Horizon — Immobilier de prestige et séjours sur la Petite Côte, Sénégal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="image" href="accueil.png" media="(min-width: 769px)">
+  <link rel="preload" as="image" href="accueil.jpg" media="(max-width: 768px)">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Poppins:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <meta name="description"
+    content="Baobab Horizon — Votre partenaire immobilier de prestige sur la Petite Côte du Sénégal. Ventes, locations vacances et longue durée, locaux commerciaux à Ngaparou, Somone, Nguérigne et Saly.">
+  <link rel="stylesheet" href="js/leaflet.css" />
+  <link rel="stylesheet" href="style.css?v=22">
+  <style>
+    .bha-lang-switcher, 
+    .bha-lang-switcher span, 
+    .bha-lang-switcher .bha-lang-btn {
+      color: #FFFFFF !important;
+      opacity: 0.95 !important;
+    }
+    .bha-lang-switcher .bha-lang-btn:hover {
+      color: #D6AF5C !important;
+      opacity: 1 !important;
+    }
+    .bha-lang-switcher .bha-lang-btn.active {
+      color: #D6AF5C !important;
+      opacity: 1 !important;
+      font-weight: 700 !important;
+      border-bottom: 2px solid #D6AF5C !important;
+    }
+    .nav-logo, .footer-logo, .f-logo {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 105px !important;
+      height: 105px !important;
+      min-width: 105px !important;
+      min-height: 105px !important;
+      aspect-ratio: 1/1 !important;
+      border-radius: 50% !important;
+      background: #ffffff !important;
+      padding: 3px !important;
+      border: none !important;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.35) !important;
+      overflow: hidden !important;
+    }
+    .nav-logo img, .footer-logo img, .f-logo img {
+      width: 100% !important;
+      height: 100% !important;
+      max-width: 100% !important;
+      max-height: 100% !important;
+      object-fit: contain !important;
+      border-radius: 50% !important;
+      display: block !important;
+      background: transparent !important;
+      padding: 0 !important;
+      border: none !important;
+    }
+    @media(max-width:1024px) {
+      .nav-logo, .footer-logo, .f-logo {
+        width: 82px !important;
+        height: 82px !important;
+        min-width: 82px !important;
+        min-height: 82px !important;
+        padding: 2px !important;
+      }
+    }
+    /* Hero Slideshow & Clean bright image */
+    .hero {
+      position: relative !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      min-height: 650px !important;
+      display: flex !important;
+      align-items: flex-end !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+    .hero-bg {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      background-size: cover !important;
+      background-position: center center !important;
+      transition: opacity 1.2s ease-in-out !important;
+      filter: none !important;
+      opacity: 1 !important;
+    }
+    .hero-ov,
+    .hero::after,
+    .hero::before {
+      display: none !important;
+      background: transparent !important;
+    }
+    /* ── BASE & PLEINE LARGEUR TOTALE (100% HORIZONTAL SANS BANDES LATÉRALES) ── */
+    html, body {
+      width: 100% !important;
+      max-width: 100vw !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      background: #0F1A17 !important;
+      overflow-x: hidden !important;
+    }
+    nav {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      width: 100% !important;
+      max-width: 100vw !important;
+      box-sizing: border-box !important;
+      background: rgba(15, 26, 23, 0.98) !important;
+      border-bottom: 1px solid rgba(214, 175, 92, 0.2) !important;
+      z-index: 9999 !important;
+    }
+    .sponsors-bar {
+      width: 100% !important;
+      max-width: 100vw !important;
+      background: #162622 !important;
+      border-top: 1px solid rgba(214, 175, 92, 0.15) !important;
+      border-bottom: 1px solid rgba(214, 175, 92, 0.15) !important;
+      box-sizing: border-box !important;
+    }
+    /* ── FOOTER 100% PLEINE LARGEUR TOTALE (OCCUPE TOUTE LA LARGEUR COMME LES AUTRES PAGES) ── */
+    footer {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+      padding: 80px 60px 40px !important;
+      background: #0B1613 !important;
+      border-top: 1px solid rgba(184, 147, 90, 0.12) !important;
+      overflow-x: hidden !important;
+      margin: 0 !important;
+    }
+    .footer-top, .ft {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 0 60px 0 !important;
+      display: grid !important;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr !important;
+      gap: 60px !important;
+      box-sizing: border-box !important;
+      align-items: start !important;
+    }
+    .footer-tagline, .f-tag {
+      font-size: .78rem !important;
+      line-height: 1.65 !important;
+      color: rgba(248, 244, 236, 0.65) !important;
+      margin-top: 18px !important;
+      margin-bottom: 22px !important;
+      max-width: 320px !important;
+    }
+    .footer-social, .f-soc {
+      display: flex !important;
+      flex-direction: row !important;
+      align-items: center !important;
+      gap: 12px !important;
+      margin-top: 16px !important;
+      padding: 0 !important;
+    }
+    .footer-social a, .f-soc a, .f-sl {
+      width: 38px !important;
+      height: 38px !important;
+      min-width: 38px !important;
+      min-height: 38px !important;
+      border: 1px solid rgba(214, 175, 92, 0.25) !important;
+      border-radius: 4px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: rgba(248, 244, 236, 0.65) !important;
+      text-decoration: none !important;
+      transition: all 0.25s ease !important;
+      background: transparent !important;
+      cursor: pointer !important;
+    }
+    .footer-social a:hover, .f-soc a:hover, .f-sl:hover {
+      border-color: #D6AF5C !important;
+      color: #D6AF5C !important;
+      background: rgba(214, 175, 92, 0.12) !important;
+    }
+    .footer-social svg, .f-soc svg, .f-sl svg {
+      width: 17px !important;
+      height: 17px !important;
+      min-width: 17px !important;
+      min-height: 17px !important;
+      fill: currentColor !important;
+      display: block !important;
+    }
+    .footer-col-title {
+      font-size: .64rem !important;
+      letter-spacing: .24em !important;
+      text-transform: uppercase !important;
+      color: #D6AF5C !important;
+      margin-bottom: 26px !important;
+      font-weight: 500 !important;
+    }
+    .footer-links {
+      list-style: none !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+    .footer-links a {
+      font-size: .74rem !important;
+      letter-spacing: .12em !important;
+      text-transform: uppercase !important;
+      color: rgba(248, 244, 236, 0.65) !important;
+      text-decoration: none !important;
+      transition: color 0.25s ease !important;
+    }
+    .footer-links a:hover {
+      color: #D6AF5C !important;
+    }
+    .footer-bottom, .f-bot {
+      width: 100% !important;
+      max-width: 100% !important;
+      margin: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      padding-top: 32px !important;
+      border-top: 1px solid rgba(184, 147, 90, 0.1) !important;
+      box-sizing: border-box !important;
+      font-size: .62rem !important;
+      letter-spacing: .12em !important;
+      text-transform: uppercase !important;
+      color: rgba(248, 244, 236, 0.45) !important;
+    }
+    @media (max-width: 1024px) {
+      footer {
+        padding: 60px 32px 32px !important;
+      }
+      .footer-top, .ft {
+        grid-template-columns: 1fr 1fr !important;
+        gap: 36px !important;
+      }
+    }
+    @media (max-width: 640px) {
+      footer {
+        padding: 50px 20px 30px !important;
+      }
+      .footer-top, .ft {
+        grid-template-columns: 1fr !important;
+        gap: 32px !important;
+      }
+      .footer-bottom, .f-bot {
+        flex-direction: column !important;
+        gap: 14px !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+      }
+    }
+    /* Multi-agent WA Popover & Animations */
+    @keyframes bhaWaPulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.75), 0 8px 24px rgba(0, 0, 0, 0.35);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 0 0 16px rgba(37, 211, 102, 0), 0 12px 28px rgba(0, 0, 0, 0.45);
+        transform: scale(1.05);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0), 0 8px 24px rgba(0, 0, 0, 0.35);
+        transform: scale(1);
+      }
+    }
+    @keyframes bhaWaIconWiggle {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      15% { transform: rotate(-14deg) scale(1.15); }
+      30% { transform: rotate(14deg) scale(1.15); }
+      45% { transform: rotate(-8deg) scale(1.1); }
+      60% { transform: rotate(8deg) scale(1.1); }
+      75% { transform: rotate(0deg) scale(1); }
+    }
+    .bha-wa-widget { position: fixed; bottom: 24px; right: 24px; z-index: 99999; }
+    .bha-wa-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 22px;
+      background: #25D366;
+      color: #fff !important;
+      font-weight: 600;
+      font-size: 0.84rem;
+      border-radius: 50px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+      cursor: pointer;
+      border: none;
+      text-decoration: none;
+      animation: bhaWaPulse 2.4s infinite ease-in-out;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .bha-wa-btn:hover {
+      background: #20ba59;
+      transform: scale(1.08) translateY(-2px);
+      animation-play-state: paused;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.45);
+      color: #ffffff !important;
+    }
+    .bha-wa-btn svg, .bha-wa-btn .wa-icon {
+      width: 22px;
+      height: 22px;
+      fill: currentColor;
+      display: inline-block;
+      animation: bhaWaIconWiggle 3.2s infinite ease-in-out;
+    }
+    .bha-wa-popover { position: absolute; bottom: 64px; right: 0; width: 300px; background: #162420; border: 1px solid #D6AF5C; border-radius: 8px; padding: 16px; box-shadow: 0 12px 35px rgba(0,0,0,0.7); display: none; box-sizing: border-box; }
+    .bha-wa-popover.open { display: block; }
+    .bha-agent-card { display: flex; align-items: center; justify-content: space-between; padding: 10px 12px; background: #0b1412; border-radius: 4px; margin-top: 8px; border: 1px solid rgba(214,175,92,0.2); }
+
+    /* ── HERO INTENTION SELECTOR (3 COLUMNS CENTERED / FULL WIDTH) ── */
+    .intent-section {
+      background: var(--ivoire, #F8F4EC) !important;
+      padding: 50px 60px 20px !important;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+    .hero-intent {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 24px !important;
+      width: 100% !important;
+      max-width: 1320px !important;
+      margin: 0 auto !important;
+      box-sizing: border-box !important;
+    }
+    .intent-card {
+      background: #0B1613 !important;
+      border: 1px solid rgba(214, 175, 92, .25) !important;
+      border-radius: 6px !important;
+      padding: 26px 24px !important;
+      cursor: pointer !important;
+      text-decoration: none !important;
+      transition: all .25s ease !important;
+      text-align: left !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      min-height: 110px !important;
+      color: #FAF7F2 !important;
+      box-sizing: border-box !important;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2) !important;
+    }
+    .intent-card:hover,
+    .intent-card:focus-visible {
+      background: #142722 !important;
+      border-color: #D6AF5C !important;
+      transform: translateY(-4px) !important;
+      box-shadow: 0 12px 30px rgba(214, 175, 92, 0.25) !important;
+    }
+    .intent-icon {
+      font-size: 1.6rem !important;
+      line-height: 1 !important;
+    }
+    .intent-title {
+      font-family: var(--font-serif, 'Lora', serif) !important;
+      font-size: 1.05rem !important;
+      font-weight: 600 !important;
+      letter-spacing: .02em !important;
+      line-height: 1.25 !important;
+      color: #D6AF5C !important;
+    }
+    .intent-sub {
+      font-size: .78rem !important;
+      color: rgba(248, 244, 236, .78) !important;
+      line-height: 1.4 !important;
+      margin-top: 2px !important;
+    }
+    @media(max-width: 1024px) {
+      .intent-section { padding: 36px 24px 16px !important; }
+      .hero-intent { grid-template-columns: repeat(3, 1fr) !important; gap: 16px !important; }
+    }
+    @media(max-width: 768px) {
+      .intent-section { padding: 24px 16px 12px !important; }
+      .hero-intent { grid-template-columns: 1fr !important; gap: 12px !important; }
+      .intent-card { min-height: auto !important; padding: 18px 16px !important; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "RealEstateAgent",
+    "name": "Baobab Horizon",
+    "image": "https://baobabhorizon.gmctechnologie.com/LOGO.jpg",
+    "@id": "https://baobabhorizon.gmctechnologie.com/#agent",
+    "url": "https://baobabhorizon.gmctechnologie.com",
+    "telephone": "+221780140942",
+    "priceRange": "$$$$",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Ngaparou, Petite Côte",
+      "addressLocality": "Ngaparou",
+      "addressRegion": "Thiès",
+      "addressCountry": "SN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 14.4756,
+      "longitude": -17.0611
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "08:00",
+      "closes": "20:00"
+    },
+    "sameAs": [
+      "https://www.tiktok.com/@baobab_horizon",
+      "https://www.instagram.com/baobab_horizon"
+    ]
+  }
+  </script>
+  <style>
+    /* ── UNIFIED CLEAR HERO & REMOVE BLACK GLOW ── */
+    .hero {
+      position: relative !important;
+      height: 100vh !important;
+      height: 100dvh !important;
+      min-height: 650px !important;
+      display: flex !important;
+      align-items: flex-end !important;
+      overflow: hidden !important;
+      box-sizing: border-box !important;
+    }
+    .hero-bg, .hero-bg-image {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      z-index: 1 !important;
+      filter: none !important;
+    }
+    .hero-bg img, .hero-bg-image img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      filter: none !important;
+    }
+    .hero::after, .hero::before, .hero-ov, .hero-overlay, #curtain, #clogo {
+      display: none !important;
+      background: transparent !important;
+      pointer-events: none !important;
+      visibility: hidden !important;
+    }
+    .hero-title, .hero-h1 {
+      text-shadow: 0 10px 30px rgba(0, 0, 0, 0.58) !important;
+    }
+    .hero-sub {
+      text-shadow: 0 6px 22px rgba(0, 0, 0, 0.48) !important;
+    }
+    .eyebrow, .hero-eye {
+      text-shadow: 0 3px 16px rgba(0, 0, 0, 0.52) !important;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CURTAIN -->
+  <div id="curtain">
+    <div class="ct"></div>
+    <div class="cl"></div>
+    <div class="cb"></div>
+  </div>
+  <div id="clogo">Baobab <span>Horizon</span></div>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal">
+    <div class="modal-in">
+      <button class="modal-cl" onclick="closeModal()">✕ Fermer</button>
+      <img class="modal-img" id="modal-img" src="" alt="">
+      <div class="modal-nav">
+        <button class="mbtn" onclick="modalNav(-1)">&#8592;</button>
+        <button class="mbtn" onclick="modalNav(1)">&#8594;</button>
+      </div>
+      <div class="modal-cap" id="modal-cap"></div>
+    </div>
+  </div>
+
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="LOGO.jpg" alt="Baobab Horizon"></a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active" data-i18n="nav.accueil">Accueil</a></li>
+      <li><a href="ventes.html" data-i18n="nav.acheter">Acheter</a></li>
+      <li><a href="vacances.html" data-i18n="nav.louer">Louer</a></li>
+      <li><a href="location-voiture.html" data-i18n="nav.car_rental">Location de voiture</a></li>
+      <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="https://wa.me/221780140942" class="nav-cta" target="_blank" data-i18n="nav.contact_us">Nous contacter</a>
+      <button class="nav-menu-btn" type="button" onclick="window.bhaToggleMobileMenu(this, event)" aria-expanded="false" aria-label="Ouvrir le menu" data-i18n="nav.menu">Menu</button>
+    </div>
+  </nav>
+
+  <!-- HERO SLIDESHOW 4 PHOTOS -->
+  <section class="hero">
+    <div class="hero-bg" id="heroBg" style="background-image: url('accueil.png');"></div>
+    <div class="hero-ov"></div>
+    <div class="hero-cnt">
+      <p class="hero-eye" data-i18n="hero.eyebrow">Petite Côte du Sénégal</p>
+      <h1 class="hero-h1">Baobab <em>Horizon</em></h1>
+      <p class="hero-sub" data-i18n="hero.subtitle">Immobilier de prestige & séjours sur mesure</p>
+      <div class="hero-btns">
+        <a href="#intro" class="btn-s" data-i18n="hero.discover">Découvrir nos biens</a>
+        <a href="contact.html" class="btn-p" data-i18n="hero.contact">Nous contacter</a>
+      </div>
+
+      <!-- BARRE DE RECHERCHE CLIENT -->
+      <div class="bha-search-bar" style="width:100%;max-width:760px;margin:28px auto 0;position:relative;z-index:10">
+        <form onsubmit="bhaIndexSearchSubmit(event)" style="display:flex;background:rgba(15,26,23,0.88);backdrop-filter:blur(12px);border:1px solid #D6AF5C;border-radius:50px;padding:6px 8px;box-shadow:0 12px 35px rgba(0,0,0,0.5);align-items:center">
+          <span style="padding-left:14px;font-size:1.2rem;color:#D6AF5C">🔍</span>
+          <input type="text" id="bhaSearchInput" onkeyup="bhaFilterCards(this.value)" placeholder="Rechercher une villa, zone (Nguerigne, Somone, Saly...), piscine, chef..." style="flex:1;background:transparent;border:none;color:#FFFFFF;padding:12px 14px;font-size:0.92rem;outline:none;font-family:inherit;" autocomplete="off">
+          <button type="submit" style="background:#D6AF5C;color:#0A1210;border:none;padding:12px 24px;border-radius:40px;font-weight:700;font-size:0.82rem;text-transform:uppercase;letter-spacing:.08em;cursor:pointer;transition:all 0.2s">Rechercher</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    function bhaFilterCards(q) {
+      var query = (q || '').toLowerCase().trim();
+      var cards = document.querySelectorAll('.property-card, .rental-card, .vcard');
+      cards.forEach(function(card) {
+        var text = card.innerText.toLowerCase();
+        card.style.display = (!query || text.indexOf(query) !== -1) ? '' : 'none';
+      });
+    }
+    function bhaIndexSearchSubmit(e) {
+      e.preventDefault();
+      var q = document.getElementById('bhaSearchInput').value;
+      bhaFilterCards(q);
+      var visibleCards = Array.from(document.querySelectorAll('.property-card, .rental-card, .vcard')).filter(function(c) { return c.style.display !== 'none'; });
+      var target = visibleCards.length > 0 ? visibleCards[0] : document.querySelector('.properties');
+      if (target) {
+        var y = target.getBoundingClientRect().top + window.pageYOffset - 90;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+      }
+    }
+  </script>
+
+  <!-- SÉLECTEUR D’INTENTION -->
+  <section class="intent-section">
+    <div class="hero-intent" aria-label="Je souhaite…">
+      <a href="ventes.html" class="intent-card" id="intent-acheter">
+        <span class="intent-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+            <path d="M32 8L8 28h6v26h14V38h8v16h14V28h6L32 8z" fill="rgba(214,175,92,0.18)" stroke="#D6AF5C" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="26" y="38" width="12" height="16" rx="2" fill="rgba(214,175,92,0.12)" stroke="#D6AF5C" stroke-width="1.5"/>
+            <circle cx="45" cy="19" r="8" fill="rgba(14,86,77,0.6)" stroke="#D6AF5C" stroke-width="1.5"/>
+            <path d="M42 19h6M45 16v6" stroke="#D6AF5C" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="intent-title" data-i18n="intent.acheter_title">Acheter un bien</span>
+        <span class="intent-sub" data-i18n="intent.acheter_sub">Villa, terrain ou investissement locatif</span>
+      </a>
+      <a href="vacances.html" class="intent-card" id="intent-vacances">
+        <span class="intent-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+            <circle cx="32" cy="26" r="10" fill="rgba(214,175,92,0.2)" stroke="#D6AF5C" stroke-width="2"/>
+            <path d="M32 8v4M32 40v4M14 26h4M46 26h4M19.5 13.5l2.8 2.8M41.7 35.7l2.8 2.8M19.5 38.5l2.8-2.8M41.7 16.3l2.8-2.8" stroke="#D6AF5C" stroke-width="1.8" stroke-linecap="round"/>
+            <path d="M20 50 Q32 42 44 50" stroke="#D6AF5C" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+            <path d="M14 56 Q24 48 32 52 Q40 56 50 50" stroke="rgba(214,175,92,0.5)" stroke-width="1.2" stroke-linecap="round" fill="none"/>
+          </svg>
+        </span>
+        <span class="intent-title" data-i18n="intent.louer_title">Louer pour des vacances</span>
+        <span class="intent-sub" data-i18n="intent.louer_sub">Séjours d'une semaine à trois mois</span>
+      </a>
+      <a href="location-voiture.html" class="intent-card" id="intent-voiture">
+        <span class="intent-icon" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+            <path d="M10 36l5-14h34l5 14" stroke="#D6AF5C" stroke-width="2" stroke-linejoin="round"/>
+            <rect x="8" y="36" width="48" height="14" rx="4" fill="rgba(214,175,92,0.15)" stroke="#D6AF5C" stroke-width="2"/>
+            <circle cx="20" cy="50" r="5" fill="rgba(14,86,77,0.7)" stroke="#D6AF5C" stroke-width="1.8"/>
+            <circle cx="44" cy="50" r="5" fill="rgba(14,86,77,0.7)" stroke="#D6AF5C" stroke-width="1.8"/>
+            <path d="M16 30h32" stroke="#D6AF5C" stroke-width="1.2" stroke-linecap="round"/>
+            <rect x="22" y="26" width="20" height="10" rx="2" fill="rgba(214,175,92,0.1)" stroke="#D6AF5C" stroke-width="1.2"/>
+          </svg>
+        </span>
+        <span class="intent-title" data-i18n="intent.car_rental_title">Louer une voiture</span>
+        <span class="intent-sub" data-i18n="intent.car_rental_sub">Berlines, SUV & 4x4 avec chauffeur</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="intro">
+    <div>
+      <p class="intro-label" data-i18n="intro.eyebrow">Notre sélection</p>
+      <h2 class="intro-title" data-i18n="intro.title">Des adresses pensées pour l'exception</h2>
+      <div class="intro-div"></div>
+      <p class="intro-text" data-i18n="intro.text">Baobab Horizon sélectionne des propriétés de prestige sur la Petite Côte du Sénégal — pour des séjours courts ou longue durée, dans des cadres d'exception entre mer, lagon et nature.</p>
+    </div>
+    <div class="stats">
+      <div>
+        <div class="stat-n">Plus de 17 000</div>
+        <div class="stat-l">Personnes accueillies</div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- VILLAS -->
+  <section class="villas">
+    <div class="sec-hd">
+      <h2 class="sec-title" style="color: var(--gold);">Toutes nos <em style="color: var(--gold);">villas</em></h2>
+      <span class="sec-ct" id="vcnt"></span>
+    </div>
+
+    <div id="accueilList" style="display: contents;"></div>
+  </section>
+  <script>
+    function fmt(n) { return Number(n).toLocaleString('fr-FR'); }
+    function esc(s) { return String(s || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); }
+    function getContrastYIQ(hex){
+      hex = (hex||'#0f1a17').replace('#','');
+      if(hex.length === 3) hex = hex[0]+hex[0]+hex[1]+hex[1]+hex[2]+hex[2];
+      var r = parseInt(hex.substr(0,2),16), g = parseInt(hex.substr(2,2),16), b = parseInt(hex.substr(4,2),16);
+      return ((r*299)+(g*587)+(b*114))/1000 >= 128 ? 'light-theme' : 'dark-theme';
+    }
+    function buildSpecs(v) {
+      var specs = [];
+      if (v.bedrooms) specs.push({ val: v.bedrooms, label: 'Chambres' });
+      if (v.persons) specs.push({ val: v.persons, label: 'Personnes' });
+      if (v.area) specs.push({ val: esc(v.area), label: esc(v.areaLabel || 'mÂ²') });
+      return specs.map(function (s) { return '<div><div class="sv">' + s.val + '</div><div class="sl">' + s.label + '</div></div>'; }).join('');
+    }
+    function buildAccueilCard(slug, v) {
+      var isVacances = v.type === 'vacances' || v.type === 'location' || v.section === 'location';
+      var imgSrc = v.images && v.images.length ? esc(v.images[0]) : 'https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&q=80';
+      var priceDisp = v.price ? fmt(v.price) : (v.priceUnit || 'Sur demande');
+      var priceSub = v.price ? esc(v.priceUnit) : '';
+      var tags = (v.tags || []).map(function (t) { return '<span class="tag">' + esc(t) + '</span>'; }).join('');
+      var nameParts = v.name.split(' ');
+      var nameHtml = nameParts.length > 1 ? nameParts[0] + '<br><em>' + nameParts.slice(1).join(' ') + '</em>' : ('<em>' + esc(v.name) + '</em>');
+      var villaColor = v.color || '#9C6F1C';
+      var themeClass = getContrastYIQ(villaColor);
+      var btnBg = themeClass === 'light-theme' ? '#000000' : '#ffffff';
+      var reserveBtn = isVacances
+        ? '<button type="button" class="btn-s" onclick="openReservationModal(\'' + slug + '\',\'' + v.name.replace(/'/g, "\\'") + '\',' + v.price + ')" style="background:'+btnBg+' !important; color:'+villaColor+' !important; border-color:'+btnBg+' !important; font-weight:600">✉ Réserver</button>'
+        : '<a class="btn-s" href="contact.html" style="background:transparent !important; color:'+btnBg+' !important; border-color:'+btnBg+' !important; font-weight:600; text-decoration:none; padding:13px 28px; font-size:.62rem; letter-spacing:.16em; text-transform:uppercase;">Contact</a>';
+      return '<article class="vcard" data-type="' + (isVacances ? 'vacances' : 'ventes') + '" style="border-top:4px solid ' + villaColor + '">' +
+        '<div class="vgal" onclick="openModal(\'' + slug + '\')">' +
+        '<img id="' + slug + '-img" src="' + imgSrc + '" alt="' + esc(v.name) + '">' +
+        '<div class="gcnt" id="' + slug + '-cnt">1 / ' + (v.images ? v.images.length : 1) + '</div>' +
+        '<div class="gnav">' +
+        '<button class="gbtn" onclick="event.stopPropagation();chg(\'' + slug + '\',-1)">&#8592;</button>' +
+        '<button class="gbtn" onclick="event.stopPropagation();chg(\'' + slug + '\',1)">&#8594;</button>' +
+        '</div>' +
+        (isVacances ? '<div style="position:absolute;top:12px;left:12px;background:rgba(15,26,23,0.85);backdrop-filter:blur(6px);border:1px solid ' + villaColor + ';padding:6px 14px;font-size:.62rem;color:#faf7f2;letter-spacing:.1em;text-transform:uppercase;z-index:2;display:flex;align-items:center;gap:6px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="' + villaColor + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M8 22h8"/><path d="M12 11v11"/><path d="m19 3-7 8-7-8Z"/><path d="M5 3h14"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="' + villaColor + '" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 7.08 0A5.11 5.11 0 0 1 16.59 6 4 4 0 0 1 18 13.87V21H6Z"/><line x1="6" y1="17" x2="18" y2="17"/></svg> Cocktail & Chef offerts</div>' : '') +
+        '</div>' +
+        '<div class="vinfo ' + themeClass + '" style="background-color: ' + villaColor + ';">' +
+        '<p class="vzone">&#9679; ' + esc(v.zone || '') + '</p>' +
+        '<h3 class="vname"><a href="detail.php?key=' + slug + '" style="color:inherit;text-decoration:none;">' + nameHtml + '</a></h3>' +
+        '<div class="vspecs">' + buildSpecs(v) + '</div>' +
+        '<div class="vtags">' + tags + '</div>' +
+        '<p class="vdesc">' + esc(v.description || '') + '</p>' +
+        '<div class="vfoot">' +
+        '<div><div class="price-a">' + priceDisp + '</div><div class="price-u">' + priceSub + '</div></div>' +
+        '<div class="vacts">' + reserveBtn + '</div>' +
+        '</div>' +
+        '</div>' +
+        '</article>';
+    }
+    function loadAccueil(data) {
+      var keys = Object.keys(data).filter(function (k) { return ((data[k].in_accueil === true || (data[k].in_accueil !== false && data[k].section === 'accueil'))) && data[k].available !== false; });
+      var list = document.getElementById('accueilList');
+      var count = document.getElementById('vcnt');
+      if (count) count.textContent = keys.length + ' propriété' + (keys.length > 1 ? 's' : '');
+      list.innerHTML = keys.map(function (k) { return buildAccueilCard(k, data[k]); }).join('');
+      if (window.loadGalleryData) window.loadGalleryData(data);
+      var obs = new IntersectionObserver(function (entries) { entries.forEach(function (e) { if (e.isIntersecting) e.target.classList.add('vis'); else e.target.classList.remove('vis'); }); }, { threshold: .08 });
+      list.querySelectorAll('.vcard').forEach(function (el) { obs.observe(el); });
+
+      // Update global count
+      if (window.filterVillas) {
+        let type = document.querySelector('.filter-bar .active') ? document.querySelector('.filter-bar .active').textContent.toLowerCase() : 'all';
+        if (type === 'toutes') type = 'all';
+        filterVillas(type, document.querySelector('.filter-bar .active') || document.querySelector('.filter-bar .fbtn'));
+      }
+    }
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch('data/properties.json?' + Date.now()).then(function (r) { return r.json(); }).then(loadAccueil).catch(function (err) { console.log(err); });
+    });
+  </script>
+
+
+  <!-- LONGUE DURÉE -->
+  <div class="ld" id="ld-block" data-type="longue">
+    <div>
+      <span class="ld-badge" data-i18n="ld.badge">Longue durée</span>
+      <h2 class="ld-title">Villa Guédé Home<br><em data-i18n="ld.title_sub">Résidentiel</em></h2>
+      <p class="ld-desc" data-i18n="ld.desc">La même propriété d'exception disponible en location longue durée. Idéale pour des familles
+        expatriées ou entreprises en déplacement. 7 chambres climatisées dont 3 suites, piscine, pool house, 2 000m² de
+        terrain.</p>
+    </div>
+    <div class="ld-info">
+      <div class="ld-pb">
+        <p class="ld-pl" data-i18n="ld.price_label">Tarif mensuel</p>
+        <div class="ld-pa">3 000 000</div>
+        <p class="ld-ps" data-i18n="ld.price_sub">FCFA · par mois</p>
+      </div>
+      <div class="ld-grid">
+        <div class="ld-sp">
+          <div class="ld-sv">7</div>
+          <div class="ld-sl" data-i18n="ld.chambres">Chambres</div>
+        </div>
+        <div class="ld-sp">
+          <div class="ld-sv">14</div>
+          <div class="ld-sl" data-i18n="ld.persons">Personnes max</div>
+        </div>
+        <div class="ld-sp">
+          <div class="ld-sv">1 200m²</div>
+          <div class="ld-sl" data-i18n="ld.habitable">Habitables</div>
+        </div>
+        <div class="ld-sp">
+          <div class="ld-sv">2 000m²</div>
+          <div class="ld-sl" data-i18n="ld.terrain">Terrain</div>
+        </div>
+      </div>
+      <a href="https://wa.me/221780140942?text=Longue%20dur%C3%A9e%20Gu%C3%A9d%C3%A9%20Home" class="btn-p"
+        target="_blank" style="width:fit-content" data-i18n="ld.contact" data-i18n-href="ld.href">&#8599; Contacter via WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- COMMERCIAUX -->
+  <div class="comm">
+    <div class="comm-hd">
+      <span class="comm-tag" data-i18n="comm.badge">Commercial</span>
+      <h2 class="comm-title"><span data-i18n="comm.title_1">Les Magasins</span> <em data-i18n="comm.title_2">Créoles</em></h2>
+    </div>
+    <div class="comm-grid">
+      <div class="ci">
+        <div class="ci-n">01</div>
+        <div class="ci-s">39,64 m²</div>
+        <div class="ci-p">607 000 <span data-i18n="comm.price_sub">FCFA HT / mois</span></div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">02</div>
+        <div class="ci-s">101,97 m²</div>
+        <div class="ci-p">1 404 000 <span data-i18n="comm.price_sub">FCFA HT / mois</span></div>
+        <div class="ci-note" data-i18n="comm.degressif">Tarif dégressif</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">03</div>
+        <div class="ci-s">53,98 m²</div>
+        <div class="ci-p">827 000 <span data-i18n="comm.price_sub">FCFA HT / mois</span></div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">04</div>
+        <div class="ci-s">39,64 m²</div>
+        <div class="ci-p">607 000 <span data-i18n="comm.price_sub">FCFA HT / mois</span></div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">05</div>
+        <div class="ci-s">40,10 m²</div>
+        <div class="ci-p">614 000 <span data-i18n="comm.price_sub">FCFA HT / mois</span></div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">06</div>
+        <div class="ci-s">164,13 m²</div>
+        <div class="ci-p">2 133 500 <span data-i18n="comm.price_sub">FCFA HT / mois</span></div>
+        <div class="ci-note" data-i18n="comm.degressif">Tarif dégressif</div>
+      </div>
+      <div class="ci">
+        <div class="ci-n">07</div>
+        <div class="ci-s">54,02 m²</div>
+        <div class="ci-p">827 000 <span data-i18n="comm.price_sub">FCFA HT / mois</span></div>
+      </div>
+    </div>
+    <div class="comm-ft">
+      <p data-i18n="comm.footer">Tarifs HT, hors assurances et charges. Dépôt de garantie : 2 mois. Durée minimale : 1 an.</p>
+      <a href="https://wa.me/221780140942?text=Magasins%20Cr%C3%A9oles" class="btn-p" target="_blank" data-i18n="comm.contact" data-i18n-href="comm.href">&#8599; Renseignements</a>
+    </div>
+  </div>
+
+  <!-- NOTRE HISTOIRE & ACCOMPAGNEMENT (FUSIONNÉ) -->
+  <section class="story bha-story-section">
+    <div class="story-media">
+      <div class="story-img main">
+        <img src="photo_ca.jpg" alt="Baobab Horizon — Expertise Immobilière">
+      </div>
+      <div class="story-img small">
+        <img src="Baobab_Senegal.jpg" alt="Baobab Horizon — Le Baobab du Sénégal">
+      </div>
+    </div>
+    <div class="story-copy">
+      <p class="story-eye" data-i18n="story.eyebrow">Notre histoire & Accompagnement</p>
+      <h2 class="story-title"><span data-i18n="story.title_1">L'immobilier de prestige</span><br><span data-i18n="story.title_2">au cœur de la</span> <em data-i18n="story.title_3">Petite Côte</em></h2>
+      <div class="story-line"></div>
+      <p class="story-text" data-i18n="story.text">Fondée par des passionnés de la Petite Côte sénégalaise, Baobab Horizon accompagne vos projets d'investissement, de résidence secondaire ou de vacances à Ngaparou, Somone, Saly et Nguérigne. Nous construisons à vos côtés un projet clair, fiable et sur mesure — avec un interlocuteur unique, de la recherche à la signature.</p>
+      <div class="story-points">
+        <div class="story-point" data-i18n="story.point_1">Expertise locale et connaissance du terrain</div>
+        <div class="story-point" data-i18n="story.point_2">Accompagnement personnalisé</div>
+        <div class="story-point" data-i18n="story.point_3">Sécurité juridique et transparence</div>
+        <div class="story-point" data-i18n="story.point_4">Biens sélectionnés avec exigence</div>
+        <div class="story-point" data-i18n="story.point_5">Recherche personnalisée</div>
+        <div class="story-point" data-i18n="story.point_6">Visites organisées</div>
+        <div class="story-point" data-i18n="story.point_7">Conseil local fiable</div>
+        <div class="story-point" data-i18n="story.point_8">Suivi jusqu'à la signature</div>
+      </div>
+      <div class="story-cta-wrap">
+        <a href="contact.html" class="btn-p" data-i18n="story.contact_btn">Nous contacter</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ZONES D'ACTIVITÉ -->
+  <section class="zones-section" id="zones-activite" aria-label="Nos zones d'activité">
+    <div class="zones-inner">
+      <div class="zones-header">
+        <span class="zones-eyebrow" data-i18n="zones.eyebrow">Nos zones d'activité</span>
+        <h2 class="zones-title"><span data-i18n="zones.title_main">Petite Côte</span> <em data-i18n="zones.title_sub">du Sénégal</em></h2>
+        <p class="zones-subtitle" data-i18n="zones.subtitle">Ngaparou · Somone · Saly · Nguérigne · Mbour</p>
+        <div class="zones-divider"></div>
+      </div>
+      <div class="zones-map-full-wrap">
+        <iframe
+          class="zones-gmap"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d55419.8!2d-16.9930!3d14.4710!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sfr!2ssn!4v1693000000000"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          title="Carte Petite Côte du Sénégal">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <div class="cta">
+    <p class="cta-eye">Votre projet · Parlons-en</p>
+    <h2 class="cta-h2">Un bien vous <em>intéresse ?</em></h2>
+    <p class="cta-sub">Notre équipe organise une visite et répond à toutes vos questions</p>
+    <div class="cta-btns">
+      <a href="https://wa.me/221780140942" class="btn-p" target="_blank">&#8599; WhatsApp direct</a>
+      <a href="contact.html" class="btn-s" style="color:#fff; border-color:#fff;">Formulaire de contact</a>
+    </div>
+  </div>
+
+  <!-- AVIS CLIENTS SUPPRIMÉS -->
+
+  <section class="sponsors-bar" aria-label="Ils nous font confiance">
+    <p class="sponsors-label" data-i18n="sponsors.label">Ils nous font confiance</p>
+    <div class="sponsors-track-wrap">
+      <div class="sponsors-track">
+        <div class="sponsors-group"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+        <div class="sponsors-group" aria-hidden="true"><span class="sponsor-item canal">Canal<sup>+</sup></span><span
+            class="sponsor-item ff">Film Factory</span><span class="sponsor-item netflix">NETFLIX</span><span
+            class="sponsor-item sir">SIR</span><span class="sponsor-item sar">SAR</span></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="lead-modal" id="leadModal" onclick="if(event.target===this)closeLeadModal()">
+    <div class="lead-box">
+      <button type="button" class="lead-close" onclick="closeLeadModal()">&times;</button>
+      <p class="lead-eyebrow" data-i18n="lead.eyebrow">Demande WhatsApp</p>
+      <h2 class="lead-title" data-i18n="lead.title">Avant de continuer sur WhatsApp</h2>
+      <p class="lead-sub" data-i18n="lead.sub">Remplissez vos coordonnées rapidement pour préparer votre message WhatsApp direct.</p>
+      <div class="lead-summary">
+        <div><span>Bien concerné</span><strong id="leadContext">Demande générale</strong></div>
+        <div><span>Budget indicatif</span><strong id="leadPrice">À confirmer</strong></div>
+      </div>
+      <div class="lead-grid">
+        <div class="lead-field full">
+          <label for="leadFullName" data-i18n="lead.fullname">Nom & Prénom *</label>
+          <input type="text" id="leadFullName" placeholder="Votre nom et prénom" required>
+        </div>
+        <div class="lead-field full">
+          <label for="leadPhone" data-i18n="lead.phone">Numéro de téléphone *</label>
+          <input type="tel" id="leadPhone" placeholder="Ex: +221 77 000 00 00" required>
+        </div>
+        <div class="lead-field">
+          <label for="leadStartDate" data-i18n="lead.startdate">Date d'arrivée (facultatif)</label>
+          <input type="date" id="leadStartDate">
+        </div>
+        <div class="lead-field">
+          <label for="leadEndDate" data-i18n="lead.enddate">Date de départ (facultatif)</label>
+          <input type="date" id="leadEndDate">
+        </div>
+        <div class="lead-field full">
+          <label for="leadMessage" data-i18n="lead.message">Informations complémentaires (facultatif)</label>
+          <textarea id="leadMessage" placeholder="Précisez vos besoins, votre budget ou toute information utile..."></textarea>
+        </div>
+      </div>
+      <p class="lead-note" id="leadNote" data-i18n="lead.note">Vos informations servent uniquement à préparer votre message WhatsApp. Rien n'est enregistré sur ce site.</p>
+      <div class="lead-actions">
+        <button type="button" class="lead-cancel" onclick="closeLeadModal()" data-i18n="lead.cancel">Annuler</button>
+        <button type="button" class="lead-submit" onclick="submitLeadWhatsApp()" data-i18n="lead.submit">Continuer sur WhatsApp</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-logo"><img src="LOGO.jpg" alt="Baobab Horizon"></a>
+        <p class="footer-tagline" data-i18n="footer.tagline">Votre partenaire immobilier de prestige sur la Petite Côte du Sénégal. Ventes, locations et séjours sur mesure.</p>
+        <div class="footer-social">
+          <a href="https://www.tiktok.com/@baobab_horizon" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg></a>
+          <a href="https://www.instagram.com/baobab_horizon" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footer.col_nav">Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="index.html" data-i18n="nav.accueil">Accueil</a></li>
+          <li><a href="ventes.html" data-i18n="nav.acheter">Acheter</a></li>
+          <li><a href="vacances.html" data-i18n="nav.louer">Louer</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footer.col_zones">Zones</h4>
+        <ul class="footer-links">
+          <li><a href="ventes.html">Nguerigne</a></li>
+          <li><a href="ventes.html">Somone</a></li>
+          <li><a href="ventes.html">Ngaparou</a></li>
+          <li><a href="ventes.html">Saly</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4 class="footer-col-title" data-i18n="footer.col_contact">Contact</h4>
+        <ul class="footer-links">
+          <li><a href="tel:+221778014094">+221 77 801 40 94</a></li>
+          <li><a href="tel:+221773371813">+221 77 337 18 13</a></li>
+          <li><a href="https://wa.me/221780140942" target="_blank">WhatsApp</a></li>
+          <li><a href="mailto:baobhorizon@gmail.com">Email</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-i18n="footer.rights">© 2026 Baobab Horizon · Tous droits réservés</span>
+      <span><a href="mentions-legales.html" style="color:inherit;text-decoration:none;" data-i18n="footer.legals">Mentions légales</a> · <a href="politique-de-confidentialite.html" style="color:inherit;text-decoration:none;" data-i18n="footer.privacy">Confidentialité</a></span>
+    </div>
+  </footer>
+
+  <div class="reservation-modal" id="reservationModal" onclick="if(event.target===this)closeReservationModal()"
+    style="position:fixed;inset:0;z-index:999999 !important;background:rgba(10,8,6,.94);display:none;align-items:center;justify-content:center;padding:16px">
+    <div class="reservation-box"
+      style="background:var(--night-mid);border:1px solid rgba(184,147,90,.25);max-width:580px;width:100%;padding:28px 24px;position:relative;max-height:90vh;overflow-y:auto">
+      <button type="button" class="reservation-close" onclick="closeReservationModal()"
+        style="position:absolute;top:12px;right:12px;width:40px;height:40px;border:1px solid rgba(184,147,90,.3);background:transparent;color:var(--sand);font-size:1.5rem;line-height:1;cursor:pointer">&times;</button>
+      <h2 class="reservation-title"
+        style="font-family:var(--font-display);font-size:1.6rem;font-weight:300;line-height:1.2;color:var(--cream);margin-bottom:6px">
+        Demande de réservation</h2>
+      <p class="reservation-subtitle"
+        style="color:var(--text-muted);line-height:1.5;margin-bottom:20px;font-size:.9rem">Complétez le formulaire pour
+        envoyer votre demande de réservation.</p>
+
+      <div class="reservation-villa-info"
+        style="background:rgba(184,147,90,.08);border:1px solid rgba(184,147,90,.2);padding:14px 16px;margin-bottom:20px">
+        <div class="reservation-villa-name" id="resVillaName"
+          style="font-size:1rem;color:var(--gold);margin-bottom:4px"></div>
+        <div class="reservation-villa-price" id="resVillaPrice" style="font-size:.85rem;color:var(--sand)"></div>
+      </div>
+
+      <form id="reservationForm" class="reservation-form"
+        style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:20px">
+        <input type="hidden" id="resVillaSlug">
+        <input type="hidden" id="resVillaPriceValue">
+
+        <div class="reservation-field">
+          <label for="resFirstName"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Prénom</label>
+          <input type="text" id="resFirstName" required
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+        </div>
+        <div class="reservation-field">
+          <label for="resLastName"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Nom</label>
+          <input type="text" id="resLastName" required
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+        </div>
+        <div class="reservation-field">
+          <label for="resPhone"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Téléphone</label>
+          <input type="tel" id="resPhone" required
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+        </div>
+        <div class="reservation-field">
+          <label for="resEmail"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Email</label>
+          <input type="email" id="resEmail" required
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+        </div>
+        <div class="reservation-field">
+          <label for="resStartDate"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Date
+            d'arrivée</label>
+          <input type="date" id="resStartDate" required
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+        </div>
+        <div class="reservation-field">
+          <label for="resEndDate"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Date
+            de départ</label>
+          <input type="date" id="resEndDate" required
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+        </div>
+        <div class="reservation-field">
+          <label for="resGuests"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Nombre
+            de personnes</label>
+          <input type="number" id="resGuests" min="1" required
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+        </div>
+        <div class="reservation-field">
+          <label for="resChef"
+            style="display:block;font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sand);margin-bottom:6px">Option
+            chef cuisinier</label>
+          <select id="resChef"
+            style="width:100%;border:1px solid rgba(184,147,90,.25);background:rgba(255,255,255,.04);color:var(--cream);padding:12px 14px;font:inherit;font-size:.85rem;outline:none">
+            <option value="Non">Non</option>
+            <option value="Oui (Inclus / Offert 1ère réservation)">Oui (Inclus / Offert 1ère réservation)</option>
+          </select>
+        </div>
+
+        <div id="resWelcomeBox" style="grid-column: 1/-1; background:rgba(214,175,92,0.12); border:1px solid rgba(214,175,92,0.3); border-radius:4px; padding:14px; margin-top:4px;">
+          <div style="font-weight:700; color:var(--gold-light, #D6AF5C); font-size:0.85rem; margin-bottom:6px; display:flex; align-items:center; gap:8px;">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D6AF5C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg>
+            Offre 1ère réservation : Cocktail & Chef cuisinier offerts + Remise
+          </div>
+          <label style="display:flex; align-items:center; gap:8px; font-size:0.78rem; color:#fff; cursor:pointer; margin-bottom:6px;">
+            <input type="checkbox" id="resCreateAccount" checked style="accent-color:var(--gold, #9C6F1C); width:16px; height:16px;">
+            Activer l'offre de bienvenue (<strong>Cocktail & Chef offerts + 1% de remise</strong>)
+          </label>
+          <label style="display:flex; align-items:center; gap:8px; font-size:0.78rem; color:var(--gold-light, #D6AF5C); cursor:pointer;">
+            <input type="checkbox" id="resOptMarketing" checked style="accent-color:var(--gold, #9C6F1C); width:16px; height:16px;">
+            Recevoir nos offres exclusives (<strong>+1% de remise supplémentaire, soit 2% au total</strong>)
+          </label>
+        </div>
+
+        <!-- PROMO CODE SECTION -->
+        <div style="grid-column: 1/-1; background:rgba(255,255,255,0.03); border:1px solid rgba(214,175,92,0.2); border-radius:4px; padding:12px 14px;">
+          <div style="font-size:0.75rem; color:#D6AF5C; font-weight:600; margin-bottom:8px; text-transform:uppercase; letter-spacing:0.1em; display:flex; align-items:center; gap:6px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D6AF5C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+            Code promotionnel (Optionnel)
+          </div>
+          <div style="display:flex; gap:8px;">
+            <input type="text" id="resPromoCodeInput" placeholder="Ex: VIP5, ETE2026" style="flex:1; border:1px solid rgba(214,175,92,0.25); background:#0B1814; color:#FFFFFF; padding:10px 14px; font-size:0.85rem; outline:none; border-radius:3px; text-transform:uppercase;">
+            <button type="button" onclick="applyPromoCode()" style="padding:10px 16px; background:#D6AF5C; color:#0B1613; font-weight:700; font-size:0.75rem; border:none; border-radius:3px; cursor:pointer; text-transform:uppercase; letter-spacing:0.08em;">Appliquer</button>
+          </div>
+          <div id="resPromoMessage" style="font-size:0.75rem; margin-top:6px; display:none;"></div>
+        </div>
+
+        <div class="reservation-actions" style="display:flex;gap:10px;margin-top:20px;grid-column:1/-1">
+          <button type="button" class="btn-secondary" onclick="closeReservationModal()"
+            style="display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,147,90,.4);color:var(--sand);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;text-decoration:none;padding:12px 20px;transition:.3s;cursor:pointer;background:transparent;flex:1">Annuler</button>
+          <button type="submit" class="btn-primary"
+            style="display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--night);font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;padding:12px 20px;transition:.3s;cursor:pointer;border:0;flex:1">Envoyer
+            ma demande</button>
+        </div>
+      </form>
+      <p class="reservation-note" style="font-size:.7rem;color:var(--text-muted);margin-top:14px;line-height:1.4">Votre
+        demande sera envoyée à l'équipe Baobab Horizon pour validation. Vous recevrez une réponse par WhatsApp.</p>
+    </div>
+  </div>
+
+
+  <script>
+    var LEAD_WHATSAPP_NUMBER = '221780140942';
+    var leadData = { context: 'Demande générale', amount: 0, category: 'Renseignement général' };
+    function formatLeadAmount(n) { return Number(n).toLocaleString('fr-FR') + ' FCFA'; }
+    function normalizeLeadText(v) { return (v || '').replace(/\s+/g, ' ').trim(); }
+    function normalizeLeadCategory(v) { var allowed = ['Location vacances', 'Location longue durée', 'Achat immobilier', 'Local commercial', 'Renseignement général']; return allowed.indexOf(v) >= 0 ? v : 'Renseignement général'; }
+    function isRentalLeadCategory(v) { return v === 'Location vacances' || v === 'Location longue durée'; }
+    function parseLeadAmount(text) { var clean = (text || '').replace(/\u00a0/g, ' '); var match = clean.match(/(\d[\d\s]{2,})/); return match ? parseInt(match[1].replace(/\s+/g, ''), 10) || 0 : 0; }
+    function setLeadMinDates() { var today = new Date().toISOString().split('T')[0]; var start = document.getElementById('leadStartDate'); var end = document.getElementById('leadEndDate'); if (start) start.min = today; if (end) end.min = today; }
+    function openLeadModal(context, amount, category) { leadData.context = normalizeLeadText(context) || 'Demande générale'; leadData.amount = parseInt(amount, 10) || 0; leadData.category = normalizeLeadCategory(category); document.getElementById('leadContext').textContent = leadData.context; document.getElementById('leadPrice').textContent = leadData.amount ? formatLeadAmount(leadData.amount) : 'À confirmer'; if (document.getElementById('leadFullName')) document.getElementById('leadFullName').value = ''; if (document.getElementById('leadPhone')) document.getElementById('leadPhone').value = ''; if (document.getElementById('leadStartDate')) document.getElementById('leadStartDate').value = ''; if (document.getElementById('leadEndDate')) document.getElementById('leadEndDate').value = ''; if (document.getElementById('leadMessage')) document.getElementById('leadMessage').value = ''; setLeadMinDates(); document.getElementById('leadModal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeLeadModal() { document.getElementById('leadModal').classList.remove('open'); document.body.style.overflow = ''; }
+    function detectLeadCategory(link, context) { var block = link.closest('.vcard,.rental-card,.property-card,.ld,.long-stay,.comm,.commercial,.quick-card,.contact-card,.map-copy,.cta'); var haystack = normalizeLeadText((link.textContent || '') + ' ' + (link.getAttribute('href') || '') + ' ' + (context || '')).toLowerCase(); if (block && block.matches('.vcard,.rental-card')) return 'Location vacances'; if (block && block.matches('.ld,.long-stay')) return 'Location longue durée'; if (block && block.matches('.comm,.commercial')) return 'Local commercial'; if (block && block.matches('.property-card')) return 'Achat immobilier'; if (/vente|acheter|terrain|dossier/.test(haystack)) return 'Achat immobilier'; if (/magasin|commercial|local/.test(haystack)) return 'Local commercial'; if (/location|villa|vacances|sejour|conditions/.test(haystack)) return 'Location vacances'; return 'Renseignement général'; }
+    function detectLeadContext(link) { var block = link.closest('.vcard,.rental-card,.property-card,.ld,.long-stay,.comm,.commercial,.quick-card,.contact-card,.map-copy,.cta,.contact-section,.hero'); var context = 'Demande générale'; var amount = 0; if (block) { var title = block.querySelector('.vname,.card-title,.ld-title,.comm-title,.cta-title,.section-title,.contact-label,.hero-title'); if (title) context = normalizeLeadText(title.innerText || title.textContent); var priceNode = block.querySelector('.price-a,.price,.ld-pa,.comm-price,.price-box .price'); if (priceNode) amount = parseLeadAmount(priceNode.textContent); } if (context === 'Demande générale') { var href = link.getAttribute('href') || ''; var queryMatch = href.match(/[?&]text=([^&]+)/); if (queryMatch) { context = normalizeLeadText(decodeURIComponent(queryMatch[1]).replace(/Bonjour,?/gi, '')); } } return { context: context, amount: amount, category: detectLeadCategory(link, context) }; }
+    function submitLeadWhatsApp() { var fullName = normalizeLeadText(document.getElementById('leadFullName').value); var phone = normalizeLeadText(document.getElementById('leadPhone').value); var startDate = document.getElementById('leadStartDate') ? document.getElementById('leadStartDate').value : ''; var endDate = document.getElementById('leadEndDate') ? document.getElementById('leadEndDate').value : ''; var message = document.getElementById('leadMessage') ? normalizeLeadText(document.getElementById('leadMessage').value) : ''; if (!fullName || !phone) { alert('Veuillez remplir votre nom et prénom ainsi que votre numéro de téléphone.'); return; } var lines = ['Bonjour Baobab Horizon, je souhaite effectuer une demande via le site.', '', 'Bien concerné : ' + leadData.context]; if (leadData.amount) { lines.push('Budget indicatif : ' + formatLeadAmount(leadData.amount)); } if (startDate && endDate) { lines.push('Dates souhaitées : Du ' + startDate + ' au ' + endDate); } else if (startDate) { lines.push('Date d\'arrivée : ' + startDate); } lines.push('', 'Nom : ' + fullName, 'Téléphone : ' + phone); if (message) { lines.push('', 'Message : ' + message); } window.open('https://wa.me/' + LEAD_WHATSAPP_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank'); closeLeadModal(); }
+    (function () { setLeadMinDates(); var startField = document.getElementById('leadStartDate'); var endField = document.getElementById('leadEndDate'); if (startField) startField.addEventListener('change', function () { if (startField.value && endField) { endField.min = startField.value; } }); document.querySelectorAll('a[href*="wa.me/' + LEAD_WHATSAPP_NUMBER + '"]').forEach(function (link) { link.addEventListener('click', function (event) { event.preventDefault(); var info = detectLeadContext(link); openLeadModal(info.context, info.amount, info.category); }); }); })();
+  </script>
+  <script>
+    /* ── GALLERIES ── */
+    const G = {};
+    function loadGalleryData(data) {
+      for (const [k, v] of Object.entries(data)) {
+        G[k] = { cur: 0, name: v.name, imgs: v.images || [] };
+        const img = document.getElementById(k + '-img');
+        const cnt = document.getElementById(k + '-cnt');
+        if (img && G[k].imgs.length) {
+          img.src = G[k].imgs[0];
+          if (cnt) cnt.textContent = '1 / ' + G[k].imgs.length;
+        }
+      }
+    }
+    fetch('data/properties.json')
+      .then(r => r.json())
+      .then(loadGalleryData)
+      .catch(() => fetch('Location/data/properties.json').then(r => r.json()).then(loadGalleryData).catch(() => { }));
+    function chg(k, d) {
+      const g = G[k]; if (!g || !g.imgs || !g.imgs.length) return;
+      g.cur = (g.cur + d + g.imgs.length) % g.imgs.length;
+      document.getElementById(k + '-img').src = g.imgs[g.cur];
+      document.getElementById(k + '-cnt').textContent = (g.cur + 1) + ' / ' + g.imgs.length;
+    }
+
+    /* ── MODAL ── */
+    let mKey = '', mIdx = 0;
+    function openModal(k, i) { const g = G[k]; if (!g || !g.imgs || !g.imgs.length) return; mKey = k; mIdx = i == null ? g.cur : i; document.getElementById('modal-img').src = g.imgs[mIdx]; document.getElementById('modal-cap').textContent = g.name + ' · ' + (mIdx + 1) + ' / ' + g.imgs.length; document.getElementById('modal').classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeModal() { document.getElementById('modal').classList.remove('open'); document.body.style.overflow = ''; }
+    function modalNav(d) { const g = G[mKey]; mIdx = (mIdx + d + g.imgs.length) % g.imgs.length; document.getElementById('modal-img').src = g.imgs[mIdx]; document.getElementById('modal-cap').textContent = g.name + ' · ' + (mIdx + 1) + ' / ' + g.imgs.length; }
+    document.getElementById('modal').addEventListener('click', e => { if (e.target === e.currentTarget) closeModal(); });
+    document.addEventListener('keydown', e => { if (!document.getElementById('modal').classList.contains('open')) return; if (e.key === 'Escape') closeModal(); if (e.key === 'ArrowRight') modalNav(1); if (e.key === 'ArrowLeft') modalNav(-1); });
+
+    /* ── FILTER ── */
+    function filterVillas(type, btn) {
+      document.querySelectorAll('.fbtn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cards = document.querySelectorAll('.vcard');
+      const ld = document.getElementById('ld-block');
+      let n = 0;
+      cards.forEach(c => { const show = type === 'all' || c.dataset.type === type; c.style.display = show ? 'grid' : 'none'; if (show) n++; });
+      if (ld) ld.style.display = (type === 'all' || type === 'longue') ? 'grid' : 'none';
+      document.getElementById('vcnt').textContent = n + (n > 1 ? ' propriétés' : ' propriété');
+    }
+
+    /* ── SCROLL REVEAL ── */
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('vis'); } else { e.target.classList.remove('vis'); } }); }, { threshold: .08 });
+    document.querySelectorAll('.vcard,.story-media,.story-copy,.review-card,.support').forEach(c => obs.observe(c));
+
+    /* ── RESERVATION MODAL ── */
+    var reservationData = { villa: '', villaSlug: '', price: 0, availability: { blocked_dates: [], reservations: [] } };
+    function loadVillaAvailability(slug) {
+      return fetch('api/availability.php?action=get')
+        .then(function (r) { return r.json().catch(function () { return {}; }); })
+        .then(function (data) {
+          reservationData.availability = data[slug] || { blocked_dates: [], reservations: [] };
+        });
+    }
+    function isDateRangeAvailable(start, end, availability) {
+      var blocked = availability.blocked_dates || [];
+      var reserved = availability.reservations || [];
+      var startDate = new Date(start);
+      var endDate = new Date(end);
+      function isDateInRange(dateStr, rangeStart, rangeEnd) {
+        var d = new Date(dateStr);
+        return d >= rangeStart && d <= rangeEnd;
+      }
+      for (var i = 0; i < blocked.length; i++) {
+        if (isDateInRange(blocked[i], startDate, endDate)) {
+          return false;
+        }
+      }
+      for (var j = 0; j < reserved.length; j++) {
+        var res = reserved[j];
+        var resStart = new Date(res.start);
+        var resEnd = new Date(res.end);
+        if (startDate <= resEnd && endDate >= resStart) {
+          return false;
+        }
+      }
+      return true;
+    }
+    function openReservationModal(slug, name, price) {
+      reservationData.villa = name;
+      reservationData.villaSlug = slug;
+      reservationData.price = parseInt(price, 10) || 0;
+      loadVillaAvailability(slug);
+      document.getElementById('resVillaName').textContent = name;
+      document.getElementById('resVillaPrice').textContent = price ? 'Prix : ' + Number(price).toLocaleString('fr-FR') + ' FCFA / nuit' : 'Prix sur demande';
+      document.getElementById('resVillaSlug').value = slug;
+      document.getElementById('resVillaPriceValue').value = price;
+      try {
+        var saved = JSON.parse(localStorage.getItem('baobab_client') || '{}');
+        if (saved.name) {
+          var parts = saved.name.split(' ');
+          document.getElementById('resFirstName').value = parts[0] || '';
+          document.getElementById('resLastName').value = parts.slice(1).join(' ') || '';
+        } else {
+          document.getElementById('resFirstName').value = '';
+          document.getElementById('resLastName').value = '';
+        }
+        if (saved.phone) document.getElementById('resPhone').value = saved.phone; else document.getElementById('resPhone').value = '';
+        if (saved.email) document.getElementById('resEmail').value = saved.email; else document.getElementById('resEmail').value = '';
+        if (saved.marketing !== undefined && document.getElementById('resOptMarketing')) {
+          document.getElementById('resOptMarketing').checked = !!saved.marketing;
+        }
+      } catch(e) {}
+
+      document.getElementById('resStartDate').value = '';
+      document.getElementById('resEndDate').value = '';
+      document.getElementById('resGuests').value = '';
+      document.getElementById('resChef').value = 'Non';
+      setReservationMinDates();
+      document.getElementById('reservationModal').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    // Promotion & Client Verification State
+    var appliedPromo = null; // { code, discount_percent, description }
+    var clientStatus = { exists: false, welcome_offer_used: false };
+
+    function checkClientOfferEligibility(phone, email) {
+      if (!phone && !email) return;
+      fetch('api/clients.php?action=check_client&phone=' + encodeURIComponent(phone || '') + '&email=' + encodeURIComponent(email || ''))
+        .then(r => r.json())
+        .then(res => {
+          if (res && res.ok) {
+            clientStatus = res;
+            var wBox = document.getElementById('resWelcomeBox');
+            if (wBox) {
+              if (res.welcome_offer_used) {
+                wBox.innerHTML = '<div style="font-size:0.8rem; color:#D6AF5C; display:flex; align-items:center; gap:8px;">'
+                  + '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D6AF5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'
+                  + '<strong>Client Privilège reconnu (' + (res.name || 'Membre') + ')</strong></div>'
+                  + '<div style="color:var(--text-muted); font-size:0.75rem; margin-top:3px; padding-left:24px;">Offre de bienvenue déjà utilisée sur votre 1ère réservation. Vous pouvez appliquer un code promotionnel ci-dessous pour ce séjour.</div>';
+              }
+            }
+          }
+        })
+        .catch(e => {});
+    }
+
+    var phoneInput = document.getElementById('resPhone');
+    if (phoneInput) {
+      phoneInput.addEventListener('blur', function() {
+        checkClientOfferEligibility(this.value.trim(), (document.getElementById('resEmail') || {}).value || '');
+      });
+    }
+
+    window.applyPromoCode = function() {
+      var codeIn = document.getElementById('resPromoCodeInput');
+      var msgEl = document.getElementById('resPromoMessage');
+      if (!codeIn || !msgEl) return;
+      var val = codeIn.value.trim().toUpperCase();
+      if (!val) {
+        msgEl.style.display = 'block';
+        msgEl.style.color = '#ff9999';
+        msgEl.textContent = 'Veuillez saisir un code promo.';
+        return;
+      }
+      fetch('api/clients.php?action=check_promo&code=' + encodeURIComponent(val))
+        .then(r => r.json())
+        .then(data => {
+          msgEl.style.display = 'block';
+          if (data && data.ok) {
+            appliedPromo = data;
+            msgEl.style.color = '#74E291';
+            msgEl.textContent = 'Code ' + data.code + ' activé : -' + data.discount_percent + '% (' + data.description + ')';
+          } else {
+            appliedPromo = null;
+            msgEl.style.color = '#ff9999';
+            msgEl.textContent = data.error || 'Code promo non valide';
+          }
+        })
+        .catch(err => {
+          msgEl.style.display = 'block';
+          msgEl.style.color = '#ff9999';
+          msgEl.textContent = 'Erreur de vérification du code';
+        });
+    };
+
+    function closeReservationModal() {
+      document.getElementById('reservationModal').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+    function setReservationMinDates() {
+      var today = new Date().toISOString().split('T')[0];
+      var start = document.getElementById('resStartDate');
+      var end = document.getElementById('resEndDate');
+      if (start) start.min = today;
+      if (end) end.min = today;
+    }
+    document.getElementById('reservationForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      var villa = document.getElementById('resVillaSlug').value;
+      var firstName = document.getElementById('resFirstName').value.trim();
+      var lastName = document.getElementById('resLastName').value.trim();
+      var phone = document.getElementById('resPhone').value.trim();
+      var email = document.getElementById('resEmail').value.trim();
+      var startDate = document.getElementById('resStartDate').value;
+      var endDate = document.getElementById('resEndDate').value;
+      var guests = document.getElementById('resGuests').value;
+      var chef = document.getElementById('resChef').value;
+      
+      var createAccountEl = document.getElementById('resCreateAccount');
+      var optMarketingEl = document.getElementById('resOptMarketing');
+      var createAccount = createAccountEl ? createAccountEl.checked : false;
+      var optMarketing = optMarketingEl ? optMarketingEl.checked : false;
+      
+      var isFirstBooking = !clientStatus.welcome_offer_used;
+      var welcomeDiscount = isFirstBooking && createAccount ? (optMarketing ? 2 : 1) : 0;
+      var promoDiscount = appliedPromo ? appliedPromo.discount_percent : 0;
+      var totalDiscountPct = Math.max(welcomeDiscount, promoDiscount);
+      var contactMethod = 'whatsapp';
+
+      if (!villa || !firstName || !lastName || !phone || !email || !startDate || !endDate || !guests) {
+        alert('Veuillez remplir tous les champs obligatoires.');
+        return;
+      }
+      if (!isDateRangeAvailable(startDate, endDate, reservationData.availability)) {
+        alert('Les dates sélectionnées ne sont pas disponibles. Veuillez choisir d\'autres dates.');
+        return;
+      }
+
+      if (createAccount && isFirstBooking) {
+        var clientPayload = {
+          name: firstName + ' ' + lastName,
+          phone: phone,
+          email: email,
+          marketing: optMarketing
+        };
+        fetch('api/clients.php?action=register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(clientPayload)
+        })
+        .then(r => r.json())
+        .then(cData => {
+          if (cData && cData.client) {
+            localStorage.setItem('baobab_client', JSON.stringify(cData.client));
+            if (typeof window.bhaUpdateAccountUI === 'function') window.bhaUpdateAccountUI();
+          }
+        })
+        .catch(e => {});
+      }
+
+      var villaName = document.getElementById('resVillaName').textContent;
+      var villaPriceVal = parseFloat(document.getElementById('resVillaPriceValue').value) || 0;
+      var nights = Math.max(1, Math.round((new Date(endDate) - new Date(startDate)) / 86400000) || 1);
+      var totalBrut = villaPriceVal * nights;
+      var discountAmt = totalDiscountPct > 0 ? Math.round(totalBrut * (totalDiscountPct / 100)) : 0;
+      var totalNet = totalBrut - discountAmt;
+
+      var formData = new FormData();
+      formData.append('action', 'create_request');
+      formData.append('villa', villa);
+      formData.append('start', startDate);
+      formData.append('end', endDate);
+      formData.append('guests', guests);
+      formData.append('chef', chef);
+      formData.append('contact_method', contactMethod);
+      formData.append('first_name', firstName);
+      formData.append('last_name', lastName);
+      formData.append('phone', phone);
+      formData.append('email', email);
+      formData.append('promo_code', appliedPromo ? appliedPromo.code : (welcomeDiscount > 0 ? 'BIENVENUE' : ''));
+      formData.append('discount_percent', totalDiscountPct);
+      formData.append('discount_amount', discountAmt);
+
+      fetch('api/reservations.php', { method: 'POST', body: formData })
+        .then(r => r.json())
+        .then(data => {
+          if (data.success) {
+            var discountTxt = '';
+            if (totalDiscountPct > 0) {
+              var reason = appliedPromo ? ('Code Promo : ' + appliedPromo.code) : 'Offre 1ère Réservation';
+              discountTxt = '\n• Remise Appliquée (-' + totalDiscountPct + '% — ' + reason + ') :\n'
+                + '  - Tarif de base : ' + totalBrut.toLocaleString('fr-FR') + ' FCFA (' + villaPriceVal.toLocaleString('fr-FR') + ' FCFA / nuit × ' + nights + ' nuits)\n'
+                + '  - Déduction (-' + totalDiscountPct + '%) : -' + discountAmt.toLocaleString('fr-FR') + ' FCFA\n'
+                + '  - TOTAL APRÈS REMISE : ' + totalNet.toLocaleString('fr-FR') + ' FCFA\n';
+            } else if (clientStatus.welcome_offer_used) {
+              discountTxt = '\n• Client Privilège Baobab Horizon (Offre 1ère réservation déjà validée antérieurement)\n';
+            }
+
+            var message = 'Bonjour Baobab Horizon,\n\n'
+              + 'Je souhaite réserver la villa : ' + villaName + '\n\n'
+              + 'Dates du séjour : ' + startDate + ' au ' + endDate + ' (' + nights + ' nuits)\n'
+              + 'Nombre de personnes : ' + guests + '\n'
+              + 'Option chef cuisinier : ' + chef + '\n'
+              + discountTxt + '\n'
+              + 'Mes coordonnées :\n'
+              + 'Prénom : ' + firstName + '\n'
+              + 'Nom : ' + lastName + '\n'
+              + 'Téléphone : ' + phone + '\n'
+              + 'Email : ' + email + '\n\n'
+              + 'Merci de confirmer ma demande.';
+            var whatsappUrl = 'https://wa.me/221780140942?text=' + encodeURIComponent(message);
+            window.open(whatsappUrl, '_blank');
+            alert('Votre demande a été enregistrée avec succès !' + (totalDiscountPct > 0 ? ' (Remise de -' + totalDiscountPct + '% appliquée)' : '') + ' et WhatsApp s\'ouvrira avec vos informations pré-remplies.');
+            closeReservationModal();
+          } else {
+            alert('Erreur : ' + (data.error || 'Une erreur est survenue'));
+          }
+        })
+        .catch(err => { alert('Erreur de connexion au serveur.'); });
+    });
+    var startField = document.getElementById('resStartDate');
+    var endField = document.getElementById('resEndDate');
+    if (startField) startField.addEventListener('change', function () { if (startField.value) endField.min = startField.value; });
+    setReservationMinDates();
+
+    /* Transitions désactivées */
+  </script>
+
+  <!-- WHATSAPP FLOATING WIDGET MULTI-AGENT -->
+  <div class="bha-wa-widget" style="position:fixed !important; bottom:24px !important; right:24px !important; z-index:999999 !important;">
+    <div class="bha-wa-popover" id="bhaWaPopover">
+      <div style="font-size:.82rem;font-weight:600;color:#D6AF5C;margin-bottom:8px;display:flex;align-items:center;gap:6px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#D6AF5C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        Contactez votre agent immobilier
+      </div>
+      <div class="bha-agent-card">
+        <div>
+          <div style="font-size:.85rem;font-weight:600;color:#fff">Dani</div>
+          <div style="font-size:.68rem;color:#8A9B97">Associé - Co-fondateur</div>
+        </div>
+        <a href="https://wa.me/221780140942?text=Bonjour%20Dani,%20je%20souhaite%20des%20informations" target="_blank" style="padding:4px 9px;background:#25D366;color:#fff;font-size:.7rem;border-radius:3px;font-weight:600">WhatsApp</a>
+      </div>
+      <div class="bha-agent-card">
+        <div>
+          <div style="font-size:.85rem;font-weight:600;color:#fff">Mactar</div>
+          <div style="font-size:.68rem;color:#8A9B97">Associé - Co-fondateur</div>
+        </div>
+        <a href="https://wa.me/221773371813?text=Bonjour%20Mactar,%20je%20souhaite%20des%20informations" target="_blank" style="padding:4px 9px;background:#25D366;color:#fff;font-size:.7rem;border-radius:3px;font-weight:600">WhatsApp</a>
+      </div>
+    </div>
+    <button type="button" class="bha-wa-btn" onclick="document.getElementById('bhaWaPopover').classList.toggle('open')">
+      <svg viewBox="0 0 24 24" class="wa-icon"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.86s.275.072.376-.044c.101-.116.433-.506.549-.68.116-.173.231-.145.39-.087s1.011.477 1.184.564.289.13.332.202c.043.072.043.419-.101.824z"/></svg>
+      <span>Contactez votre agent</span>
+    </button>
+  </div>
+
+
+
+
+  <script>
+    // Hero 5-photo slideshow (2.5s)
+    (function(){
+      const isMobile = window.innerWidth <= 768;
+      const photos = isMobile 
+        ? ['accueil.jpg', 'Mob1.jpeg', 'Mob2.jpeg', 'Mob3.jpeg', 'Mob4.jpeg']
+        : ['accueil.png', 'Accueil1.jpg', 'Accueil2.jpg', 'Accueil3.jpg', 'Accueil4.jpg'];
+      photos.forEach(src => { const img = new Image(); img.src = src; });
+      let idx = 0;
+      const heroBg = document.getElementById('heroBg');
+      if (heroBg) {
+        heroBg.style.backgroundImage = `url('${photos[0]}')`;
+        setInterval(() => {
+          idx = (idx + 1) % photos.length;
+          heroBg.style.backgroundImage = `url('${photos[idx]}')`;
+        }, 2500);
+      }
+    })();
+  </script>
+
+  <script src="admin/panel.js"></script>
+<script src="js/decorations.js?v=5" defer></script>
+</body>
+
+</html>

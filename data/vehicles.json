@@ -1,0 +1,41 @@
+[
+  {
+    "id": "veh-1",
+    "name": "Toyota Prado VX 4x4",
+    "category": "SUV 4x4 Luxe",
+    "price_per_day": 65000,
+    "seats": 7,
+    "transmission": "Automatique",
+    "fuel": "Diesel",
+    "available": true,
+    "color": "#9C6F1C",
+    "image": "images/car1.jpg",
+    "description": "SUV de luxe idéal pour les trajets longue distance et découvertes de la Petite Côte. Confort premium, climatisation tri-zone."
+  },
+  {
+    "id": "veh-2",
+    "name": "Hyundai Tucson 2024",
+    "category": "SUV Confort",
+    "price_per_day": 45000,
+    "seats": 5,
+    "transmission": "Automatique",
+    "fuel": "Essence",
+    "available": true,
+    "color": "#5a8a9e",
+    "image": "images/car2.jpg",
+    "description": "Crossover moderne et économique, parfait pour se déplacer en ville et vers la plage."
+  },
+  {
+    "id": "veh-3",
+    "name": "Peugeot 3008 Allure",
+    "category": "Berline Crossover",
+    "price_per_day": 40000,
+    "seats": 5,
+    "transmission": "Automatique",
+    "fuel": "Diesel",
+    "available": true,
+    "color": "#5a9e6f",
+    "image": "images/car3.jpg",
+    "description": "Design raffiné et intérieur i-Cockpit pour un trajet tout confort au Sénégal."
+  }
+]

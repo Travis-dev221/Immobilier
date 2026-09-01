@@ -1,0 +1,6 @@
+.freebuff/
+.vscode/
+*.log
+*.secret.php
+data/*.secret.php
+data/Location/data/*.secret.php

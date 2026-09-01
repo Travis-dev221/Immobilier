@@ -1,0 +1,4 @@
+# Hostinger : s'assurer que PHP s'exécute dans ce dossier
+<IfModule mod_mime.c>
+  AddType application/x-httpd-php .php
+</IfModule>

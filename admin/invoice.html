@@ -1,0 +1,190 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Facture</title>
+  <style>
+    :root {
+      --gold: #9C6F1C;
+      --text: #2a2520;
+      --gray: #8a7d6a;
+      --bg: #ffffff;
+    }
+    body {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+    }
+    .invoice-box {
+      max-width: 800px;
+      margin: auto;
+      padding: 30px;
+      box-sizing: border-box;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .company-details {
+      text-align: right;
+    }
+    .company-details h2 { margin: 0; color: var(--gold); }
+    .company-details p { margin: 3px 0; color: var(--gray); font-size: 12px; }
+    
+    .invoice-details { margin-bottom: 40px; display: flex; justify-content: space-between; }
+    .invoice-details h1 { margin: 0 0 10px 0; font-size: 28px; font-weight: 300; }
+    .client-details p { margin: 3px 0; }
+    
+    table { width: 100%; line-height: inherit; text-align: left; border-collapse: collapse; margin-bottom: 30px; }
+    table th { padding: 10px; background: #f9f9f9; border-bottom: 2px solid var(--gold); color: var(--text); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; }
+    table td { padding: 12px 10px; border-bottom: 1px solid #eee; }
+    
+    .totals-box { width: 350px; margin-left: auto; border: 1px solid #eee; padding: 20px; }
+    .totals-row { display: flex; justify-content: space-between; margin-bottom: 10px; }
+    .totals-row.grand-total { font-weight: bold; font-size: 18px; color: var(--gold); border-top: 2px solid var(--gold); padding-top: 10px; margin-top: 10px; }
+    
+    .footer { margin-top: 50px; text-align: center; color: var(--gray); font-size: 11px; border-top: 1px solid #eee; padding-top: 20px; }
+    
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .invoice-box { padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="invoice-box" id="invoiceContent">
+    <div style="text-align:center; padding:50px; color:#888;">Chargement de la facture...</div>
+  </div>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const invId = urlParams.get('id');
+    
+    async function load() {
+      if (!invId) {
+        document.getElementById('invoiceContent').innerHTML = '<div style="color:red">ID de facture manquant.</div>';
+        return;
+      }
+      try {
+        const [invRes, setRes] = await Promise.all([
+          fetch('../api/compta.php?action=get_invoices', {credentials: 'same-origin'}).then(r=>r.json()),
+          fetch('../api/compta.php?action=get_settings', {credentials: 'same-origin'}).then(r=>r.json())
+        ]);
+        
+        if (invRes.error) throw new Error(invRes.error);
+        if (setRes.error) throw new Error(setRes.error);
+        
+        const inv = invRes.invoices.find(i => i.id === invId);
+        if (!inv) throw new Error("Facture introuvable.");
+        
+        const s = setRes.settings;
+        const cur = s.currency || 'FCFA';
+        
+        const fmt = (n) => new Intl.NumberFormat('fr-FR').format(n || 0) + ' ' + cur;
+        
+        let itemsHtml = '';
+        inv.items.forEach(it => {
+          itemsHtml += `
+            <tr>
+              <td>${it.desc}</td>
+              <td>${it.qty}</td>
+              <td>${fmt(it.price)}</td>
+              <td style="text-align:right">${fmt(it.qty * it.price)}</td>
+            </tr>
+          `;
+        });
+        
+        const html = `
+          <div class="header">
+            <div>
+              <h1 style="margin:0; font-family:'Lora',serif; color:#b8935a; font-size:32px; letter-spacing:0.1em; text-transform:uppercase">Facture</h1>
+              <p style="color:#888; margin:5px 0 0 0; font-size:14px;">N° ${inv.id}</p>
+            </div>
+            <div class="company-details">
+              <h2>${s.company_name}</h2>
+              ${s.company_address ? `<p>${s.company_address}</p>` : ''}
+              ${s.company_phone ? `<p>${s.company_phone}</p>` : ''}
+              ${s.company_email ? `<p>${s.company_email}</p>` : ''}
+            </div>
+          </div>
+          
+          <div class="invoice-details">
+            <div class="client-details">
+              <p style="font-size:11px; text-transform:uppercase; color:#888; letter-spacing:0.1em; margin-bottom:5px;">Facturé à</p>
+              <p><strong>${inv.client.name}</strong></p>
+              ${inv.client.address ? `<p>${inv.client.address}</p>` : ''}
+              ${inv.client.phone ? `<p>${inv.client.phone}</p>` : ''}
+              ${inv.client.email ? `<p>${inv.client.email}</p>` : ''}
+            </div>
+            <div style="text-align:right">
+              <p><strong>Date :</strong> ${new Date(inv.created_at).toLocaleDateString('fr-FR')}</p>
+              ${inv.due_date ? `<p><strong>Échéance :</strong> ${new Date(inv.due_date).toLocaleDateString('fr-FR')}</p>` : ''}
+              <p><strong>Statut :</strong> ${inv.status}</p>
+            </div>
+          </div>
+          
+          <table>
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Qté</th>
+                <th>Prix Unitaire HT</th>
+                <th style="text-align:right">Total HT</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${itemsHtml}
+            </tbody>
+          </table>
+          
+          <div class="totals-box">
+            <div class="totals-row">
+              <span>Total HT :</span>
+              <span>${fmt(inv.totals.ht)}</span>
+            </div>
+            <div class="totals-row" style="color:#888">
+              <span>TVA (${s.tax_rate}%) :</span>
+              <span>${fmt(inv.totals.tax)}</span>
+            </div>
+            <div class="totals-row grand-total">
+              <span>Total TTC :</span>
+              <span>${fmt(inv.totals.ttc)}</span>
+            </div>
+            ${inv.totals.paid > 0 ? `
+              <div class="totals-row" style="margin-top:15px; color:#5a9e6f">
+                <span>Montant payé :</span>
+                <span>-${fmt(inv.totals.paid)}</span>
+              </div>
+              <div class="totals-row" style="font-weight:bold; color:#c45c5c">
+                <span>Reste à payer :</span>
+                <span>${fmt(inv.totals.due)}</span>
+              </div>
+            ` : ''}
+          </div>
+          
+          <div class="footer">
+            <p>Merci pour votre confiance.</p>
+            <p>Baobab Horizon - Document généré le ${new Date().toLocaleDateString('fr-FR')}</p>
+          </div>
+        `;
+        
+        document.getElementById('invoiceContent').innerHTML = html;
+        
+        // Auto-print after slight delay for images/fonts to load
+        setTimeout(() => {
+          window.print();
+        }, 500);
+        
+      } catch (err) {
+        document.getElementById('invoiceContent').innerHTML = `<div style="color:red">Erreur : ${err.message}</div>`;
+      }
+    }
+    
+    load();
+  </script>
+</body>
+</html>
